@@ -1,4 +1,4 @@
-# FansStore v.1.0.1 
+# FansStore v.1.1.2
 
 # Stack : REACT / REDUX / NODE / EXPRESS / SQL
   
