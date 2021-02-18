@@ -10,5 +10,5 @@ module.exports = app => {
     // // Retrieve a single Article with id
     // router.get("/:id", articles.findOne);
   
-    app.use('/api/articles', router);
-  };
+    app.use('/articles', router);
+};

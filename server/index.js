@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to our application." });
 });
 
-db.sequelize.sync();
+// db.sequelize.sync();
 
 require("./routes/article.route")(app);
 
