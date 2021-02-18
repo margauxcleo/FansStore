@@ -1,31 +1,42 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const Article = sequelize.define("article", {
+    const Article = sequelize.define("articles", {
         articleId: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         },
         name: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         brand: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: true
         },
         price: {
-            type: Sequelize.DECIMAL(10, 2)  
+            type: Sequelize.DECIMAL(10, 2),
+            allowNull: false
         },
         image: {
-            type: Sequelize.TEXT 
+            type: Sequelize.TEXT,
+            allowNull: false
         },
         description: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
         category: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            allowNull: false
         },
         universe: {
-            type: Sequelize.INTEGER
-        }
-    });
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
+    },
+        {tableName: 'articles', timestamps: false, underscored: false}
+    );
 
     return Article;
 
