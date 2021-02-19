@@ -25,15 +25,7 @@ module.exports = (sequelize, Sequelize) => {
         description: {
             type: Sequelize.STRING,
             allowNull: false
-        },
-        category: {
-            type: Sequelize.INTEGER,
-            allowNull: false
-        },
-        universe: {
-            type: Sequelize.INTEGER,
-            allowNull: false
-        },
+        }
     },
         {tableName: 'articles', timestamps: false, underscored: false}
     );

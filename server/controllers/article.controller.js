@@ -1,5 +1,7 @@
 const db = require("../models"); // models path depend on your structure
 const Article = db.article;
+const Category = db.product_category;
+const Universe = db.universe;
 
 exports.create = (req, res) => {
     // Validate request
@@ -18,11 +20,11 @@ exports.create = (req, res) => {
         price: req.body.price,
         image: req.body.image,
         description: req.body.description,
-        category: req.body.category,
-        universe: req.body.universe,
+        fk_category: req.body.category,
+        fk_universe: req.body.universe,
     };
 
-    // Save Tutorial in the database
+    // Créer un article (pour le test mais pas nécessaire pour nous)
     Article.create(article)
         .then(data => {
             res.send(data);
@@ -37,7 +39,11 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
 
-    Article.findAll()
+    Article.findAll({ 
+        include: [
+            {model: Universe}, 
+            {model: Category}
+        ]})
         .then(data => {
             res.send(data);
         })
