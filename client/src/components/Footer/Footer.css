@@ -1,0 +1,32 @@
+.footer {
+    background-color: #8D9492;
+}
+
+.div-footer{
+    border-bottom: 2px groove #FFF;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.btn-footer:hover{
+    border-color: #777E7C!important;
+    background-color: #777E7C!important;
+    color: #FFF!important;
+}
+
+.btn-footer:focus, .btn-footer:active {
+    box-shadow: 0 0 0 0.25rem #FFF!important;
+}
+
+.footer .btn {
+    color: #FFF;
+}
+
+.footer-item{
+    background-color: #8D9492!important;
+}
+
+.copyright{
+    text-align: center;
+    color: #FFF;
+}
