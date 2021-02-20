@@ -10,7 +10,7 @@ const Footer = () => {
         <>
             <div className="footer">
                 <Row>
-                    <Col xs={12} sm={{ offset: 12 }} sm={5} md={{ offset: 1 }} md={5} lg={{ offset: 2 }} lg={4} xl={{ offset: 3 }} xl={3} className="div-footer">
+                    <Col xs={12} sm={{ span:5, offset: 1 }} md={{ span: 5, offset: 1 }} lg={{ span: 4, offset: 2 }} xl={{ span: 3, offset: 3 }} className="div-footer">
                         <ListGroup variant="flush" className="btn-group-vertical">
                             <ListGroup.Item className="footer-item">
                                 <a
@@ -18,41 +18,42 @@ const Footer = () => {
                                     href="https://www.facebook.com/"
                                     type="button">
                                     <i className="fab fa-facebook-square"></i>
-                                    Voir notre page Facebook
+                                    <span className="footer_title">Voir notre page Facebook</span>
                                 </a>
                             </ListGroup.Item>
                             <ListGroup.Item className="footer-item">
                                 <a className="btn btn-footer" href="https://www.instagram.com/?hl=fr" type="button">
                                     <i className="fab fa-instagram"></i>
-                                    Instagram
+                                    <span className="footer_title">Instagram</span>
                                 </a>
                             </ListGroup.Item>
                             <ListGroup.Item className="footer-item">
                                 <a className="btn btn-footer" href="https://twitter.com/?lang=fr" type="button">
                                     <i className="fab fa-twitter-square"></i>
-                                    Twitter
+                                    <span className="footer_title">Twitter</span>
                                 </a>
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>
-                    <Col xs={12} sm={5} md={5} lg={4} xl={3}>
+                    <Col xs={12} sm={5} md={5} lg={4} xl={3} className="div-footer">
                         <ListGroup variant="flush" className="btn-group-vertical">
                             <ListGroup.Item className="footer-item">
                                 <a className="btn btn-footer" href="" type="button">
                                     <i className="fas fa-thumbtack"></i>
-                                    Page de confidentialité
+                                    <span className="footer_title">Page de confidentialité</span>
+                                    
                                 </a>
                             </ListGroup.Item>
                             <ListGroup.Item className="footer-item">
                                     <a className="btn btn-footer" href="" type="button">
                                         <i className="fas fa-landmark"></i>
-                        Mentions légales
+                                        <span className="footer_title">Mentions légales</span>
+                        
                     </a>
                                 </ListGroup.Item>
                                 <ListGroup.Item className="footer-item">
                                     <a className="btn btn-footer" href="" type="button">
-                                        <i className="fas fa-eye"></i>
-                        Cookies
+                                        <i className="fas fa-eye"></i> <span className="footer_title">Cookies</span>
                     </a>
                                 </ListGroup.Item>
                         </ListGroup>
