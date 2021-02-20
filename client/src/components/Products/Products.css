@@ -1,0 +1,136 @@
+body {
+    background-color: #FFF;
+}
+
+
+.grid {
+    display: grid;
+    grid-auto-rows: minmax(100px, auto);
+    text-align: center;
+    border: 2px solid black;
+    margin-top: 80px;
+}
+
+.entete {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end:  2;
+    background-color: #8D9492;
+    color: #FFF;
+}
+
+.univers {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end:  4;
+    background-color: #8D9492;
+    color: #FFF;
+}
+
+main {
+    margin-top: 70px;
+}
+
+.main {
+    background-color: #E5E5E5!important;
+    color:white;
+    /* CCA43B gold  */
+    /* 242F40 bleu metal  */
+}
+.btn-main {
+    background-color: #363636!important;
+    color:white!important;
+}
+
+
+.fond {
+    background-color: #630B1C!important;
+    color: #FFF;
+}
+
+.sous-titre {
+    margin-top: 25px;
+}
+
+.cercle_1{
+  margin-top: 10px;
+  text-align:center;
+  color:  #22445D;
+  background-color:  #0A0815;
+  border-radius:50%;
+  border:2px solid #404040 ;
+  max-width:120px;
+  max-height: 120px;
+}
+
+.star_wars_title {
+    margin-top: 10px;
+}
+
+.cercle_2{
+    margin-top: 10px;
+    text-align:center;
+    color: #D8B33B;
+    background-color: #630B1C;
+    border-radius:50%;
+    border:2px solid #404040 ;
+    max-width:120px;
+    max-height: 120px;
+  }
+
+  .harry_potter_title {
+      margin-top: 10px;
+  }
+
+  
+.cercle_3{
+    margin-top: 10px;
+    text-align:center;
+    color: #32549D;
+    background-color: #ec1922;
+    border-radius:50%;
+    border:2px solid #404040 ;
+    max-width:120px;
+    max-height: 120px;
+   
+  }
+
+.marvel_titre {
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.cercle_4{
+    margin-top: 10px;
+    text-align:center;
+    color:  #DABC5C;
+    background-color: #597D56;
+    border-radius:50%;
+    border:2px solid #404040 ;
+    max-width:185px;
+    max-height: 120px;
+  }
+
+  .seigneur_titre {
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+h5 {
+    color: black;
+}
+
+p {
+    color: black;
+}
+
+
+  
+
+
+  
+  
