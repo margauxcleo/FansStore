@@ -4,15 +4,17 @@ import Products from './components/Products/Products';
 import Home from './components/Home/Home';
 import Universes from './components/Universes/Universes';
 import Footer from './components/Footer/Footer';
+import Navbar from './components/Navbar/Navbar';
 
 import './App.css';
-import * as ReactBootstrap from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
     <>
       <Router>
+        <Navbar />
+
         <ul>
           <li>
             <Link to="/">Home</Link>
