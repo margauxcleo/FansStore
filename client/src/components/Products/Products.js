@@ -61,13 +61,13 @@ const Products = () => {
           <div class="row d-flex justify-content-around mt-5 mb-5">
             {articles.map((article) => {
               return (
-                <div class="card mb-5" key={article.articleId}>
+                <div class="card w-25 mr-1 mb-5" key={article.articleId}>
                   <div class="card-body">
                     <h5 class="card-title black">{article.name}</h5>
                     <p class="card-text black">{article.brand}</p>
                     <p class="card-text black">{article.price} $</p>
-                    <img class="card-img-top" src={article.image} alt="Card image cap"/>
-                    <p class="card-text black">{article.description}</p>
+                    <img class="card w-50" src={article.image} alt="Card image cap"/>
+                    <p class="card-text black w-50">{article.description}</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                   </div>
                 </div>
