@@ -27,16 +27,16 @@ const Articles = () => {
             <div className="articles p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">
                 < ArticlesNav />
 
-                <div class="card-deck ">
+                <div className="card-deck ">
                     {articles.map((article) => {
                         return (
-                        <div class="card" key={article.articleId}>
-                            <img class="card-img-top" src={article.image} alt={article.name}/>
-                            <div class="card-body">
-                                <h5 class="card-title">{article.name}</h5>
+                        <div className="card" key={article.articleId}>
+                            <img className="card-img-top" src={article.image} alt={article.name}/>
+                            <div className="card-body">
+                                <h5 className="card-title">{article.name}</h5>
                                 <h4 className="brand">{article.brand}</h4>
                                 <h3 className="price">{article.price} €</h3>
-                                <p class="card-text description">
+                                <p className="card-text description">
                                     {article.description}
                                 </p>
                             </div>

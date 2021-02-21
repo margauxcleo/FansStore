@@ -6,29 +6,29 @@ const ArticlesNav = () => {
     return (
         <>
             <div className="card-header">
-                <ul class="nav nav-pills card-header-pills nav-articles">
-                    <li class="nav-item">
-                        <Link className="nav-link is-active" activeClassName="is-active" to="/all" exact>
+                <ul className="nav nav-pills card-header-pills nav-articles">
+                    <li className="nav-item">
+                        <Link className="nav-link is-active" activeclassname="is-active" to="/all">
                             <span className="articles-nav-title">Tous</span>
                         </Link>
                     </li>
-                    <li class="nav-item">
-                        <Link className="nav-link" activeClassName="is-active" to="/mugs" exact>
+                    <li className="nav-item">
+                        <Link className="nav-link" activeclassname="is-active" to="/mugs">
                             <span className="articles-nav-title">Mugs</span>
                         </Link>
                     </li>
-                    <li class="nav-item">
-                        <Link className="nav-link" activeClassName="is-active" to="/figurines" exact>
+                    <li className="nav-item">
+                        <Link className="nav-link" activeclassname="is-active" to="/figurines">
                             <span className="articles-nav-title">Figurines</span>
                         </Link>
                     </li>
-                    <li class="nav-item">
-                        <Link className="nav-link" activeClassName="is-active" to="/fluffs" exact>
+                    <li className="nav-item">
+                        <Link className="nav-link" activeclassname="is-active" to="/fluffs">
                             <span className="articles-nav-title">Peluches</span>
                         </Link>
                     </li>
-                    <li class="nav-item">
-                        <Link className="nav-link" activeClassName="is-active" to="/accessories" exact>
+                    <li className="nav-item">
+                        <Link className="nav-link" activeclassname="is-active" to="/accessories">
                             <span className="articles-nav-title">Accessoires</span>
                         </Link>
                     </li>
