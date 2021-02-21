@@ -1,0 +1,103 @@
+/* Fonts */
+@font-face {
+    font-family: "harry_potter";
+    src: url("../../fonts/hp/harry_potter.TTF") format('truetype');
+}
+@font-face {
+    font-family: "lord_of_the_rings";
+    src: url("../../fonts/tlotr/RINGM___.TTF") format('truetype');
+}
+@font-face {
+    font-family: "marvel";
+    src: url("../../fonts/marvel/MarvelRegular.ttf") format('truetype');
+}
+@font-face {
+    font-family: "star_wars";
+    src: url("../../fonts/sw/StarJediLogoMonoline-6nGg.ttf") format('truetype');
+}
+
+
+.universes-links{
+    background-color: #E5E5E5;
+}
+
+.universes-links .nav-link{
+    text-align: center;
+}
+
+.universes-links .nav-link:hover{
+    text-decoration: none;
+}
+
+.universe-nav-title{
+    color: #F3DB5D;
+    font-size: 1.25rem;
+}
+
+.circle {
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    overflow:hidden;
+    flex-wrap: wrap;
+}
+
+.hp-circle{
+    background: url('../../images/universes-nav/hp.jpg');
+    overflow:hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.hp-circle span {
+    font-family: 'harry_potter','roboto', 'opensans', sans-serif;
+    font-size: 2rem;
+}
+
+.marvel-circle{
+    background: url('../../images/universes-nav/marvel.jpg');
+    overflow:hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.marvel-circle span {
+    font-family: 'marvel','roboto', 'opensans', sans-serif;
+    font-weight: bold;
+}
+
+.lotr-circle{
+    background: url('../../images/universes-nav/lotr.jpg');
+    overflow:hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.lotr-circle span {
+    font-family: 'lord_of_the_rings','roboto', 'opensans', sans-serif;
+}
+
+.sw-circle{
+    background: url('../../images/universes-nav/sw.jpg');
+    overflow:hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.sw-circle span {
+    font-family: 'star_wars', 'roboto', 'opensans', sans-serif;
+}
+
+@media (max-width: 960px) {
+    .circle-sm {
+        width:150px;
+        height:150px;
+        border-radius:50%;
+        overflow:hidden; 
+        flex-wrap: wrap;
+    }
+}

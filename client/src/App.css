@@ -1,9 +1,25 @@
 /* Main */
-body {
+#root {
   background-color: #FFF!important;
+  font-family: 'quicksand', 'roboto', 'opensans', sans-serif;
 }
-main {
-  background-color: #FFF;
+.main {
+  background-color: #FFF!important;
+  margin-top: 80px;
+}
+
+/* Fonts */
+@font-face {
+  font-family: "opensans";
+  src: url("./fonts/opensans/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: "quicksand";
+  src: url("./fonts/quicksand/Quicksand-Regular.otf") format('otf');
+}
+@font-face {
+  font-family: "roboto";
+  src: url("./fonts/roboto/Roboto-Regular.ttf") format('otf');
 }
 
 /* @keyframes App-logo-spin {
