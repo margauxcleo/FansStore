@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Products.css';
 
-
 const Products = () => {
 
     const [articles, setArticles] = useState([]);
