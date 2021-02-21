@@ -1,0 +1,13 @@
+.nav-articles{
+    background-color: #8D9492!important;
+}
+
+.nav-articles .nav-link.is-active {
+    background-color: #F3DB5D;
+    color: #FFF;
+}
+
+.nav-articles .nav-link {
+    background-color: transparent;
+    color: #FFF;
+}

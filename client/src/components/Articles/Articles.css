@@ -1,0 +1,31 @@
+.articles {
+    background-color: #8D9492!important;
+    margin-bottom: 2rem;
+}
+
+.articles .nav-pills .nav-link.active {
+    background-color: #F3DB5D;
+    color: #FFF;
+}
+
+.articles img {
+    max-width: 240px;
+    max-height: auto;
+    margin: auto;
+}
+
+.articles .card {
+    background-color: #E5E5E5;
+}
+
+.articles .card .brand {
+    text-transform: uppercase;
+}
+
+.articles .card .price {
+    text-align: right;
+}
+
+.articles .card .description {
+    text-align: justify;
+}
