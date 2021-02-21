@@ -15,18 +15,6 @@ function App() {
       <Router>
         <Navbar />
 
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/produits">Produits</Link>
-          </li>
-          <li>
-            <Link to="/univers">Univers</Link>
-          </li>
-        </ul>
-
         <Switch>
           <Route path="/" exact render={() => { <Home />;}} >
             <Home />
