@@ -13,6 +13,7 @@ const Products = () => {
         });
         const parseResponse = await response.json();
         setArticles(parseResponse);
+        console.log(parseResponse);
       };
 
       useEffect(() => {
@@ -26,7 +27,7 @@ const Products = () => {
            <div className="container entete">
              <h2 className="sous-titre">Pick one and let's travel !</h2>
            </div>
-           <div class="container univers">
+           <div class="container universe">
              <div class="row d-flex justify-content-around">
               <div class="cercle_1">
                 <a><h3 class="star_wars_title">Star Wars</h3></a>
@@ -40,6 +41,9 @@ const Products = () => {
             <div class="cercle_4">
                 <a><h3 class="seigneur_titre">Seigneur des Anneaux</h3></a>
             </div>
+             </div>
+             <div>
+              
              </div>
            </div>
           </div>

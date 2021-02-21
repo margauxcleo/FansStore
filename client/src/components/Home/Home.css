@@ -1,0 +1,75 @@
+.grid {
+    display: grid;
+    grid-auto-rows: minmax(100px,auto);
+    background-color: #630B1C;
+}
+
+
+.univers {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    background-image:url(logo-marvel-noir.jpg);
+    background-size: 75%, 50%;
+    background-repeat:no-repeat;
+    background-color: black;
+}
+
+.texte_univers {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    font-family: Georgia;
+    margin-top: 100px;
+    color: white;
+    width: 50%;
+}
+
+.licence {
+    grid-column-start: 9;
+    grid-column-end: 11;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    background-color: black;
+}
+
+.texte_licence {
+    color: white;
+    margin-top: 100px;
+}
+
+.texte {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 8;
+    background-color: black;
+}
+
+.texte_texte {
+    color: white;
+    margin-top: 100px;
+}
+
+.collection {
+    grid-column-start: 6;
+    grid-column-end: 11;
+    grid-row-start: 5;
+    grid-row-end: 8;
+    background-color: black;
+    background-image:url(mug-blanc.jpg);
+    background-size: 45%, 50%;
+    background-repeat:no-repeat;
+}
+
+.texte_collection {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    font-family: Georgia;
+    margin-top: 100px;
+    color: white;
+    width: 50%;
+}
+
