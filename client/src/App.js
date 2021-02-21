@@ -15,14 +15,17 @@ function App() {
       <Router>
         <Navbar />
 
-        <Switch>
-          <Route path="/" exact render={() => { <Home />;}} >
-            <Home />
-          </Route>
-          {/* <Route path="/profile/:id" render={() => <Profile name="name" />} /> */}
-          <Route path="/produits" render={() => <Products name="name" />} />
-          <Route path="/univers" render={() => <Universes />} />
-        </Switch>
+        <div className="main">
+          <Switch>
+            <Route path="/" exact render={() => { <Home />;}} >
+              <Home />
+            </Route>
+            {/* <Route path="/profile/:id" render={() => <Profile name="name" />} /> */}
+            <Route path="/produits" render={() => <Products name="name" />} />
+            <Route path="/univers" render={() => <Universes />} />
+          </Switch>
+        </div>
+        
 
         <Footer/>
       </Router>

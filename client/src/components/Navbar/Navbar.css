@@ -1,3 +1,8 @@
+header {
+    margin-bottom: 80px;
+    background-color: #fff;
+}
+
 .bg-main {
     background-color: #8D9492;
 }
@@ -12,6 +17,7 @@
 
 .navbar-main .navbar-nav .nav-link.is-active {
     color: #F3DB5D!important;
+    box-shadow: 0 2px 2px -2px #FFF;
 }
 
 .navbar-main .nav-title {
