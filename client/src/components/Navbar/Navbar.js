@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import './Navbar.css';
 
 const Nav = () => {
@@ -14,39 +16,39 @@ const Nav = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">
-                                <i className="fas fa-home"></i>
+                            <NavLink className="nav-link" activeClassName="is-active" to="/" exact>
+                            <i className="fas fa-home"></i>
                                 <span className="
                                 nav-title">Accueil</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <NavLink className="nav-link" activeClassName="is-active" to="/produits" exact>
                                 <span className="
                                 nav-title">Produits</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <NavLink className="nav-link" activeClassName="is-active" to="/univers" exact>
                                 <span className="
                                 nav-title">Univers</span>
-                            </a>
+                            </NavLink>
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <a className="nav-link" aria-current="page" href="#">
+                            <NavLink className="nav-link" activeClassName="is-active" to="/signIn" exact>
                                 <i className="fas fa-user"></i>
                                 <span className="
                                 nav-title">Compte</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" aria-current="page" href="#">
+                            <NavLink className="nav-link" activeClassName="is-active" to="/panier" exact>
                                 <i className="fas fa-shopping-basket"></i>
                                 <span className="
                                 nav-title">Panier</span>
-                            </a>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>

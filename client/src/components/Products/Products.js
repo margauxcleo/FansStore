@@ -43,10 +43,10 @@ const Products = () => {
              </div>
            </div>
           </div>
-          <div class="row d-flex justify-content-around">
+          <div class="row d-flex justify-content-around mt-5 mb-5">
             {articles.map((article) => {
               return (
-                <div class="card" key={article.articleId}>
+                <div class="card mb-5" key={article.articleId}>
                   <div class="card-body">
                     <h5 class="card-title black">{article.name}</h5>
                     <p class="card-text black">{article.brand}</p>
