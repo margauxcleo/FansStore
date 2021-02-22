@@ -5,7 +5,7 @@ const Universe = db.universe;
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.name) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
@@ -37,7 +37,7 @@ exports.create = (req, res) => {
         });
 };
 
-exports.findAll = (req, res) => {
+exports.findAllArticles = (req, res) => {
 
     Article.findAll({ 
         include: [
@@ -46,6 +46,7 @@ exports.findAll = (req, res) => {
         ]})
         .then(data => {
             res.send(data);
+            
         })
         .catch(err => {
             res.status(500).send({
@@ -54,3 +55,24 @@ exports.findAll = (req, res) => {
             });
         });
 };
+
+exports.findArticleById = (req, res) => {
+
+    const id = req.params.id;
+
+    Article.findByPk(id, {
+        include: [
+            {model: Universe}, 
+            {model: Category}
+        ]}) 
+        .then(article => {
+            res.send(article);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving the article."
+            });
+        });
+};
+    
