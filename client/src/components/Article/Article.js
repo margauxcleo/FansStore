@@ -5,39 +5,40 @@ import './Article.css';
 
 const Article = () => {
 
-    // const [article, setArticle] = useState([]);
+     const [article, setArticle] = useState([]);
 
-    // const fetchArticle = async () => {
+     const fetchArticle = async () => {
 
-    //     const response = await fetch("http://localhost:8000/article/:id", {
-    //       method: "GET",
-    //       mode: "cors",
-    //     });
-    //     const parseResponse = await response.json();
-    //     setArticle(parseResponse);
-    //   };
+        const response = await fetch("http://localhost:8000/articles/4",  {
+          method: "GET",
+           mode: "cors",
+        });
+        const parseResponse = await response.json();
+        setArticle(parseResponse);
+       };
 
-    //   useEffect(() => {
-    //     fetchArticle();
-    //   }, []);
+       useEffect(() => {
+         fetchArticle();
+       }, []);
 
     return (
         <>
-            {/* <div className="article p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">
+            { <div className="article p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">
                 <div className="card-deck ">
+                    <h2>kjhgf</h2>
                     <div className="card" key={article.articleId}>
-                        <img className="card-img-top" src={article.image} alt={article.name}/>
+                        <img className="card-img-top" src={article.image}/>
                         <div className="card-body">
-                            <h5 className="card-title">{article.name}</h5>
-                            <h4 className="brand">{article.brand}</h4>
-                            <h3 className="price">{article.price} €</h3>
+                            <p className="card-title">{article.name}</p>
+                            <p className="brand">{article.brand}</p>
+                            <p className="price">{article.price} </p>
                             <p className="card-text description">
                                 {article.description}
                             </p>
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>}
         </>
     );
 }

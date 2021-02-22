@@ -23,9 +23,9 @@ const Nav = () => {
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="is-active" to="/produits" exact>
+                            <NavLink className="nav-link" activeClassName="is-active" to="/articles" exact>
                                 <span className="
-                                nav-title">Produits</span>
+                                nav-title">Articles</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">

@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import './Products.css';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
 
     const [articles, setArticles] = useState([]);
 
     const fetchArticles = async () => {
-
         const response = await fetch("http://localhost:8000/articles", {
           method: "GET",
           mode: "cors",
@@ -16,6 +16,7 @@ const Products = () => {
         setArticles(parseResponse);
         console.log(parseResponse);
       };
+
 
       useEffect(() => {
         fetchArticles();
@@ -67,8 +68,9 @@ const Products = () => {
                     <p class="card-text black">{article.brand}</p>
                     <p class="card-text black">{article.price} $</p>
                     <img class="card w-50" src={article.image} alt="Card image cap"/>
-                    <p class="card-text black w-50">{article.description}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <Link to="/src/com">
+                    <a href="#" class="btn btn-primary">En savoir plus</a>
+                    </Link>
                   </div>
                 </div>
               );

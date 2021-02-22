@@ -13,7 +13,8 @@ import HarryPotter from './components/Universes/HarryPotter';
 import Marvel from './components/Universes/Marvel';
 import LordOfTheRings from './components/Universes/LordOfTheRings';
 import StarWars from './components/Universes/StarWars';
-
+import Articles from './components/Articles/Articles';
+import Article from './components/Article/Article';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -30,7 +31,8 @@ function App() {
               <Home />
             </Route>
             {/* <Route path="/profile/:id" render={() => <Profile name="name" />} /> */}
-            <Route path="/produits" exact render={() => <Products name="name" />} />
+            <Route path="/articles" exact render={() => <Articles />} />
+            <Route path="/articles/article/:id" exact render={() => <Article/>} />
             <Route path="/univers">
               <Switch>
                 <Route path="/univers" exact render={() => <Universes />} />
