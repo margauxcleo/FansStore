@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 require("./routes/article.route")(app);
 
-const PORT = process.env.port | 8000;
+const PORT = process.env.port | 8088;
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);

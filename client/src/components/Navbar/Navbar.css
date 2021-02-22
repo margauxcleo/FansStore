@@ -17,7 +17,6 @@ header {
 
 .navbar-main .navbar-nav .nav-link.is-active {
     color: #F3DB5D!important;
-    box-shadow: 0 2px 2px -2px #FFF;
 }
 
 .navbar-main .nav-title {
