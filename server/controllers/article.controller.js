@@ -66,7 +66,9 @@ exports.findArticleById = (req, res) => {
             {model: Category}
         ]}) 
         .then(article => {
-            res.send(article);
+            // res.send(article);
+            res.status(200).json(article);
+            // res.status(200).json(JSON.stringify(article));
         })
         .catch(err => {
             res.status(500).send({

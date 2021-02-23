@@ -6,7 +6,16 @@ import './Article.css';
 
 const Article = (props) => {
 
-     const [article, setArticle] = useState();
+     const [article, setArticle] = useState({
+         "articleId": "",
+         "name": "",
+         "brand": "",
+         "price": "",
+         "image": "",
+         "description": "",
+         "fk_universe": "",
+         "fk_category": ""
+     });
 
      const { id } = useParams();
 
@@ -30,12 +39,10 @@ const Article = (props) => {
 
     return (
         <>
-            <p>{id}</p>
-            <p>{article.articleId}</p>
-            {/* <div className="article p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">
+            <div className="article p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">
                 <div className="card-deck ">
                     <div className="card" key={article.articleId}>
-                        <img className="card-img-top" src={article.image}/>
+                        <img className="card-img-top" src={article.image} alt={article.name}/>  
                         <div className="card-body">
                             <p className="card-title">{article.name}</p>
                             <p className="brand">{article.brand}</p>
@@ -46,7 +53,7 @@ const Article = (props) => {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </>
     );
 }
