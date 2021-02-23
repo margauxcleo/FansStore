@@ -32,7 +32,7 @@ function App() {
             </Route>
             {/* <Route path="/profile/:id" render={() => <Profile name="name" />} /> */}
             <Route path="/articles" exact render={() => <Articles />} />
-            <Route path="/articles/article/:id" exact render={() => <Article/>} />
+            <Route path="/articles/article/:id" exact render={() => <Article />} />
             <Route path="/univers">
               <Switch>
                 <Route path="/univers" exact render={() => <Universes />} />

@@ -1,31 +1,39 @@
 import { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 
 
 import './Article.css'; 
 
-const Article = () => {
+const Article = (props) => {
 
-     const [article, setArticle] = useState([]);
+     const [article, setArticle] = useState();
 
-     const fetchArticle = async () => {
+     const { id } = useParams();
 
-        const response = await fetch("http://localhost:8000/articles/4",  {
-          method: "GET",
-           mode: "cors",
+     const fetchArticle = async (id) => {
+
+        const response = await fetch(`http://localhost:8088/articles/${id}`,  {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                'Accept': 'application/json'
+            }  
         });
         const parseResponse = await response.json();
+        console.log(parseResponse);
         setArticle(parseResponse);
        };
 
        useEffect(() => {
-         fetchArticle();
+            fetchArticle(id);
        }, []);
 
     return (
         <>
-            { <div className="article p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">
+            <p>{id}</p>
+            <p>{article.articleId}</p>
+            {/* <div className="article p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">
                 <div className="card-deck ">
-                    <h2>kjhgf</h2>
                     <div className="card" key={article.articleId}>
                         <img className="card-img-top" src={article.image}/>
                         <div className="card-body">
@@ -38,7 +46,7 @@ const Article = () => {
                         </div>
                     </div>
                 </div>
-            </div>}
+            </div> */}
         </>
     );
 }

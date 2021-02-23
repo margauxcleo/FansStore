@@ -12,7 +12,7 @@ const Articles = () => {
 
     const fetchArticles = async () => {
 
-        const response = await fetch("http://localhost:8000/articles", {
+        const response = await fetch("http://localhost:8088/articles", {
           method: "GET",
           mode: "cors",
         });
