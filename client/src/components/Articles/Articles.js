@@ -24,8 +24,6 @@ const Articles = () => {
         fetchArticles();
       }, []);
 
-     
-
     return (
         <>
             <div className="articles p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">

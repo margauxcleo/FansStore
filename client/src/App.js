@@ -1,18 +1,18 @@
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/MainNavbar/Navbar';
 import Footer from './components/Footer/Footer';
 
 
 import Home from './components/Home/Home';
 
-import Products from './components/Products/Products';
+import Products from './components/ProductsPage/Products';
 
-import Universes from './components/Universes/Universes';
-import HarryPotter from './components/Universes/HarryPotter';
-import Marvel from './components/Universes/Marvel';
-import LordOfTheRings from './components/Universes/LordOfTheRings';
-import StarWars from './components/Universes/StarWars';
+import Universes from './components/UniversesPage/Universes';
+import HarryPotter from './components/UniversesPage/HarryPotter';
+import Marvel from './components/UniversesPage/Marvel';
+import LordOfTheRings from './components/UniversesPage/LordOfTheRings';
+import StarWars from './components/UniversesPage/StarWars';
 import Articles from './components/Articles/Articles';
 import Article from './components/Article/Article';
 
