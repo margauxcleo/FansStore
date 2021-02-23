@@ -3,3 +3,11 @@
     max-height: auto;
     margin: auto;
 }
+
+.article {
+    color: #000;
+}
+
+.article .description {
+    text-align: justify;
+}

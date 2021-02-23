@@ -39,19 +39,22 @@ const Article = (props) => {
 
     return (
         <>
-            <div className="article p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">
-                <div className="card-deck ">
-                    <div className="card" key={article.articleId}>
-                        <img className="card-img-top" src={article.image} alt={article.name}/>  
-                        <div className="card-body">
-                            <p className="card-title">{article.name}</p>
-                            <p className="brand">{article.brand}</p>
-                            <p className="price">{article.price} </p>
-                            <p className="card-text description">
-                                {article.description}
-                            </p>
-                        </div>
+            <div className="article mx-auto col-xl-10 col-lg-11 col-md-11 col-sm-12">
+                <div className="row d-flex justify-content-around col-lg-12 col-sm-12">
+                    <div className="offset-xl-1 col-xl-4 col-lg-5 col-md-4 col-sm-12">
+                        <img className="card-img-top" src={article.image} alt={article.name}/>
                     </div>
+                    <div className="offset-xl-1 col-xl-6 offset-lg-1 col-lg-6 offset-md-1 col-md-6 col-sm-12">
+                        <h3>{article.name}</h3>
+                        <p className="brand">{article.brand}</p>
+                        <p className="price">{article.price} €</p>
+                        <button className="btn btn-primary">Ajouter au panier</button>
+                    </div>
+                </div>
+                <br/>
+                <div className="col-lg-12 col-sm-12">
+                    <h3>Caractéristiques du produit</h3>
+                    <p className="description">{article.description}</p>
                 </div>
             </div>
         </>
