@@ -19,9 +19,11 @@ const HarryPotter = (props) => {
 
     return (
         <>
-            < PageTitle title={title} />
-            < UniversesNav />
-            < Articles />
+            <div className="hp">
+                < PageTitle title={title} />
+                < UniversesNav />
+                < Articles />
+            </div>
         </>
     );
 }

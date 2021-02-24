@@ -17,9 +17,11 @@ const Marvel = (props) => {
     
     return (
         <>
-            < PageTitle title={title} />
-            < UniversesNav />
-            < Articles />
+            <div className="marvel">
+                < PageTitle title={title} />
+                < UniversesNav />
+                < Articles />
+            </div> 
         </>
     );
 }

@@ -8,7 +8,7 @@
 }
 
 .home-image-univers {
-    background: linear-gradient(8deg, rgba(229,229,229,1) 0%, rgba(141,148,146,0.2553396358543417) 13%), url('../../images/home/marvel.jpg');
+    background: linear-gradient(8deg, rgba(141,148,146,0.7203256302521008) 0%, rgba(79,84,83,0.5970763305322129) 13%), url('../../images/home/marvel.jpg');
     overflow:hidden;
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,7 +29,7 @@
 }
 
 .home-image-collection {
-    background: linear-gradient(8deg, rgba(229,229,229,1) 0%, rgba(141,148,146,0.2553396358543417) 13%), url('../../images/home/mug-maison-serpentard.jpg');
+    background: linear-gradient(8deg, rgba(141,148,146,0.7203256302521008) 0%, rgba(79,84,83,0.5970763305322129) 13%), url('../../images/home/mug-maison-serpentard.jpg');
     overflow:hidden;
     background-repeat: no-repeat;
     background-size: cover;

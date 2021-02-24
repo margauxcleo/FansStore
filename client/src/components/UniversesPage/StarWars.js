@@ -17,9 +17,11 @@ const StarWars = (props) => {
     
     return (
         <>
-            < PageTitle title={title} />
-            < UniversesNav />
-            < Articles />
+            <div className="sw">
+                < PageTitle title={title} />
+                < UniversesNav />
+                < Articles />
+            </div>
         </>
     );
 }
