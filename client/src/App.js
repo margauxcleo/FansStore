@@ -38,7 +38,7 @@ function App() {
                 <Route path="/univers" exact render={() => <Universes />} />
                 <Route path="/univers/harry-potter" exact render={() => <HarryPotter />} />
                 <Route path="/univers/marvel" exact render={() => <Marvel />} />
-                <Route path="/univers/-des-anneaux" exact render={() => <LordOfTheRings />} />
+                <Route path="/univers/seigneur-des-anneaux" exact render={() => <LordOfTheRings />} />
                 <Route path="/univers/star-wars" exact render={() => <StarWars />} />
               </Switch>
             </Route>
