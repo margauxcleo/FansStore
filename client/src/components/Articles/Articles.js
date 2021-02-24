@@ -17,6 +17,7 @@ const Articles = () => {
           mode: "cors",
         });
         const parseResponse = await response.json();
+        console.log(parseResponse);
         setArticles(parseResponse);
       };
 
@@ -31,15 +32,15 @@ const Articles = () => {
                 <div className="card-deck ">
                     {articles.map((article) => {
                         return (
-                        <Link to={`/articles/article/${article.articleId}`}>
-                        <div className="card" key={article.articleId}>
-                            <img className="card-img-top" src={article.image} alt={article.name}/>
-                            <div className="card-body">
-                                <h5 className="card-title">{article.name}</h5>
-                                <h4 className="brand">{article.brand}</h4>
-                                <h3 className="price">{article.price} €</h3>
+                        <Link to={`/articles/article/${article.articleId}`} key={article.articleId}>
+                            <div className="card">
+                                <img className="card-img-top" src={article.image} alt={article.name}/>
+                                <div className="card-body">
+                                    <h5 className="card-title">{article.name}</h5>
+                                    <h4 className="brand">{article.brand}</h4>
+                                    <h3 className="price">{article.price} €</h3>
+                                </div>
                             </div>
-                        </div>
                         </Link>
                          );
                      })}

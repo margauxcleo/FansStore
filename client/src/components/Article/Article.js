@@ -6,6 +6,8 @@ import './Article.css';
 
 const Article = (props) => {
 
+    const path = "../../";
+
      const [article, setArticle] = useState({
          "articleId": "",
          "name": "",
@@ -23,10 +25,7 @@ const Article = (props) => {
 
         const response = await fetch(`http://localhost:8088/articles/${id}`,  {
             method: "GET",
-            mode: "cors",
-            headers: {
-                'Accept': 'application/json'
-            }  
+            mode: "cors", 
         });
         const parseResponse = await response.json();
         console.log(parseResponse);
@@ -39,10 +38,10 @@ const Article = (props) => {
 
     return (
         <>
-            <div className="article mx-auto col-xl-10 col-lg-11 col-md-11 col-sm-12">
+            <div key={article.articleId} className="article mx-auto col-xl-10 col-lg-11 col-md-11 col-sm-12">
                 <div className="row d-flex justify-content-around col-lg-12 col-sm-12">
                     <div className="offset-xl-1 col-xl-4 col-lg-5 col-md-4 col-sm-12">
-                        <img className="card-img-top" src={article.image} alt={article.name}/>
+                        <img className="card-img-top" src={path + article.image} alt={article.name}/>
                     </div>
                     <div className="offset-xl-1 col-xl-6 offset-lg-1 col-lg-6 offset-md-1 col-md-6 col-sm-12">
                         <h3>{article.name}</h3>
