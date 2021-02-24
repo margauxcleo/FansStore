@@ -2,12 +2,18 @@
 
 import './PageTitle.css';
 
-const PageTitle = () => {
+const PageTitle = (props) => {
+
+    const title = props.title;
+
     return (
         <>
-            <div className="px-0 mx-auto jumb-div-title">
-                <h1 className="display-4 mx-auto">Ici info à adapter = useState avec switch case?</h1>
+            <div className="jumbotron jumbotron-universes p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded">
+                <div className="px-0 mx-auto jumb-div-title">
+                    <h1 className="display-4 mx-auto">{title}</h1>
+                </div>
             </div>
+
         </>
     );
 }

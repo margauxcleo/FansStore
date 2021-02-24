@@ -1,75 +1,38 @@
-.grid {
-    display: grid;
-    grid-auto-rows: minmax(100px,auto);
-    background-color: #630B1C;
+.home {
+    background-color: white;
 }
 
-
-.univers {
-    grid-column-start: 1;
-    grid-column-end: 8;
-    grid-row-start: 1;
-    grid-row-end: 4;
-    background-image:url(logo-marvel-noir.jpg);
-    background-size: 75%, 50%;
-    background-repeat:no-repeat;
-    background-color: black;
+.home-nav-title{
+    color: #F3DB5D;
+    font-size: 3.25rem;
 }
 
-.texte_univers {
-    z-index: 1;
-    position: absolute;
-    text-align: center;
-    font-family: Georgia;
-    margin-top: 100px;
-    color: white;
-    width: 50%;
+.home-image-univers {
+    background: linear-gradient(8deg, rgba(229,229,229,1) 0%, rgba(141,148,146,0.2553396358543417) 13%), url('../../images/home/marvel.jpg');
+    overflow:hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    height: 380px;
 }
 
-.licence {
-    grid-column-start: 9;
-    grid-column-end: 11;
-    grid-row-start: 1;
-    grid-row-end: 4;
-    background-color: black;
+.licence  {
+    background-color: #4F5453;
+    color: #fff;
+    font-size: 1.50rem;
 }
 
-.texte_licence {
-    color: white;
-    margin-top: 100px;
+.text {
+    background-color: #4F5453;
+    color: #fff;
+    font-size: 1.50rem;
 }
 
-.texte {
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 5;
-    grid-row-end: 8;
-    background-color: black;
+.home-image-collection {
+    background: linear-gradient(8deg, rgba(229,229,229,1) 0%, rgba(141,148,146,0.2553396358543417) 13%), url('../../images/home/mug-maison-serpentard.jpg');
+    overflow:hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    height: 380px;
 }
-
-.texte_texte {
-    color: white;
-    margin-top: 100px;
-}
-
-.collection {
-    grid-column-start: 6;
-    grid-column-end: 11;
-    grid-row-start: 5;
-    grid-row-end: 8;
-    background-color: black;
-    background-image:url(mug-blanc.jpg);
-    background-size: 45%, 50%;
-    background-repeat:no-repeat;
-}
-
-.texte_collection {
-    z-index: 1;
-    position: absolute;
-    text-align: center;
-    font-family: Georgia;
-    margin-top: 100px;
-    color: white;
-    width: 50%;
-}
-

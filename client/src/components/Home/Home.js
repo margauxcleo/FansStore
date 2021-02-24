@@ -1,32 +1,34 @@
-import {Link} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import './Home.css';
 
 
 const Home = () => {
     return (
-        <div className="grid mb-4">
-            <div className="univers">
-            <Link to="/univers">
-                <h2 className="texte_univers"> Univers</h2>
-            </Link>
-            </div>
-            <div className="licence">
-                <h2 className="texte_licence"> 100% sous licence</h2>
-            </div>
-            <div className="texte">
-                <p className="texte_texte">
-                    Bienvenue chez FansStore !
+       <div className="home p-md-5 mx-auto col-xl-10 col-lg-11 col-md-11 col-sm-12">
+           <div className="row d-flex justify-content-around">
+                <div className="home-image-univers col-xl-8 col-lg-8 col-md-8 col-sm-12 p-5 mb-5 d-flex justify-content-center align-items-center">
+                    <NavLink className="nav-link" to="/univers" exact>
+                        <span className="home-nav-title">Univers</span>
+                    </NavLink>
+                </div>
+                <div className="licence col-xl-3 col-lg-3 col-md-3 col-sm-12 mb-5 d-flex justify-content-center align-items-center">
+                    <span>100 % sous licence</span>
+                </div>
+           </div>
+           <div className="row d-flex justify-content-around">
+                <div className="text col-xl-3 col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center align-items-center">
+                    <span>Bienvenue chez FansStore !
                     Notre site e-commerce vous met à disposition 
                     des produits variés,<br/> de qualité et à un prix abordable.<br/>
-                    Nos produits sont dérivés d’univers de films célèbres. 
-                </p>
-            </div>
-            <div className="collection">
-            <Link to="/produits">
-                <h2 className="texte_collection">Collections</h2>
-            </Link>
-            </div>
-        </div>
+                    Nos produits sont dérivés d’univers de films célèbres.</span>
+                </div>
+                <div className="home-image-collection col-xl-8 col-lg-8 col-md-8 col-sm-12 p-5 d-flex justify-content-center align-items-center">
+                <NavLink className="nav-link" to="/produits" exact>
+                    <span className="home-nav-title">Collections</span>
+                </NavLink>
+                </div>
+           </div>
+       </div>
     );
 }
 
