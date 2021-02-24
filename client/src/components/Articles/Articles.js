@@ -7,7 +7,12 @@ import './Articles.css';
 
 const Articles = () => {
 
-    
+    let pathname = window.location.pathname;
+    let path = "";
+    if (pathname === "/univers/harry-potter" || pathname === "/univers/star-wars" || pathname === "/univers/marvel" || pathname === "/univers/seigneur-des-anneaux") {
+        path = "../../"
+    }
+
     const [articles, setArticles] = useState([]);
 
     const fetchArticles = async () => {
@@ -34,7 +39,7 @@ const Articles = () => {
                         return (
                         <Link to={`/produits/produit/${article.articleId}`} key={article.articleId}>
                             <div className="card">
-                                <img className="card-img-top" src={article.image} alt={article.name}/>
+                                <img className="card-img-top" src={path + article.image} alt={article.name}/>
                                 <div className="card-body">
                                     <h5 className="card-title">{article.name}</h5>
                                     <h4 className="brand">{article.brand}</h4>
