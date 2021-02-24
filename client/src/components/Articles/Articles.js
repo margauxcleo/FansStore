@@ -32,7 +32,7 @@ const Articles = () => {
                 <div className="card-deck ">
                     {articles.map((article) => {
                         return (
-                        <Link to={`/articles/article/${article.articleId}`} key={article.articleId}>
+                        <Link to={`/produits/produit/${article.articleId}`} key={article.articleId}>
                             <div className="card">
                                 <img className="card-img-top" src={article.image} alt={article.name}/>
                                 <div className="card-body">

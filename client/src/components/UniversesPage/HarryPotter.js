@@ -1,19 +1,25 @@
 import UniversesNav from '../UniversesNav/UniversesNav'
 ;
 import Articles from '../Articles/Articles';
+import PageTitle from '../PageTitle/PageTitle';
 
 import './Universes.css';
 
-// where articles = univers HP 
+import { useEffect } from 'react';
 
-const HarryPotter = () => {
+// where articles = univers HP 
+    
+const HarryPotter = (props) => {
+
+    const title = props.title;
+
+    useEffect(() => {
+        props.setHarryPotterTitle();
+      }, []);
+
     return (
         <>
-            <div className="jumbotron jumbotron-universes p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded">
-                <div className="px-0 mx-auto jumb-div-title">
-                    <h1 className="display-4 mx-auto">Harry Potter</h1>
-                </div>
-            </div>
+            < PageTitle title={title} />
             < UniversesNav />
             < Articles />
         </>

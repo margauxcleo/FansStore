@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
-import './Navbar.css';
+import './MainNavbar.css';
 
-const Nav = () => {
+const MainNavbar = () => {
     return(
         <header>
         <nav className="navbar navbar-expand-lg fixed-top navbar-light navbar-main bg-main">
@@ -23,16 +23,42 @@ const Nav = () => {
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="is-active" to="/articles" exact>
-                                <span className="
-                                nav-title">Articles</span>
+                            <NavLink className="nav-link" activeClassName="is-active" to="/produits" exact>
+                                <span className="nav-title">Produits</span>
                             </NavLink>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <NavLink className="nav-link" activeClassName="is-active" to="/univers" exact>
                                 <span className="
                                 nav-title">Univers</span>
                             </NavLink>
+                        </li> */}
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" activeclassname="is-active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Univers
+                            </a>
+                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <NavLink className="dropdown-item"to="/univers/harry-potter" exact>
+                                        <span className="nav-title">Harry Potter</span>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className="dropdown-item" to="/univers/star-wars" exact>
+                                        <span className="nav-title">Star Wars</span>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className="dropdown-item" to="/univers/seigneur-des-anneaux" exact>
+                                        <span className="nav-title">Le Seigneur des Anneaux</span>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className="dropdown-item" to="/univers/marvel" exact>
+                                        <span className="nav-title">Marvel</span>
+                                    </NavLink>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto">
@@ -58,4 +84,4 @@ const Nav = () => {
     );
 };
 
-export default Nav;
+export default MainNavbar;

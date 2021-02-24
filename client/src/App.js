@@ -1,29 +1,58 @@
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import Navbar from './components/MainNavbar/Navbar';
+import MainNavbar from './components/MainNavbar/MainNavbar';
 import Footer from './components/Footer/Footer';
 
 
 import Home from './components/Home/Home';
 
-import Products from './components/ProductsPage/Products';
+import ProductsPage from './components/ProductsPage/ProductsPage';
 
-import Universes from './components/UniversesPage/Universes';
 import HarryPotter from './components/UniversesPage/HarryPotter';
 import Marvel from './components/UniversesPage/Marvel';
 import LordOfTheRings from './components/UniversesPage/LordOfTheRings';
 import StarWars from './components/UniversesPage/StarWars';
-import Articles from './components/Articles/Articles';
 import Article from './components/Article/Article';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import { useSelector, useDispatch } from "react-redux";
+
+// on fait du destructuring pour importer nos actions 
+import { setHarryPotter, setMarvel, setSda, setStarWars, setCollections } from "./actions";
+
 function App() {
+
+  console.log(useSelector((state) => state));
+  // renvoi l'objet avec nos reducers 
+  const title = useSelector((state) => state.pageTitleReducer);
+
+  const dispatch = useDispatch();
+
+  //soit on crée la fonction à part et on l'appelle après dans le return
+  const setCollectionsTitle = () => {
+    dispatch(setCollections());
+  }
+  const setHarryPotterTitle = () => {
+    dispatch(setHarryPotter());
+  }
+  const setMarvelTitle = () => {
+    dispatch(setMarvel());
+  }
+  const setSdaTitle = () => {
+    dispatch(setSda());
+  }
+  const setStarWarsTitle = () => {
+    dispatch(setStarWars());
+  }
+
+
+
   return (
     <>
       <Router>
-        <Navbar />
+        <MainNavbar />
 
         <div className="main">
           <Switch>
@@ -31,15 +60,14 @@ function App() {
               <Home />
             </Route>
             {/* <Route path="/profile/:id" render={() => <Profile name="name" />} /> */}
-            <Route path="/articles" exact render={() => <Articles />} />
-            <Route path="/articles/article/:id" exact render={() => <Article />} />
+            <Route path="/produits" exact render={() => <ProductsPage title={title} setCollectionsTitle={setCollectionsTitle}/>} />
+            <Route path="/produits/produit/:id" exact render={() => <Article />} />
             <Route path="/univers">
               <Switch>
-                <Route path="/univers" exact render={() => <Universes />} />
-                <Route path="/univers/harry-potter" exact render={() => <HarryPotter />} />
-                <Route path="/univers/marvel" exact render={() => <Marvel />} />
-                <Route path="/univers/seigneur-des-anneaux" exact render={() => <LordOfTheRings />} />
-                <Route path="/univers/star-wars" exact render={() => <StarWars />} />
+                <Route path="/univers/harry-potter" exact render={() => <HarryPotter title={title} setHarryPotterTitle={setHarryPotterTitle} />} />
+                <Route path="/univers/marvel" exact render={() => <Marvel title={title} setMarvelTitle={setMarvelTitle}/>} />
+                <Route path="/univers/seigneur-des-anneaux" exact render={() => <LordOfTheRings title={title} setSdaTitle={setSdaTitle}/>} />
+                <Route path="/univers/star-wars" exact render={() => <StarWars title={title} setStarWarsTitle={setStarWarsTitle}/>} />
               </Switch>
             </Route>
           </Switch>
