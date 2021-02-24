@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import './UniversesNav.css';
+import '../UniversesPage/Universes.css';
 
 const UniversesNav = () => {
     return (

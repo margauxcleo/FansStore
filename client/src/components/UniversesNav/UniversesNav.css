@@ -1,21 +1,4 @@
-/* Fonts */
-@font-face {
-    font-family: "harry_potter";
-    src: url("../../fonts/hp/harry_potter.TTF") format('truetype');
-}
-@font-face {
-    font-family: "lord_of_the_rings";
-    src: url("../../fonts/tlotr/RINGM___.TTF") format('truetype');
-}
-@font-face {
-    font-family: "marvel";
-    src: url("../../fonts/marvel/Marvel-Regular.ttf") format('truetype');
-}
-@font-face {
-    font-family: "star_wars";
-    src: url("../../fonts/sw/Starjedi.ttf") format('truetype');
-}
-
+/* Fonts depuis Universes.css*/
 
 .universes-links{
     background-color: #FFF;

@@ -17,9 +17,11 @@ const LordOfTheRings = (props) => {
     
     return (
         <>
-            < PageTitle title={title} />
-            < UniversesNav />
-            < Articles />
+            <div className="sda">
+                < PageTitle title={title} />
+                < UniversesNav />
+                < Articles />
+            </div> 
         </>
     );
 }
