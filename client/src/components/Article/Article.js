@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 
+import ReactFancyBox from 'react-fancybox';
+import 'react-fancybox/lib/fancybox.css';
+
 
 import './Article.css'; 
 
@@ -42,8 +45,9 @@ const Article = (props) => {
         <>
             <div key={article.articleId} className="article mx-auto col-xl-10 col-lg-11 col-md-11 col-sm-12">
                 <div className="row d-flex justify-content-around col-lg-12 col-sm-12">
-                    <div className="d-flex justify-content-end offset-xl-1 col-xl-4 offset-lg-1 col-lg-5 offset-md-1 col-md-4 col-sm-12">
-                        <img className="card-img-top" src={path + article.image} alt={article.name}/>
+                    <div className="d-flex justify-content-end offset-xl-1 col-xl-4 offset-lg-1 col-lg-4 offset-md-1 col-md-4 col-sm-12">
+                        <ReactFancyBox image={path + article.image} alt={article.name}/>
+                        {/* <img className="card-img-top" src={path + article.image} alt={article.name}/> */}
                     </div>
                     <div className="infos d-flex flex-column justify-content-center offset-xl-1 col-xl-6 offset-lg-1 col-lg-6 offset-md-1 col-md-6 col-sm-12">
                         <h3 className="name">{article.name}</h3>

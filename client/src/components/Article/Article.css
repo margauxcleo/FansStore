@@ -28,10 +28,14 @@
     margin: 0!important;
 }
 
-.article img {
-    max-width: 240px;
-    max-height: auto;
-    margin: auto;
+.article img, .article .thumbnail {
+    max-width: 240px!important;
+    margin: auto!important;
+    box-shadow: 0px 15px 10px -15px #111;
+}
+
+.article .react-fancybox {
+    margin: auto !important;
 }
 
 .article {
