@@ -80,17 +80,16 @@ exports.findArticleById = (req, res) => {
 
 exports.findAllArticlesHarryPotter = (req, res) => {
 
-    Article.findAll({
-        where: {fk_universe: 1},
-
+    Article.findAll({ 
+        where: { 
+            fk_universe: 1
+        },
         include: [
             {model: Universe}, 
-            {model: Category},
+            {model: Category}
         ]})
-        ​​ 
         .then(data => {
-            res.send(data);
-            
+            res.send(data);    
         })
         .catch(err => {
             res.status(500).send({
@@ -99,3 +98,69 @@ exports.findAllArticlesHarryPotter = (req, res) => {
             });
         });
 };
+
+exports.findAllArticlesStarWars = (req, res) => {
+
+    Article.findAll({ 
+        where: { 
+            fk_universe: 2
+        },
+        include: [
+            {model: Universe}, 
+            {model: Category}
+        ]})
+        .then(data => {
+            res.send(data);    
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving articles."
+            });
+        });
+};
+
+exports.findAllArticlesMarvel = (req, res) => {
+
+    Article.findAll({ 
+        where: { 
+            fk_universe: 3
+        },
+        include: [
+            {model: Universe}, 
+            {model: Category}
+        ]})
+        .then(data => {
+            res.send(data);    
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving articles."
+            });
+        });
+};
+
+exports.findAllArticlesSda = (req, res) => {
+
+    Article.findAll({ 
+        where: { 
+            fk_universe: 4
+        },
+        include: [
+            {model: Universe}, 
+            {model: Category}
+        ]})
+        .then(data => {
+            res.send(data);    
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving articles."
+            });
+        });
+};
+
+
+    

@@ -8,7 +8,16 @@ module.exports = app => {
 
     //  USER STORY 2 Retrieve one article with his id
     router.get("/:id", article.findArticleById);
-    // USER STORY 4
-    router.get("/harry-potter", article.findAllArticlesHarryPotter);
-    app.use('/articles/univers/harry-potter', router);
+    
+    // User Story 4 
+    // All articles from universe = harry-potter
+    router.get("/universe/harry-potter", article.findAllArticlesHarryPotter);
+    // All articles from universe = star-wars
+    router.get("/universe/star-wars", article.findAllArticlesStarWars);
+    // All articles from universe = harry-potter
+    router.get("/universe/marvel", article.findAllArticlesMarvel);
+    // All articles from universe = harry-potter
+    router.get("/universe/sda", article.findAllArticlesSda);
+    
+    app.use('/articles', router);
 };
