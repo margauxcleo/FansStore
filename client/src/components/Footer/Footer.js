@@ -8,7 +8,7 @@ const Footer = () => {
 
     return (
         <>
-            <div className="footer">
+            <div className="footer col-xs-12 col-md-12 col-lg-12 col-xl-12">
                 <Row>
                     <Col xs={12} sm={{ span:5, offset: 1 }} md={{ span: 5, offset: 1 }} lg={{ span: 4, offset: 2 }} xl={{ span: 3, offset: 3 }} className="div-footer">
                         <ListGroup variant="flush" className="btn-group-vertical">
