@@ -31,3 +31,7 @@ header {
 .ms-auto {
     margin-left: auto!important;
 }
+
+.navbar-main .container-fluid {
+    padding: 0 !important;
+}

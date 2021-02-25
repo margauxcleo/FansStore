@@ -40,19 +40,19 @@ const Article = (props) => {
         <>
             <div key={article.articleId} className="article mx-auto col-xl-10 col-lg-11 col-md-11 col-sm-12">
                 <div className="row d-flex justify-content-around col-lg-12 col-sm-12">
-                    <div className="offset-xl-1 col-xl-4 col-lg-5 col-md-4 col-sm-12">
+                    <div className="d-flex justify-content-end offset-xl-1 col-xl-4 offset-lg-1 col-lg-5 offset-md-1 col-md-4 col-sm-12">
                         <img className="card-img-top" src={path + article.image} alt={article.name}/>
                     </div>
-                    <div className="offset-xl-1 col-xl-6 offset-lg-1 col-lg-6 offset-md-1 col-md-6 col-sm-12">
-                        <h3>{article.name}</h3>
+                    <div className="infos d-flex flex-column justify-content-center offset-xl-1 col-xl-6 offset-lg-1 col-lg-6 offset-md-1 col-md-6 col-sm-12">
+                        <h3 className="name">{article.name}</h3>
                         <p className="brand">{article.brand}</p>
                         <p className="price">{article.price} €</p>
                         <button className="btn btn-primary">Ajouter au panier</button>
                     </div>
                 </div>
                 <br/>
-                <div className="col-lg-12 col-sm-12">
-                    <h3>Caractéristiques du produit</h3>
+                <div className="infos2 col-lg-12 col-sm-12">
+                    <h2>Caractéristiques du produit</h2>
                     <p className="description">{article.description}</p>
                 </div>
             </div>
