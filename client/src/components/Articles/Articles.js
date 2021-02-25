@@ -26,9 +26,12 @@ const Articles = () => {
         setArticles(parseResponse);
     };
 
+    const hp = articles.filter((article) => article.fk_universe === 1 && article.fk_category === 2);
+    console.log(hp);
+
     useEffect(() => {
         fetchArticles();
-    }, []);
+    }, [articles]);
 
     return (
         <>

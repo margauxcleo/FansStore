@@ -77,4 +77,90 @@ exports.findArticleById = (req, res) => {
             });
         });
 };
+
+exports.findAllArticlesHarryPotter = (req, res) => {
+
+    Article.findAll({ 
+        where: { 
+            fk_universe: 1
+        },
+        include: [
+            {model: Universe}, 
+            {model: Category}
+        ]})
+        .then(data => {
+            res.send(data);    
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving articles."
+            });
+        });
+};
+
+exports.findAllArticlesStarWars = (req, res) => {
+
+    Article.findAll({ 
+        where: { 
+            fk_universe: 2
+        },
+        include: [
+            {model: Universe}, 
+            {model: Category}
+        ]})
+        .then(data => {
+            res.send(data);    
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving articles."
+            });
+        });
+};
+
+exports.findAllArticlesMarvel = (req, res) => {
+
+    Article.findAll({ 
+        where: { 
+            fk_universe: 3
+        },
+        include: [
+            {model: Universe}, 
+            {model: Category}
+        ]})
+        .then(data => {
+            res.send(data);    
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving articles."
+            });
+        });
+};
+
+exports.findAllArticlesSda = (req, res) => {
+
+    Article.findAll({ 
+        where: { 
+            fk_universe: 4
+        },
+        include: [
+            {model: Universe}, 
+            {model: Category}
+        ]})
+        .then(data => {
+            res.send(data);    
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving articles."
+            });
+        });
+};
+
+
     
