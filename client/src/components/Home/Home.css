@@ -1,4 +1,5 @@
 .home {
+    margin-bottom: 50px;
     background-color: white;
 }
 
@@ -20,6 +21,7 @@
     background-color: #8D9492;
     color: #fff;
     font-size: 1.50rem;
+    padding: 25px;
 }
 
 .text {
@@ -35,4 +37,20 @@
     background-size: cover;
     background-position: left;
     height: 380px;
+}
+
+.space {
+    margin-bottom: 50px;
+}
+
+
+@media (max-width: 576px) {
+
+    .licence {
+        padding: 65px;
+    }
+
+    .text {
+        margin-bottom: 50px;
+    }
 }
