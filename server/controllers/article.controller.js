@@ -77,4 +77,25 @@ exports.findArticleById = (req, res) => {
             });
         });
 };
-    
+
+exports.findAllArticlesHarryPotter = (req, res) => {
+
+    Article.findAll({
+        where: {fk_universe: 1},
+
+        include: [
+            {model: Universe}, 
+            {model: Category},
+        ]})
+        ​​ 
+        .then(data => {
+            res.send(data);
+            
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving articles."
+            });
+        });
+};

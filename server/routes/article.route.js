@@ -8,6 +8,7 @@ module.exports = app => {
 
     //  USER STORY 2 Retrieve one article with his id
     router.get("/:id", article.findArticleById);
-    
-    app.use('/articles', router);
+    // USER STORY 4
+    router.get("/harry-potter", article.findAllArticlesHarryPotter);
+    app.use('/articles/univers/harry-potter', router);
 };
