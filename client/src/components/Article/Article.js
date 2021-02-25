@@ -36,6 +36,8 @@ const Article = (props) => {
             fetchArticle(id);
        }, []);
 
+       console.log(article.image)
+
     return (
         <>
             <div key={article.articleId} className="article mx-auto col-xl-10 col-lg-11 col-md-11 col-sm-12">
