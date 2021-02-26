@@ -58,9 +58,7 @@ function App(props) {
           <Switch>
             <Route path="/" exact component={Home} />
 
-            <Route path="/produits" exact> 
-              <MainUniverse /> 
-            </Route>
+            <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/> 
 
             <Route path="/produits/produit/:id" exact component={Article} />
 
