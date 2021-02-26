@@ -25,6 +25,8 @@
     margin-bottom: 15px;
 }
 
+
+
 .articles .card .name {
     font-size: 1.2rem;
 }
@@ -41,4 +43,25 @@
 
 .articles .card .description {
     text-align: justify;
+}
+
+.articles .no-article { 
+    color: #fff;
+    padding: 20px;
+}
+
+@media (max-width: 576px) {
+    .articles .card {
+        max-height: auto;
+    }
+}
+@media (min-width: 577px) {
+    .articles .card {
+        height: 360px;
+    }
+}
+@media (min-width: 769px) {
+    .articles .card {
+        height: 370px!important;
+    }
 }

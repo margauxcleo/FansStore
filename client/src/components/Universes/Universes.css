@@ -16,6 +16,10 @@
     src: url("../../fonts/sw/Starjedi.ttf") format('truetype');
 }
 
+.mainTheme {
+    font-style: italic;
+}
+
 .hp h1{
     font-family: 'harry_potter','roboto', 'opensans', sans-serif;
     font-size: 5rem;
