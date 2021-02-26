@@ -2,8 +2,10 @@
     background-color: #4F5453!important;
     background: linear-gradient(8deg, rgba(141,148,146,0.7203256302521008) 0%, rgba(79,84,83,0.5970763305322129) 100%);
     color: #fff;
+    height: 200px;
 }
 
 .jumb-div-title {
     text-align: center;
+    margin: auto;
 }

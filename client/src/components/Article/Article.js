@@ -26,7 +26,7 @@ const Article = (props) => {
 
      const fetchArticle = async (id) => {
 
-        const response = await fetch(`http://localhost:8088/articles/${id}`,  {
+        const response = await fetch(`http://localhost:8088/produits/${id}`,  {
             method: "GET",
             mode: "cors", 
         });
@@ -39,7 +39,6 @@ const Article = (props) => {
             fetchArticle(id);
        }, []);
 
-       console.log(article.image)
 
     return (
         <>
