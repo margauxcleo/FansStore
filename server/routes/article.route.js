@@ -11,13 +11,13 @@ module.exports = app => {
     
     // User Story 4 
     // All articles from universe = harry-potter
-    router.get("/universe/harry-potter", article.findAllArticlesHarryPotter);
+    router.get("/univers/harry-potter", article.findAllArticlesHarryPotter);
     // All articles from universe = star-wars
-    router.get("/universe/star-wars", article.findAllArticlesStarWars);
+    router.get("/univers/star-wars", article.findAllArticlesStarWars);
     // All articles from universe = harry-potter
-    router.get("/universe/marvel", article.findAllArticlesMarvel);
+    router.get("/univers/marvel", article.findAllArticlesMarvel);
     // All articles from universe = harry-potter
-    router.get("/universe/sda", article.findAllArticlesSda);
+    router.get("/univers/seigneur-des-anneaux", article.findAllArticlesSda);
     
-    app.use('/articles', router);
+    app.use('/produits', router);
 };
