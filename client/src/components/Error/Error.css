@@ -1,0 +1,23 @@
+.error {
+    background-color: #FFF;
+    margin-bottom: 20px;
+}
+
+.error .btn-primary { 
+    color: #fff;
+    background-color: #F3DB5D;
+    border-color: #F3DB5D;
+    max-width: fit-content;
+}
+
+.error-link {
+    color: #fff!important;
+
+}
+
+.error .btn-primary:hover, .article .btn-primary:active, .article .btn-primary:focus{ 
+    color: #fff!important;
+    background-color: #F3DB5D!important;
+    border-color: #F3DB5D!important;
+    box-shadow: 0 0 0 0.2rem rgb(243 219 93 / 50%)!important;
+}
