@@ -19,6 +19,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+// ARTICLES 
 db.article = require("./article/article.model")(sequelize, Sequelize);
 db.universe = require("./article/universe.model.js")(sequelize, Sequelize);
 db.product_category = require("./article/product-category.model.js")(sequelize, Sequelize);
@@ -32,6 +33,20 @@ db.article.belongsTo(db.universe, {
 db.article.belongsTo(db.product_category, {
   foreignKey: "fk_category",
   // as: "fk_category"
+});
+
+// CLIENTS 
+db.client = require("./clients/clients.model")(sequelize, Sequelize);
+db.address = require("./address.model.js")(sequelize, Sequelize);
+db.card = require("./card.model.js")(sequelize, Sequelize);
+
+db.client.hasMany(db.card);
+db.client.hasMany(db.address);
+db.card.belongsTo(db.client, {
+  foreignKey: "fk_clientId",
+});
+db.address.belongsTo(db.client, {
+  foreignKey: "fk_clientId",
 });
 
 module.exports = db;
