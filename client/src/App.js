@@ -11,20 +11,20 @@ import Article from './components/Article/Article';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 
 // on fait du destructuring pour importer nos actions 
 // import { setHarryPotter, setMarvel, setSda, setStarWars, setCollections } from "./actions";
 
 function App(props) {
 
-  const { setThemeOnClick } = props;
+  // const { setThemeOnClick } = props;
 
-  console.log(useSelector((state) => state));
-  // renvoi l'objet avec nos reducers 
-  // const title = useSelector((state) => state.pageTitleReducer);
+  // console.log(useSelector((state) => state));
+  // // renvoi l'objet avec nos reducers 
+  // // const title = useSelector((state) => state.pageTitleReducer);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   //soit on crée la fonction à part et on l'appelle après dans le return
   // const setCollectionsTitle = () => {
@@ -52,7 +52,7 @@ function App(props) {
   return (
     <>
       <Router>
-        <MainNavbar setThemeOnClick={setThemeOnClick}/>
+        <MainNavbar />
 
         <div className="main">
           <Switch>

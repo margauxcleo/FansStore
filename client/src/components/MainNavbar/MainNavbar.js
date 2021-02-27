@@ -4,7 +4,7 @@ import './MainNavbar.css';
 
 const MainNavbar = (props) => {
 
-    const { setThemeOnClick } = props;
+    // const { setThemeOnClick } = props;
 
     return(
         <header>
@@ -26,7 +26,7 @@ const MainNavbar = (props) => {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" activeClassName="is-active" to="/produits" exact>
+                                <NavLink className="nav-link" activeClassName="is-active" to="/produits">
                                     <span className="nav-title">Produits</span>
                                 </NavLink>
                             </li>
@@ -39,8 +39,8 @@ const MainNavbar = (props) => {
                                         <NavLink 
                                         className="dropdown-item" 
                                         to="/univers/harry-potter" 
-                                        exact 
-                                        onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter", "hp")}
+                                        // exact 
+                                        // onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter", "hp")}
                                         >
                                             <span className="nav-title">Harry Potter</span>
                                         </NavLink>
@@ -49,7 +49,7 @@ const MainNavbar = (props) => {
                                         <NavLink 
                                         className="dropdown-item" 
                                         to="/univers/star-wars" 
-                                        exact
+                                        // exact
                                         // onClick={(event) => setThemeOnClick(event, "produits/univers/star-wars", "Star Wars")}
                                         >
                                             <span className="nav-title">Star Wars</span>
@@ -59,7 +59,7 @@ const MainNavbar = (props) => {
                                         <NavLink 
                                         className="dropdown-item" 
                                         to="/univers/seigneur-des-anneaux" 
-                                        exact
+                                        // exact
                                         // onClick={(event) => setThemeOnClick(event, "produits/univers/seigneur-des-anneaux", "Le Seigneur des Anneaux")}
                                         >
                                             <span className="nav-title">Le Seigneur des Anneaux</span>
@@ -69,7 +69,7 @@ const MainNavbar = (props) => {
                                         <NavLink 
                                         className="dropdown-item" 
                                         to="/univers/marvel" 
-                                        exact
+                                        // exact
                                         // onClick={(event) => setThemeOnClick(event, "produits/univers/marvel", "Marvel")}
                                         >
                                             <span className="nav-title">Marvel</span>

@@ -4,7 +4,7 @@ import './ArticlesNav.css';
 
 const ArticlesNav = (props) => {
 
-    const { articles, setCategoryOnClick } = props; 
+    const { setCategoryOnClick } = props; 
 
     return (
         <>
