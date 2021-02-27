@@ -18,6 +18,7 @@ const Article = (props) => {
          "price": "",
          "image": "",
          "description": "",
+         "available_quantity": "",
          "fk_universe": "",
          "fk_category": ""
      });

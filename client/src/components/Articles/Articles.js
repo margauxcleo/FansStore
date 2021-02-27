@@ -11,7 +11,7 @@ const Articles = (props) => {
 
     return (
         <>
-            <div className="articles p-3 p-md-5 mx-auto col-xl-11 col-lg-11 col-md-11 col-sm-12 rounded row d-flex justify-content-center">
+            <div className="articles p-3 p-md-5 mx-auto col-xl-11 col-lg-11 col-md-11 col-sm-12 rounded row d-flex flex-column justify-content-center">
                 < ArticlesNav articles={articles} catFiltre={catFiltre} setCategoryOnClick={setCategoryOnClick} />
                 {(catFiltre.length === 0 && checkFilter === false) ?
                     (<div className="card-group row mx-auto">

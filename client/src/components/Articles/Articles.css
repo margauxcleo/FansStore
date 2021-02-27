@@ -35,7 +35,8 @@
     height: 70px;
     padding: 15px;
     border-radius: 0.25rem;
-    background: linear-gradient(207deg, rgba(243,219,93,0.9023984593837535) 0%, rgba(243,219,93,0.76234243697479) 100%);
+    background-color: #F3DB5D;
+    /* background: linear-gradient(207deg, rgba(243,219,93,0.9023984593837535) 0%, rgba(243,219,93,0.76234243697479) 100%); */
     margin: 0;
     color: #FFF;
 }
