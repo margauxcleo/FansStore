@@ -36,3 +36,5 @@ db.article.belongsTo(db.product_category, {
 
 module.exports = db;
 
+
+

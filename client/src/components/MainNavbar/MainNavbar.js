@@ -4,6 +4,8 @@ import './MainNavbar.css';
 
 const MainNavbar = (props) => {
 
+    const { setThemeOnClick } = props;
+
     return(
         <header>
             <nav className="navbar navbar-expand-lg fixed-top navbar-light navbar-main bg-main">
@@ -36,9 +38,9 @@ const MainNavbar = (props) => {
                                     <li>
                                         <NavLink 
                                         className="dropdown-item" 
-                                        to="produits/univers/harry-potter" 
+                                        to="/univers/harry-potter" 
                                         exact 
-                                        // onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter")}
+                                        onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter", "hp")}
                                         >
                                             <span className="nav-title">Harry Potter</span>
                                         </NavLink>
@@ -46,7 +48,7 @@ const MainNavbar = (props) => {
                                     <li>
                                         <NavLink 
                                         className="dropdown-item" 
-                                        to="produits/univers/star-wars" 
+                                        to="/univers/star-wars" 
                                         exact
                                         // onClick={(event) => setThemeOnClick(event, "produits/univers/star-wars", "Star Wars")}
                                         >
@@ -56,7 +58,7 @@ const MainNavbar = (props) => {
                                     <li>
                                         <NavLink 
                                         className="dropdown-item" 
-                                        to="produits/univers/seigneur-des-anneaux" 
+                                        to="/univers/seigneur-des-anneaux" 
                                         exact
                                         // onClick={(event) => setThemeOnClick(event, "produits/univers/seigneur-des-anneaux", "Le Seigneur des Anneaux")}
                                         >
@@ -66,7 +68,7 @@ const MainNavbar = (props) => {
                                     <li>
                                         <NavLink 
                                         className="dropdown-item" 
-                                        to="produits/univers/marvel" 
+                                        to="/univers/marvel" 
                                         exact
                                         // onClick={(event) => setThemeOnClick(event, "produits/univers/marvel", "Marvel")}
                                         >

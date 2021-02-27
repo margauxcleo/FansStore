@@ -19,16 +19,16 @@ const MainUniverse = (props) => {
         case "/produits":
         imgPath = ""
             break;
-        case "/produits/univers/harry-potter":
+        case "/univers/harry-potter":
         imgPath = "../../"
             break;
-        case "/produits/univers/star-wars":
+        case "/univers/star-wars":
         imgPath = "../../"
             break;
-        case "/produits/univers/marvel":
+        case "/univers/marvel":
         imgPath = "../../"
             break;
-        case "/produits/univers/seigneur-des-anneaux":
+        case "/univers/seigneur-des-anneaux":
         imgPath = "../../"
             break;
         default:
@@ -64,15 +64,21 @@ const MainUniverse = (props) => {
         console.log(className);
     }
 
+    // const reset = () => { 
+    //     setArticles(parseResponse);
+    // }
+
     const setCategoryOnClick = (event, condition) => {
+        // reset() ? 
+        let copyAllArticles = [...articles];
         event.preventDefault();
-        if (condition != 0) {
-            let article_by_cat = articles.filter(article => article.fk_category === condition);
+        if (condition !== 0) {
+            let article_by_cat = copyAllArticles.filter(article => article.fk_category === condition);
             setArticles(article_by_cat);
             console.log(article_by_cat);
         }
         else {
-            let article_by_cat = articles;
+            let article_by_cat = copyAllArticles;
             setArticles(article_by_cat);
             console.log(article_by_cat);
         }
@@ -80,13 +86,12 @@ const MainUniverse = (props) => {
 
 
     useEffect(() => {
-        console.log(apiPath);
         fetchArticles(apiPath)
         .then((result) => {
             console.log(result);
             setArticles(result);
         });
-    }, [apiPath, mainTitle, themeStyle]);
+    }, [apiPath]);
 
     
     return (
@@ -97,13 +102,8 @@ const MainUniverse = (props) => {
                 setThemeOnClick={setThemeOnClick}
                 themeStyle={themeStyle}
                 
-                setHarryPotterTitle={props.setHarryPotterTitle}
-                setMarvelTitle={props.setMarvelTitle}
-                setSdaTitle={props.setSdaTitle}
-                setStarWarsTitle={props.setStarWarsTitle}
-                
                 />
-                < Articles articles={articles} imgPath={imgPath} setCategoryOnClick={setCategoryOnClick}/>
+                < Articles articles={articles} imgPath={imgPath} themeStyle={themeStyle} setCategoryOnClick={setCategoryOnClick}/>
             </div>
         </>
     );

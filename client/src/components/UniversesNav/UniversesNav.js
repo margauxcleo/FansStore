@@ -16,8 +16,8 @@ const UniversesNav = (props) => {
                             <NavLink 
                             className="nav-link" 
                             to="/univers/harry-potter"
-                            exact 
-                            onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter", "hp ")}
+                             
+                            onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter", "hp")}
                             // onClick={props.setHarryPotterTitle}
                             >
                                 <span className="universe-nav-title">Harry Potter</span>
@@ -30,7 +30,7 @@ const UniversesNav = (props) => {
                         className="nav-link" 
                         to="/univers/marvel" 
                         exact 
-                        onClick={(event) => setThemeOnClick(event, "produits/univers/marvel", "Marvel" , "marvel ")}
+                        onClick={(event) => setThemeOnClick(event, "produits/univers/marvel", "Marvel" , "marvel")}
                         // onClick={props.setMarvelTitle}
                         >
                             <span className="universe-nav-title">MARVEL</span>
@@ -43,7 +43,7 @@ const UniversesNav = (props) => {
                         className="nav-link align-items-center justify-content-center" 
                         to="/univers/seigneur-des-anneaux" 
                         exact 
-                        onClick={(event) => setThemeOnClick(event, "produits/univers/seigneur-des-anneaux", "Le Seigneur des Anneaux", "sda ")}
+                        onClick={(event) => setThemeOnClick(event, "produits/univers/seigneur-des-anneaux", "Le Seigneur des Anneaux", "sda")}
                         // onClick={props.setSdaTitle}
                         >
                             <span className="universe-nav-title">Le Seigneur des</span>
@@ -57,7 +57,7 @@ const UniversesNav = (props) => {
                         className="nav-link" 
                         to="/univers/star-wars" 
                         exact 
-                        onClick={(event) => setThemeOnClick(event, "produits/univers/star-wars", "Star Wars", "sw ")}
+                        onClick={(event) => setThemeOnClick(event, "produits/univers/star-wars", "Star Wars", "sw")}
                         // onClick={props.setStarWarsTitle}
                         >
                             <span className="universe-nav-title">Star Wars</span>
