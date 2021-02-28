@@ -21,10 +21,24 @@ module.exports = app => {
         check('phone').not().isEmpty().bail()
     ], 
     client.createClient);
-    // créer une adresse
-    router.post("/addAddress", client.createAddress);
-    // créer une carte
-    router.post("/addCard", client.createCard);
+    // créer une adresse - non testé à date
+    router.post("/addAddress", [
+        check('address_name').not().isEmpty().bail(),
+        check('street').not().isEmpty().bail(),
+        check('zipcode').isEmail().bail(),
+        check('city').not().isEmpty().bail(),
+        check('fk_clientId').not().isEmpty().bail()
+    ],
+    client.createAddress);
+    // créer une carte - non testé à date
+    router.post("/addCard", [
+        check('card_name').not().isEmpty().bail(),
+        check('card_number').not().isEmpty().bail(),
+        check('card_exp_date').isEmail().bail(),
+        check('card_cvv').not().isEmpty().bail(),
+        check('fk_clientId').not().isEmpty().bail()
+    ],
+    client.createCard);
 
     // créer une adresse client
     // créer un card client 

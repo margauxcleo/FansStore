@@ -105,7 +105,6 @@ exports.createCard = (req, res, next) => {
             fk_clientId: body.fk_clientId
         };
 
-
         // Créer une nouvelle carte 
         Card.create(card)
             .then(card => {
