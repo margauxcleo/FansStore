@@ -25,8 +25,8 @@ exports.createClient = (req, res, next) => {
             last_name: body.last_name,
             email: body.email,
             birth_date: body.birth_date,
-            password: body.descrpasswordiption,
-            phone: body.phone,
+            password: body.password,
+            phone: body.phone
         };
         // Créer un nouveau client
         Client.create(client)
