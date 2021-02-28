@@ -40,7 +40,7 @@ const MainUniverse = (props) => {
     
     const [mainTitle, setMainTitle] = useState("Nos collections");
 
-    const [themeStyle, setThemeStyle ] = useState("mainTheme ");
+    const [themeStyle, setThemeStyle ] = useState("mainTheme");
     // indiquer hp / .... pour les className 
 
     const fetchArticles = async (path) => {
@@ -106,7 +106,13 @@ const MainUniverse = (props) => {
                 themeStyle={themeStyle}
                 
                 />
-                < Articles articles={articles} catFiltre={catFiltre} checkFilter={checkFilter} imgPath={imgPath} themeStyle={themeStyle} setCategoryOnClick={setCategoryOnClick}/>
+                < Articles 
+                    articles={articles} 
+                    catFiltre={catFiltre} 
+                    checkFilter={checkFilter} 
+                    imgPath={imgPath} 
+                    themeStyle={themeStyle} 
+                    setCategoryOnClick={setCategoryOnClick}/>
             </div>
         </>
     );

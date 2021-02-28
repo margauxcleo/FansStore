@@ -6,6 +6,7 @@ import './MainNavbar.css';
 const MainNavbar = (props) => {
 
     const { clientId } = useParams();
+    const { setSignInModalShow } = props;
 
     return (
         <>
@@ -95,7 +96,7 @@ const MainNavbar = (props) => {
                                                         className="dropdown-item"
                                                         to="/client-infos"
                                                     >
-                                                        <i class="fas fa-user-cog"></i>
+                                                        <i className="fas fa-user-cog"></i>
                                                         <span className="nav-title">Mes informations</span>
                                                     </NavLink>
                                                 </li>
@@ -104,7 +105,7 @@ const MainNavbar = (props) => {
                                                         className="dropdown-item"
                                                         to="/signOut"
                                                     >
-                                                        <i class="fas fa-user-alt-slash"></i>
+                                                        <i className="fas fa-user-alt-slash"></i>
                                                         <span className="nav-title">Se déconnecter</span>
                                                     </NavLink>
                                                 </li>
@@ -112,20 +113,21 @@ const MainNavbar = (props) => {
                                         ) : (
                                                 <>
                                                     <li>
-                                                        <NavLink
+                                                        <a
                                                             className="dropdown-item"
-                                                            to="/signIn"
+                                                            // to="/signIn"
+                                                            onClick={() => setSignInModalShow(true)}
                                                         >
-                                                            <i class="fas fa-user-check"></i>
+                                                            <i className="fas fa-user-check"></i>
                                                             <span className="nav-title">Se connecter</span>
-                                                        </NavLink>
+                                                        </a>
                                                     </li>
                                                     <li>
                                                         <NavLink
                                                             className="dropdown-item"
                                                             to="/signUp"
                                                         >
-                                                            <i class="fas fa-user-plus"></i>
+                                                            <i className="fas fa-user-plus"></i>
                                                             <span className="nav-title">Créer un compte</span>
                                                         </NavLink>
                                                     </li>
