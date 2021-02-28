@@ -25,6 +25,10 @@ module.exports = (sequelize, Sequelize) => {
         description: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+        available_quantity: {
+            type: Sequelize.INTEGER,
+            allowNull: true
         }
     },
         {tableName: 'articles', timestamps: false, underscored: false}

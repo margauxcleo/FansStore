@@ -2,9 +2,10 @@
     background-color: #8D9492!important;
 }
 
-.nav-articles .nav-link.is-active {
+.nav-articles .nav-link.active {
     background-color: #F3DB5D;
     color: #FFF;
+    transition: background-color .2s, #F3DB5D .2s;
 }
 
 .nav-articles .nav-link {

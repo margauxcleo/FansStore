@@ -6,11 +6,6 @@ import Articles from '../Articles/Articles';
 
 import './Universes.css';
 
-
-// page title
-// navbar universe props onClick event 
-// articles props articles
-
 const MainUniverse = (props) => {
 
     // Adaptation du src pour les images 
@@ -39,6 +34,10 @@ const MainUniverse = (props) => {
 
     const [articles, setArticles] = useState([]);
 
+    // const catFiltreInitialState = {"status" : "inactif"}; 
+    const [catFiltre, setCatFiltre ] = useState([]);
+    const [checkFilter, setCheckFilter ] = useState(false);
+    
     const [mainTitle, setMainTitle] = useState("Nos collections");
 
     const [themeStyle, setThemeStyle ] = useState("mainTheme ");
@@ -59,9 +58,7 @@ const MainUniverse = (props) => {
         event.preventDefault();
         setApiPath(path);
         setMainTitle(title);
-        console.log(title);
         setThemeStyle(className);
-        console.log(className);
     }
 
     // const reset = () => { 
@@ -69,18 +66,22 @@ const MainUniverse = (props) => {
     // }
 
     const setCategoryOnClick = (event, condition) => {
-        // reset() ? 
-        let copyAllArticles = [...articles];
+        // reset des filtres
+        setCatFiltre([]);
+        // on reset le check au state initial 
+        setCheckFilter(false);
         event.preventDefault();
         if (condition !== 0) {
-            let article_by_cat = copyAllArticles.filter(article => article.fk_category === condition);
-            setArticles(article_by_cat);
-            console.log(article_by_cat);
+            let articlesByCat = articles.filter(article => article.fk_category === condition);
+            setCatFiltre(articlesByCat);
+            console.log(articlesByCat);
+            if(articlesByCat.length === 0) {
+                setCheckFilter(true);
+            }
         }
         else {
-            let article_by_cat = copyAllArticles;
-            setArticles(article_by_cat);
-            console.log(article_by_cat);
+            setCatFiltre(articles);
+            console.log(articles);
         }
     }
 
@@ -90,6 +91,8 @@ const MainUniverse = (props) => {
         .then((result) => {
             console.log(result);
             setArticles(result);
+            setCheckFilter(false);
+            setCatFiltre([]);
         });
     }, [apiPath]);
 
@@ -103,7 +106,7 @@ const MainUniverse = (props) => {
                 themeStyle={themeStyle}
                 
                 />
-                < Articles articles={articles} imgPath={imgPath} themeStyle={themeStyle} setCategoryOnClick={setCategoryOnClick}/>
+                < Articles articles={articles} catFiltre={catFiltre} checkFilter={checkFilter} imgPath={imgPath} themeStyle={themeStyle} setCategoryOnClick={setCategoryOnClick}/>
             </div>
         </>
     );
