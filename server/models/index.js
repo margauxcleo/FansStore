@@ -55,3 +55,5 @@ db.client.hasMany(db.address, { foreignKey: "fk_clientId", as: "addresses" });
 
 module.exports = db;
 
+
+

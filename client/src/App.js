@@ -6,9 +6,7 @@ import { useState } from 'react';
 
 import MainNavbar from './components/MainNavbar/MainNavbar';
 import Footer from './components/Footer/Footer';
-
 import Home from './components/Home/Home';
-
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
 
@@ -92,8 +90,6 @@ function App(props) {
 
           </Switch>
         </div>
-        
-
         <Footer/>
       </Router>
     </>
