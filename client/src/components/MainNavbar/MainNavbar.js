@@ -9,6 +9,8 @@ import './MainNavbar.css';
 
 const MainNavbar = (props) => {
 
+    const { clientId } = useParams();
+    const { setSignInModalShow } = props;
     const { setThemeOnClick } = props;
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -163,11 +165,74 @@ const MainNavbar = (props) => {
                                             </NavLink>
                                         </li>
                                     </ul>
+<<<<<<< HEAD
+                                </li>
+                            </ul>
+
+                            <ul className="navbar-nav ms-auto">
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" activeclassname="is-active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i className="fas fa-user"></i>
+                                        <span className="nav-title">Compte</span>
+                                    </a>
+                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        {clientId ? (
+                                            <>
+                                                <li>
+                                                    <NavLink
+                                                        className="dropdown-item"
+                                                        to="/client-infos"
+                                                    >
+                                                        <i className="fas fa-user-cog"></i>
+                                                        <span className="nav-title">Mes informations</span>
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink
+                                                        className="dropdown-item"
+                                                        to="/signOut"
+                                                    >
+                                                        <i className="fas fa-user-alt-slash"></i>
+                                                        <span className="nav-title">Se déconnecter</span>
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                        ) : (
+                                                <>
+                                                    <li>
+                                                        <a
+                                                            className="dropdown-item"
+                                                            // to="/signIn"
+                                                            onClick={() => setSignInModalShow(true)}
+                                                        >
+                                                            <i className="fas fa-user-check"></i>
+                                                            <span className="nav-title">Se connecter</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <NavLink
+                                                            className="dropdown-item"
+                                                            to="/signUp"
+                                                        >
+                                                            <i className="fas fa-user-plus"></i>
+                                                            <span className="nav-title">Créer un compte</span>
+                                                        </NavLink>
+                                                    </li>
+                                                </>
+                                            )}
+                                    </ul>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" activeClassName="is-active" to="/panier" exact>
+                                        <i className="fas fa-shopping-basket"></i>
+                                        <span className="
+=======
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link" activeClassName="is-active" to="/panier" exact>
                                     <i className="fas fa-shopping-basket"></i>
                                     <span className="
+>>>>>>> 23c530b662f58793248de667b8baed94c1bec067
                                     nav-title">Panier</span>
                                     </NavLink>
                                 </li>

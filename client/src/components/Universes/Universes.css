@@ -16,8 +16,12 @@
     src: url("../../fonts/sw/Starjedi.ttf") format('truetype');
 }
 
-.mainTheme {
+.mainTheme h1 {
     font-style: italic;
+}
+
+.hp .articles{
+    background-color: #630B1C;
 }
 
 .hp h1{

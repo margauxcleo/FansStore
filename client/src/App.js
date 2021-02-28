@@ -1,22 +1,32 @@
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
+// import { useSelector, useDispatch} from "react-redux";
+
+import { useState } from 'react';
+
 import MainNavbar from './components/MainNavbar/MainNavbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
 
+import SignIn from './components/Clients/SignIn';
+import SignOut from './components/Clients/SignOut';
+
 import Error from './components/Error/Error';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-// import { useSelector, useDispatch } from "react-redux";
 
 // on fait du destructuring pour importer nos actions 
 // import { setHarryPotter, setMarvel, setSda, setStarWars, setCollections } from "./actions";
 
 function App(props) {
+
+  //modal du login
+  const [signInModalShow, setSignInModalShow] = useState(false);
+
 
   // const { setThemeOnClick } = props;
 
@@ -52,7 +62,14 @@ function App(props) {
   return (
     <>
       <Router>
-        <MainNavbar />
+        <MainNavbar setSignInModalShow={setSignInModalShow}>
+          
+        </MainNavbar>
+        <SignIn
+            show={signInModalShow}
+            onHide={() => setSignInModalShow(false)}
+          />
+        
 
         <div className="main">
           <Switch>
@@ -63,6 +80,9 @@ function App(props) {
             <Route path={"/produits"} exact component={MainUniverse}/>
 
             <Route path="/produits/produit/:id" exact component={Article} />
+
+            {/* <Route path="/signIn" exact component={SignIn} /> */}
+            <Route path="/signOut" exact component={SignOut} />
 
             <Route path="*">
               <Error />
