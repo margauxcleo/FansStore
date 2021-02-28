@@ -1,5 +1,5 @@
 const db = require("../models"); // models path depend on your structure
-const Client = db.article;
+const Client = db.client;
 const Address = db.address;
 const Card = db.card;
 
@@ -39,58 +39,6 @@ exports.createClient = (req, res, next) => {
                         err.message || "Some error occurred while creating the new client."
                 });
             });
-        
-
-        
-
-        // Créer une adresse 
-        const address = {
-            addressId: req.body.addressId,
-            address_name: req.body.address_name,
-            street: req.body.street,
-            zipcode: req.body.zipcode,
-            city: req.body.city,
-            fk_clientId: fk_clientId
-        };
-
-        // Créer un carte 
-        const card = {
-            cardId: req.body.cardId,
-            card_name: req.body.card_name,
-            card_number: req.body.card_number,
-            card_exp_date: req.body.card_exp_date,
-            card_cvv: req.body.card_cvv,
-            fk_clientId: fk_clientId
-        };
-
-        
-
-        // Créer une nouvelle adresse
-        exports.createAddress = (fk_clientId, address) => {
-            Address.create(fk_clientId, address)
-                .then(address => {
-                    res.send(address);
-                })
-                .catch(err => {
-                    res.status(500).send({
-                        message:
-                            err.message || "Some error occurred while creating the new address."
-                    });
-                });
-        }
-        // Créer une nouvelle carte 
-        exports.createCard = (fk_clientId, card) => {
-            Card.create(fk_clientId, card)
-                .then(card => {
-                    res.send(card);
-                })
-                .catch(err => {
-                    res.status(500).send({
-                        message:
-                            err.message || "Some error occurred while creating the new client."
-                    });
-                });
-        }
     } catch (err) {
         next(err)
     }
@@ -166,7 +114,7 @@ exports.createCard = (req, res, next) => {
             .catch(err => {
                 res.status(500).send({
                     message:
-                        err.message || "Some error occurred while creating the new client."
+                        err.message || "Some error occurred while creating the new card."
                 });
             });
 
@@ -175,4 +123,57 @@ exports.createCard = (req, res, next) => {
     }
 };
 
-// afficher 
+// Récupérer tous les clients
+exports.findAllClients = (req, res, next) => {
+    try {
+        Client.findAll({
+            include: [
+                { model: Card, as: "cards" },
+                { model: Address, as: "addresses" }
+            ]   
+        })
+        .then(clients => {
+            res.send(clients);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving all clients."
+            });
+        })
+
+    } catch (err) {
+        next(err);
+    }
+};
+
+// Récupérer un client selon son id 
+exports.findClientById = (req, res, next) => {
+
+    let id = req.params.id;
+
+    try {
+        if (!id) {
+            throw new BadRequest('Missing required fields: id');
+        }
+
+        Client.findByPk(id, {
+            include: [
+                { model: Card, as: "cards" },
+                { model: Address, as: "addresses" }
+            ]
+        })
+        .then(client => {
+            res.send(client);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving the client."
+            });
+        })
+
+    } catch (err) {
+        next(err);
+    }
+};

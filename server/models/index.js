@@ -37,20 +37,21 @@ db.article.belongsTo(db.product_category, {
 
 // CLIENTS 
 db.client = require("./clients/clients.model")(sequelize, Sequelize);
-db.address = require("./address.model.js")(sequelize, Sequelize);
-db.card = require("./card.model.js")(sequelize, Sequelize);
+db.address = require("./clients/addresses.model.js")(sequelize, Sequelize);
+db.card = require("./clients/cards.model.js")(sequelize, Sequelize);
 
-// un client peut avoir plusieurs adresses et cartes 
-db.client.hasMany(db.card);
-db.client.hasMany(db.address);
 //  un carte a un client 
 db.card.belongsTo(db.client, {
-  foreignKey: "fk_clientId",
+  foreignKey: "fk_clientId"
 });
 // une adresse a un client 
 db.address.belongsTo(db.client, {
-  foreignKey: "fk_clientId",
+  foreignKey: "fk_clientId"
 });
+// un client peut avoir plusieurs adresses et cartes 
+db.client.hasMany(db.card, { foreignKey: "fk_clientId", as : "cards"});
+db.client.hasMany(db.address, { foreignKey: "fk_clientId", as: "addresses" });
+
 
 module.exports = db;
 

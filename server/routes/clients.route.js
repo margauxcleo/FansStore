@@ -1,7 +1,9 @@
 module.exports = app => {
-    const clients = require("../controllers/clients.controller");
+    const client = require("../controllers/clients.controller");
   
     var router = require("express").Router();
+
+    const { check } = require('express-validator');
   
     // Vérification - get tous les clients 
     router.get("/", client.findAllClients);
@@ -9,10 +11,6 @@ module.exports = app => {
     // get un client par rapport à son id
     router.get("/:id", client.findClientById);
     
-    router.post('/addEmploye', [
-        check('nom').isLength({ min: 5 }),
-        check('prenom').isLength({ min: 5 }),
-        ], employeRestController.save);
     // créer un client
     router.post("/addClient", [
         check('first_name').not().isEmpty().bail(),
@@ -43,5 +41,5 @@ module.exports = app => {
     //     someRouteHandler,
     // );
     
-    app.use('/client', router);
+    app.use('/clients', router);
 };
