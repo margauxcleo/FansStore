@@ -2,15 +2,11 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import MainNavbar from './components/MainNavbar/MainNavbar';
 import Footer from './components/Footer/Footer';
-
 import Home from './components/Home/Home';
-
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-
 import { useSelector, useDispatch } from "react-redux";
 
 // on fait du destructuring pour importer nos actions 
