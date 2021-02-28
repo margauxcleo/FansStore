@@ -48,9 +48,18 @@ db.card.belongsTo(db.client, {
 db.address.belongsTo(db.client, {
   foreignKey: "fk_clientId"
 });
+
+// Une commande a un client 
+db.orders.belongsTo(db.client, {
+  foreignKey: "fk_clientId"
+});
+
 // un client peut avoir plusieurs adresses et cartes 
+// Un client peut avoir plusieurs commandes
 db.client.hasMany(db.card, { foreignKey: "fk_clientId", as : "cards"});
 db.client.hasMany(db.address, { foreignKey: "fk_clientId", as: "addresses" });
+db.client.hasMany(db.orders, { foreignKey: "fk_clientId", as: "orders" });
+
 
 
 module.exports = db;
