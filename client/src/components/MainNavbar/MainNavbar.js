@@ -165,7 +165,6 @@ const MainNavbar = (props) => {
                                             </NavLink>
                                         </li>
                                     </ul>
-<<<<<<< HEAD
                                 </li>
                             </ul>
 
@@ -226,13 +225,11 @@ const MainNavbar = (props) => {
                                     <NavLink className="nav-link" activeClassName="is-active" to="/panier" exact>
                                         <i className="fas fa-shopping-basket"></i>
                                         <span className="
-=======
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link" activeClassName="is-active" to="/panier" exact>
                                     <i className="fas fa-shopping-basket"></i>
                                     <span className="
->>>>>>> 23c530b662f58793248de667b8baed94c1bec067
                                     nav-title">Panier</span>
                                     </NavLink>
                                 </li>
