@@ -39,6 +39,8 @@ db.article.belongsTo(db.product_category, {
 db.client = require("./clients/clients.model")(sequelize, Sequelize);
 db.address = require("./clients/addresses.model.js")(sequelize, Sequelize);
 db.card = require("./clients/cards.model.js")(sequelize, Sequelize);
+db.orders = require("./order/orders.model.js")(sequelize, Sequelize);
+db.order_details = require("./order/orderDetails.model.js")(sequelize, Sequelize);
 
 //  un carte a un client 
 db.card.belongsTo(db.client, {
