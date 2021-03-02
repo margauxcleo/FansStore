@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
 import { useState } from "react";
+import { NavLink } from 'react-router-dom';
 
 const SignIn = (props) => {
 // const { clientId } = useParams();
@@ -67,9 +68,11 @@ return (
                   </Button>
                 </Form.Group>
                 <Form.Group>
+                  <NavLink to="/compte/inscription">
                   <Button variant="secondary" disabled={!validateFormFields()} type="submit" size="lg" block>
                    Créer un compte
                   </Button>
+                  </NavLink>
                 </Form.Group>
                 </Form>
             </Modal.Body>
