@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
 import { useState } from "react";
+import { NavLink } from 'react-router-dom';
 import './Inscription.css';
 
 const Inscription = (props) => {
@@ -108,9 +109,11 @@ return (
                         </Button>
                         </Form.Group>
                         <Form.Group>
+                            <NavLink to="/compte/connexion">
                             <Button variant="primary" type="submit">
                                 J'ai déjà un compte, me connecter
                             </Button>
+                            </NavLink>
                         </Form.Group>
                 </Form>
             </Modal.Body>
