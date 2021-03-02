@@ -17,11 +17,7 @@ module.exports = (sequelize, Sequelize) => {
         total_price: {
             type: Sequelize.DECIMAL,
             allowNull: false
-        },
-        card_cvv: {
-            type: Sequelize.INTEGER,
-            allowNull: false
-        },
+        }
     },
         {tableName: 'orders', timestamps: false, underscored: false}
     );
