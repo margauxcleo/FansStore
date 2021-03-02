@@ -13,6 +13,9 @@ import Article from './components/Article/Article';
 import SignIn from './components/Clients/SignIn';
 import SignOut from './components/Clients/SignOut';
 
+import LogIn from './components/Clients/LogIn';
+import ClientInfos from './components/Clients/ClientInfos';
+
 import Error from './components/Error/Error';
 
 import './App.css';
@@ -22,11 +25,29 @@ import 'bootstrap/dist/css/bootstrap.css';
 // on fait du destructuring pour importer nos actions 
 // import { setHarryPotter, setMarvel, setSda, setStarWars, setCollections } from "./actions";
 
+// function setToken(userToken) {
+//   // pour conserver tout le user récupérer => on doit transformer l'objet json en string, peut poser pb ici
+//   localStorage.setItem('token', JSON.stringify(userToken));
+// }
+
+// function getToken() {
+//   const tokenString = localStorage.getItem('token');
+//   const userToken = JSON.parse(tokenString);
+//   return userToken?.token
+// }
+
 function App(props) {
 
   //modal du login
-  const [signInModalShow, setSignInModalShow] = useState(false);
+  // const [signInModalShow, setSignInModalShow] = useState(false);
+  
+  // pour le login 
+  // const [token, setToken] = useState();
+  // const token = getToken();
 
+  // if(!token) {
+  //   return <LogIn setToken={setToken} />
+  // }
 
   // const { setThemeOnClick } = props;
 
@@ -62,13 +83,13 @@ function App(props) {
   return (
     <>
       <Router>
-        <MainNavbar setSignInModalShow={setSignInModalShow}>
+        <MainNavbar>
           
         </MainNavbar>
-        <SignIn
+        {/* <SignIn
             show={signInModalShow}
             onHide={() => setSignInModalShow(false)}
-          />
+          /> */}
         
 
         <div className="main">
@@ -79,10 +100,14 @@ function App(props) {
 
             <Route path={"/produits"} exact component={MainUniverse}/>
 
-            <Route path="/produits/produit/:id" exact component={Article} />
+            <Route path="/produits/produit/:id" component={Article} />
 
-            {/* <Route path="/signIn" exact component={SignIn} /> */}
-            <Route path="/signOut" exact component={SignOut} />
+            {/* <Route path="/compte/connexion" exact component={SignIn} /> */}
+            <Route path="/signOut" component={SignOut} />
+            {/* <Route path="/compte/inscription" component={SignUp} /> */}
+
+
+            <Route path="/infos" component={ClientInfos} />
 
             <Route path="*">
               <Error />
