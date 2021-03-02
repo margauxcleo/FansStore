@@ -1,39 +1,55 @@
-import Modal from 'react-bootstrap/Modal';
-import ModalHeader from 'react-bootstrap/ModalHeader';
-import ModalTitle from 'react-bootstrap/ModalTitle';
-import ModalBody from 'react-bootstrap/ModalBody'
-import ModalFooter from 'react-bootstrap/ModalFooter';
-import Button from 'react-bootstrap/Button';
-
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from 'react-bootstrap/Col';
+import { useState } from "react";
 
 const SignIn = (props) => {
-    return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
+// const { clientId } = useParams();
+const { setSignInModalShow } = props;
+const { setThemeOnClick } = props;
+const [show, setShow] = useState(false);
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+const [checked, setChecked] = useState(false)
+const handleClick = () => setChecked(!checked)
+
+return (
+    <>
+    <span onClick={handleShow} className="nav-title">Connexion</span>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Please Sign In</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Control type="email" placeholder="Email address" />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Control type="password" placeholder="Password" />
+                </Form.Group>
+                <Form.Group controlId="formBasicCheckbox">
+                  <Form.Check type="checkbox" label="Remember me" checked/>
+                </Form.Group>
+                <Form.Group>
+                  <Button variant="primary" type="submit" size="lg" block>
+                    Sign In
+                  </Button>
+                </Form.Group>
+                <Form.Group>
+                  <Button variant="secondary" type="submit" size="lg" block>
+                   Créer un compte
+                  </Button>
+                </Form.Group>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
+            </Modal.Footer>
+        </Modal>
+    </>
+)
+
 }
-
-
 
 export default SignIn;
