@@ -1,24 +1,18 @@
 import { NavLink } from 'react-router-dom';
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Inscription from '../Inscription/Inscription';
+import SignIn from '../Clients/SignIn'
 import { useState } from "react";
 // import { useParams } from "react";
 import './MainNavbar.css';
+import SignOut from '../Clients/SignOut';
+
 
 const MainNavbar = (props) => {
 
     // const { clientId } = useParams();
     const { setSignInModalShow } = props;
     const { setThemeOnClick } = props;
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const [checked, setChecked] = useState(false)
-    const handleClick = () => setChecked(!checked)
-
+    
     return (
         <>
             <header>
@@ -93,89 +87,12 @@ const MainNavbar = (props) => {
                                 </li>
                             </ul>
                             <ul className="navbar-nav ms-auto">
-                                <i className="fa fa-user mt-2"></i>
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" activeclassname="is-active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Compte
-                                    </a>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li>
-                                            <NavLink
-                                                className="dropdown-item"
-                                                to="/compte/inscription"
-                                                exact
-                                            >
-                                                <span onClick={handleShow} className="nav-title">Inscription</span>
-                                                <Modal show={show} onHide={handleClose}>
-                                                    <Modal.Header closeButton>
-                                                        <Modal.Title>Informations nécessaires</Modal.Title>
-                                                    </Modal.Header>
-                                                    <Modal.Body>
-                                                        <Form>
-                                                            <Form.Row className="mb-4">
-                                                                <Col className="mr-5">
-                                                                    <Form.Control size="md" placeholder="First name" />
-                                                                </Col>
-                                                                <Col>
-                                                                    <Form.Control size="md" placeholder="Last name" />
-                                                                </Col>
-                                                            </Form.Row>
-                                                            <Form.Row className="mb-4">
-                                                                <Col className="mr-5">
-                                                                    <Form.Control size="md" placeholder="Email Address" />
-                                                                </Col>
-                                                                <Col>
-                                                                    <Form.Control size="md" placeholder="Date" type="date" />
-                                                                </Col>
-                                                            </Form.Row>
-                                                            <Form.Row className="mb-4">
-                                                                <Col className="mr-5">
-                                                                    <Form.Control size="md" placeholder="Password" type="password" />
-                                                                </Col>
-                                                                <Col>
-                                                                    <Form.Control size="md" placeholder="Password Check" type="password" />
-                                                                </Col>
-                                                            </Form.Row>
-                                                            <Form.Group id="formGridCheckbox">
-                                                                <Form.Check type="checkbox" label="Je certifie avoir pris connaissances des règles d'utilisations" checked />
-                                                            </Form.Group>
-                                                            <Form.Group>
-                                                                <Button variant="primary" type="submit">
-                                                                    Créer mon compte
-                                                </Button>
-                                                            </Form.Group>
-                                                            <Form.Group>
-                                                                <Button variant="primary" type="submit">
-                                                                    J'ai déjà un compte, me connecter
-                                                </Button>
-                                                            </Form.Group>
-                                                        </Form>
-                                                    </Modal.Body>
-                                                    <Modal.Footer>
-                                                    </Modal.Footer>
-                                                </Modal>
-                                            </NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink
-                                                className="dropdown-item"
-                                                to="/compte/connexion"
-                                                exact
-                                            >
-                                                <span className="nav-title">Connexion</span>
-                                            </NavLink>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-
-                            <ul className="navbar-nav ms-auto">
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" activeclassname="is-active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i className="fas fa-user"></i>
                                         <span className="nav-title">Compte</span>
                                     </a>
-                                    {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         {clientId ? (
                                             <>
                                                 <li>
@@ -188,39 +105,38 @@ const MainNavbar = (props) => {
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink
-                                                        className="dropdown-item"
-                                                        to="/signOut"
-                                                    >
-                                                        <i className="fas fa-user-alt-slash"></i>
-                                                        <span className="nav-title">Se déconnecter</span>
-                                                    </NavLink>
-                                                </li>
+                                                <NavLink
+                                                    className="dropdown-item"
+                                                    to="/compte/deconnexion"
+                                                    exact
+                                                >
+                                                <SignOut/>
+                                            </NavLink>
+                                        </li>
                                             </>
                                         ) : (
                                                 <>
-                                                    <li>
-                                                        <a
-                                                            className="dropdown-item"
-                                                            // to="/signIn"
-                                                            onClick={() => setSignInModalShow(true)}
-                                                        >
-                                                            <i className="fas fa-user-check"></i>
-                                                            <span className="nav-title">Se connecter</span>
-                                                        </a>
+                                                   <li>
+                                                    <NavLink
+                                                        className="dropdown-item"
+                                                        to="/compte/connexion"
+                                                        exact
+                                                    >
+                                                        <SignIn/>
+                                                    </NavLink>
                                                     </li>
                                                     <li>
-                                                        <NavLink
-                                                            className="dropdown-item"
-                                                            to="/signUp"
-                                                        >
-                                                            <i className="fas fa-user-plus"></i>
-                                                            <span className="nav-title">Créer un compte</span>
-                                                        </NavLink>
-                                                    </li>
+                                                    <NavLink
+                                                        className="dropdown-item"
+                                                        to="/compte/inscription"
+                                                        exact
+                                                    >
+                                                        <Inscription/>
+                                                    </NavLink>
+                                                </li>
                                                 </>
                                             )}
-                                    </ul> */}
+                                    </ul> }
                                 </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" activeClassName="is-active" to="/panier" exact>

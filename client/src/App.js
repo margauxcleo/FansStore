@@ -9,15 +9,12 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
-
-import SignIn from './components/Clients/SignIn';
 import SignOut from './components/Clients/SignOut';
 
 import LogIn from './components/Clients/LogIn';
 import ClientInfos from './components/Clients/ClientInfos';
 
 import Error from './components/Error/Error';
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
