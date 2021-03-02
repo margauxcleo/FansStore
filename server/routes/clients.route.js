@@ -21,6 +21,7 @@ module.exports = app => {
         check('phone').not().isEmpty().bail()
     ], 
     client.createClient);
+
     // créer une adresse - non testé à date
     router.post("/addAddress", [
         check('address_name').not().isEmpty().bail(),
@@ -30,6 +31,7 @@ module.exports = app => {
         check('fk_clientId').not().isEmpty().bail()
     ],
     client.createAddress);
+
     // créer une carte - non testé à date
     router.post("/addCard", [
         check('card_name').not().isEmpty().bail(),
@@ -39,9 +41,6 @@ module.exports = app => {
         check('fk_clientId').not().isEmpty().bail()
     ],
     client.createCard);
-
-    // créer une adresse client
-    // créer un card client 
 
     // connexion ou update client
     // This protected route must be accessed either by passing both username + password,
