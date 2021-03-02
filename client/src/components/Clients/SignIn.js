@@ -13,6 +13,17 @@ const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 const [checked, setChecked] = useState(false)
 const handleClick = () => setChecked(!checked)
+const [userEmail, setUserEmail] = useState("");
+const [password, setPassword] = useState("");
+
+function validateFormFields() {
+  return userEmail.length > 8 && password.length > 8;
+  }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  }
+    
 
 return (
     <>
@@ -22,15 +33,33 @@ return (
                 <Modal.Title>Please Sign In</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicEmail">
-                  <Form.Control type="email" placeholder="Email address" />
+                  <Form.Control 
+                  type="email" 
+                  placeholder="Email address" 
+                  value={userEmail}
+                  onChange={e => setUserEmail(e.target.value)}
+                  pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})"
+                  required
+                  />
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
-                  <Form.Control type="password" placeholder="Password" />
+                  <Form.Control 
+                  type="password" 
+                  placeholder="Password" 
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})"
+                  required
+                  />
                 </Form.Group>
                 <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check type="checkbox" label="Remember me" checked/>
+                  <Form.Check 
+                  type="checkbox" 
+                  label="Remember me" 
+                  onChange={e => handleClick(e.target.value)}
+                  />
                 </Form.Group>
                 <Form.Group>
                   <Button variant="primary" type="submit" size="lg" block>
@@ -38,7 +67,7 @@ return (
                   </Button>
                 </Form.Group>
                 <Form.Group>
-                  <Button variant="secondary" type="submit" size="lg" block>
+                  <Button variant="secondary" disabled={!validateFormFields()} type="submit" size="lg" block>
                    Créer un compte
                   </Button>
                 </Form.Group>
