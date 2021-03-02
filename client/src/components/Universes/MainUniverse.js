@@ -33,10 +33,9 @@ const MainUniverse = (props) => {
     const [apiPath, setApiPath] = useState("produits");
 
     const [articles, setArticles] = useState([]);
-
-    // const catFiltreInitialState = {"status" : "inactif"}; 
+ 
     const [catFiltre, setCatFiltre ] = useState([]);
-    const [checkFilter, setCheckFilter ] = useState(false);
+    const [checkEmpty, setCheckEmpty ] = useState(false);
     
     const [mainTitle, setMainTitle] = useState("Nos collections");
 
@@ -69,14 +68,14 @@ const MainUniverse = (props) => {
         // reset des filtres
         setCatFiltre([]);
         // on reset le check au state initial 
-        setCheckFilter(false);
+        setCheckEmpty(false);
         event.preventDefault();
         if (condition !== 0) {
             let articlesByCat = articles.filter(article => article.fk_category === condition);
             setCatFiltre(articlesByCat);
             console.log(articlesByCat);
             if(articlesByCat.length === 0) {
-                setCheckFilter(true);
+                setCheckEmpty(true);
             }
         }
         else {
@@ -91,7 +90,7 @@ const MainUniverse = (props) => {
         .then((result) => {
             console.log(result);
             setArticles(result);
-            setCheckFilter(false);
+            setCheckEmpty(false);
             setCatFiltre([]);
         });
     }, [apiPath]);
@@ -109,7 +108,7 @@ const MainUniverse = (props) => {
                 < Articles 
                     articles={articles} 
                     catFiltre={catFiltre} 
-                    checkFilter={checkFilter} 
+                    checkEmpty={checkEmpty} 
                     imgPath={imgPath} 
                     themeStyle={themeStyle} 
                     setCategoryOnClick={setCategoryOnClick}/>
