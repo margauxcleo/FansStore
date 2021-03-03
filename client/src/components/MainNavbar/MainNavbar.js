@@ -49,7 +49,7 @@ const MainNavbar = (props) => {
                                                 className="dropdown-item"
                                                 to="/univers/harry-potter"
                                                 exact
-                                                onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter", "hp")}
+                                                // onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter", "hp")}
                                             >
                                                 <span className="nav-title">Harry Potter</span>
                                             </NavLink>
