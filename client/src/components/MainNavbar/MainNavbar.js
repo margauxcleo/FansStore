@@ -12,6 +12,7 @@ const MainNavbar = (props) => {
     // const { clientId } = useParams();
     const { setSignInModalShow } = props;
     const { setThemeOnClick } = props;
+    const clientId = "";
     
     return (
         <>
