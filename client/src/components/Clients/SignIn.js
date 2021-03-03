@@ -1,85 +1,53 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
+import SignInContent from './SignInContent.js';
+import {useForm} from 'react-hook-form';
 import { useState } from "react";
-import { NavLink } from 'react-router-dom';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import './content.css';
+
+const schema = yup.object().shape({
+  email: yup.string().required(<div className="alert alert-danger" role="alert">Entrez votre email svp</div>).email(),
+  password: yup.string().required(<div className="alert alert-danger" role="alert">Entrez votre mot de passe svp</div>).matches(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/,
+      "le mot de passe doit contenir minimum 8 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial"
+    ),
+})
 
 const SignIn = (props) => {
-// const { clientId } = useParams();
-const { setSignInModalShow } = props;
-const { setThemeOnClick } = props;
-const [show, setShow] = useState(false);
-const handleClose = () => setShow(false);
-const handleShow = () => setShow(true);
-const [checked, setChecked] = useState(false)
-const handleClick = () => setChecked(!checked)
-const [userEmail, setUserEmail] = useState("");
-const [password, setPassword] = useState("");
+  const {register, handleSubmit, errors} = useForm({
+    resolver: yupResolver(schema),
+  });
 
-function validateFormFields() {
-  return userEmail.length > 8 && password.length > 8;
-  }
-
-function handleSubmit(event) {
-  event.preventDefault();
-  }
-    
-
+  const onSubmit = (data) => console.log(data);
+  console.log(errors);
 return (
-    <>
-    <span onClick={handleShow} className="nav-title">Connexion</span>
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title>Please Sign In</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Control 
-                  type="email" 
-                  placeholder="Email address" 
-                  value={userEmail}
-                  onChange={e => setUserEmail(e.target.value)}
-                  pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})"
-                  required
-                  />
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword">
-                  <Form.Control 
-                  type="password" 
-                  placeholder="Password" 
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})"
-                  required
-                  />
-                </Form.Group>
-                <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check 
-                  type="checkbox" 
-                  label="Remember me" 
-                  onChange={e => handleClick(e.target.value)}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Button variant="primary" type="submit" size="lg" block>
-                    Sign In
-                  </Button>
-                </Form.Group>
-                <Form.Group>
-                  <NavLink to="/compte/inscription">
-                  <Button variant="secondary" disabled={!validateFormFields()} type="submit" size="lg" block>
-                   Créer un compte
-                  </Button>
-                  </NavLink>
-                </Form.Group>
-                </Form>
-            </Modal.Body>
-            <Modal.Footer>
-            </Modal.Footer>
-        </Modal>
-    </>
+    <div>
+      <h1>Connexion</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {SignInContent.inputs.map((input, key)=>{
+          return(
+            <div key={key}>
+              <p>
+                <label>{input.label}</label>
+              </p>
+              <p>
+                <input name={input.name} className="input" type={input.type} ref={register} />
+              </p>
+              <p className="messages">{errors[input.name]?.message}</p>
+            </div>
+          )
+        })}
+      <div className="form-group">
+        <button className="btn btn-primary btn-lg" type="submit">Sign in</button>
+      </div>
+      <div className="form-group">
+        <button  type="submit" className="btn btn-light">Créer un compte</button>
+      </div>
+      </form>
+    </div>
 )
 
 }

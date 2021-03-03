@@ -1,6 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import Inscription from '../Inscription/Inscription';
-import SignIn from '../Clients/SignIn'
 import { useState } from "react";
 // import { useParams } from "react";
 import './MainNavbar.css';
@@ -9,10 +7,10 @@ import SignOut from '../Clients/SignOut';
 
 const MainNavbar = (props) => {
 
+    let clientId = "";
     // const { clientId } = useParams();
     const { setSignInModalShow } = props;
     const { setThemeOnClick } = props;
-    const clientId = "";
     
     return (
         <>
@@ -123,7 +121,7 @@ const MainNavbar = (props) => {
                                                         to="/compte/connexion"
                                                         exact
                                                     >
-                                                        <SignIn/>
+                                                        <span className="nav-title">Connexion</span>
                                                     </NavLink>
                                                     </li>
                                                     <li>
@@ -132,7 +130,7 @@ const MainNavbar = (props) => {
                                                         to="/compte/inscription"
                                                         exact
                                                     >
-                                                        <Inscription/>
+                                                        <span className="nav-title">Inscription</span>
                                                     </NavLink>
                                                 </li>
                                                 </>
