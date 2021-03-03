@@ -6,7 +6,7 @@ const SignUpContent = {
             type: 'text'
         },
         {
-            label: 'Last name',
+            label: 'Nom',
             name: 'nom',
             type: 'text'
         },
@@ -21,12 +21,12 @@ const SignUpContent = {
             type: 'date'
         },
         {
-            label: 'Password',
+            label: 'Mot de passe',
             name: 'mdp',
             type: 'password'
         }, 
         {
-            label: 'Password Check',
+            label: 'Vérification mot de passe',
             name: 'mdpcheck',
             type: 'password'
         }

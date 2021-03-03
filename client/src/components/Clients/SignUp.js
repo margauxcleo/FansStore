@@ -32,7 +32,7 @@ const SignUp = (props) => {
   console.log(errors);
 return (
     <div>
-      <h1>Connexion</h1>
+      <h1>Inscription</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         {SignUpContent.inputs.map((input, key)=>{
           return(
