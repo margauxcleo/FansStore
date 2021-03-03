@@ -12,6 +12,7 @@ import Article from './components/Article/Article';
 import SignOut from './components/Clients/SignOut';
 
 import LogIn from './components/Clients/LogIn';
+import Login2 from './components/Clients/Login2';
 import ClientInfos from './components/Clients/ClientInfos';
 
 import Error from './components/Error/Error';
@@ -34,19 +35,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 // }
 
 function App(props) {
-
-  //modal du login
-  // const [signInModalShow, setSignInModalShow] = useState(false);
-  
-  // pour le login 
-  // const [token, setToken] = useState();
-  // const token = getToken();
-
-  // if(!token) {
-  //   return <LogIn setToken={setToken} />
-  // }
-
-  // const { setThemeOnClick } = props;
 
   // console.log(useSelector((state) => state));
   // // renvoi l'objet avec nos reducers 
@@ -80,29 +68,23 @@ function App(props) {
   return (
     <>
       <Router>
-        <MainNavbar>
-          
-        </MainNavbar>
-        {/* <SignIn
-            show={signInModalShow}
-            onHide={() => setSignInModalShow(false)}
-          /> */}
+        <MainNavbar/>
         
-
         <div className="main">
           <Switch>
             <Route path="/" exact component={Home} />
 
-            {/* <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/>  */}
+            <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/> 
 
-            <Route path={"/produits"} exact component={MainUniverse}/>
+            <Route path={"/produits"} component={MainUniverse}/>
 
             <Route path="/produits/produit/:id" component={Article} />
 
             {/* <Route path="/compte/connexion" exact component={SignIn} /> */}
             <Route path="/signOut" component={SignOut} />
             {/* <Route path="/compte/inscription" component={SignUp} /> */}
-
+            <Route path="/testloginsignin" component={LogIn} />
+            <Route path="/testlogin" component={Login2} />
 
             <Route path="/infos" component={ClientInfos} />
 
