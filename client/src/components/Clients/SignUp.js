@@ -1,16 +1,14 @@
 
-import SignUpContent from './SignUpContent.js';
 import {useForm} from 'react-hook-form';
-import { useState } from "react";
-
-
-
+import { useRef } from "react";
 
 const SignUp = () => {
- const onSubmit = data => {
-     console.log(data);
+ const onSubmit = async data => {
+    console.log('onSubmit: ', JSON.stringify(data))
  };
- const {register, handleSubmit, errors} = useForm();
+ const {register, handleSubmit, errors, watch} = useForm({});
+ const password = useRef({});
+ password.current = watch("password", "");
 
 return (
     <div>
@@ -64,28 +62,33 @@ return (
                 )}
 
                 {errors.password && errors.password.type === "minLength" &&  (
-                    <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
+                    <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères et maximum 15 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
                 )} 
 
 
                 {errors.password && errors.password.type === "pattern" &&  (
-                    <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
+                    <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères et maximum 15 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
                 )} 
             </div>
             <div className="col">
-                <input name="passwordcheck" type="password" placeholder="Vérification mot de passe" ref={register({required: true, minLength: 8, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/})}/>
+                <input name="passwordcheck" type="password" placeholder="Vérification mot de passe" ref={register({required: true, minLength: 8, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/, validate: value => value === password.current || "les mots de passe ne correspondent pas"})}/>
                 {errors.passwordcheck && errors.passwordcheck.type === "required" && (
                     <div className="alert alert-danger" role="alert">Veuillez entrer un mot de passe svp</div>
                 )}
 
                 {errors.passwordcheck && errors.passwordcheck.type === "minLength" &&  (
-                    <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
+                    <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères et maximum 15 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
                 )} 
 
 
                 {errors.passwordcheck && errors.passwordcheck.type === "pattern" &&  (
-                    <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
+                    <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères et maximum 15 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
                 )} 
+
+                {errors.passwordcheck && errors.passwordcheck.type === "validate" &&  (
+                    <div className="alert alert-danger" role="alert">les mots de passe ne correspondent pas </div>
+                )} 
+
             </div>
         </div>
        <div className="row mb-4">
@@ -102,7 +105,7 @@ return (
         <button className="btn btn-primary btn-lg" type="submit">Créer un compte</button>
       </div>
       <div className="form-group">
-        <button className="btn btn-primary btn-lg" type="submit">J'ai déjà uncompte, me connecter</button>
+        <button className="btn btn-primary btn-lg" type="submit">J'ai déjà un compte, me connecter</button>
       </div>
       </form>
     </div>
