@@ -4,33 +4,43 @@ const Client = db.client;
 
 const Op = db.Sequelize.Op;
 
-var jwt = require("jsonwebtoken");
-var bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 // pour définir une valeur au hasard, qui sera différent à chaque fois
 const saltRounds = 15;
 
 const { BadRequest, NotFound } = require('../utils/errors');
-const { validationResult } = require('express-validator')
+const { validationResult } = require('express-validator');
+
+const { verifyJWT } = require("../middleware/verifyJwt");
 
 exports.signup = (req, res) => {
 
+  // 1. On stocke le résultat de validator dans la const errors
   const errors = validationResult(req);
-  var body = req.body;
+  // 2. On récupère les données de la requête
+  const body = req.body;
   body.status = false;
 
-  // vérifier si les validations de Cors passent, sinon err
+  // 3. Ici, on vérifie si les conditions du validator passées dans le auth route ont été remplies
   try {
+    // Si on a une erreur, on retourne l'erreur dans un array 
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() })
     }
 
-    // crypter le mot de passe 
+    // Si on ne rencontre pas d'erreur, on passe à la vérification suivante 
+    // 4. On utilise bcrypt pour enregistrer le mot de passe en crypté
+    //  saltRounds est une variable qui contient le nombre de caractère aléatoires mélangés avec le mdp 
       bcrypt.hash(body.password, saltRounds, (err, hash) => {
 
+        // Si il y a un pb lors du hash, on l'indique ici
         if (err) {
           console.log(err);
         }
-        // Model d'un client 
+
+        // 5. On créé le modèle du client, et on précise ce à quoi chaque champs va correspondre
+        // Le mot de passe enregistré est bien le mot de passe crypté 
         const client = {
           clientId: body.clientId,
           first_name: body.first_name,
@@ -41,11 +51,23 @@ exports.signup = (req, res) => {
           phone: body.phone
         };
 
-        // Créer un nouveau client
+        // 6. On utilise la méthode create de Sequelize pour créer le nouveau client dans la BDD
         Client.create(client)
           .then(client => {
+            // 7. On renvoie le client (verif à ce stade )
             res.send(client);
+            // 7. On crée le token du client, pour que dès qu'il soit créé, 
+            // son token est généré, ce qui permettra de mettre en place le localStorage sans qu'il ait besoin de se connecter manuellement 
+            res.status(200).json({
+              clientId: client.clientId,
+              token: jwt.sign(
+                { clientId: client.clientId },
+                config.secret,
+                { expiresIn: '24h' }
+              )
+            });
           })
+          // En cas d"erreur lors de la création du client en BDD, on renvoie un msg 
           .catch(err => {
             res.status(500).send({
               message:
@@ -54,22 +76,25 @@ exports.signup = (req, res) => {
           });
       });
 
-
   } catch (err) {
     next(err)
   }
 };
 
 exports.signin = (req, res) => {
+  // 1. On récupère les données envoyées dans la requête 
   const email = req.body.email;
   const password = req.body.password;
 
+  // 2. Avec Sequelize, on cherche si l'email envoyé correspond à un utilisateur de notre BDD
   Client.findOne({
     where: {
       email: email
     }
   })
+  // 3. Si l'email de l'utilisateur existe, on retourne le résultat de la req dans user 
     .then(user => {
+      // Si l'email n'existe pas, on retourne un message d'erreur 
       if (!user) {
         return res.status(401).send({ message: "Email non trouvé en base de données." });
       } 
@@ -80,11 +105,20 @@ exports.signin = (req, res) => {
       //   password,
       //   user.dataValues.password // ou user[0].password à tester
       // );
+
+      // 4. Si l'email existe bien, on passe à la vérification du mot de passe 
+      // On compare le mot de passe envoyé dans la requête avec le mot de passe crypté présent en BDD
+      // bcrypt permet de décrypter le mot de passe 
       bcrypt.compare(password, user.dataValues.password)
       .then(valid => {
+        // Si les mots de passe sont différents, on rtourne un message d'erreur 
         if (!valid) {
           return res.status(401).json({ error: 'Mot de passe incorrect !' });
         }
+        
+        // 5. Si les mots de passe sont identiques, on créé le token 
+        // ici, on appelle config.secret, qui est notre clé de sécurité 
+        // on précise également une période d'expiration au token 
         res.status(200).json({
           clientId: user.clientId,
           token: jwt.sign(
@@ -101,3 +135,13 @@ exports.signin = (req, res) => {
       res.status(500).send({ message: err.message });
     });
 };
+
+exports.is_verify = async (req, res) => {
+  try {
+    res.json(true);
+
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).send("Server error");
+  }
+}

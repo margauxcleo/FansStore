@@ -73,6 +73,7 @@ const Login = (props) =>  {
                 name="email"
                 onChange={e => setUserEmail(e.target.value)}
                 validations={[required]}
+                value={email}
               />
             </div>
 
@@ -84,6 +85,7 @@ const Login = (props) =>  {
                 name="password"
                 onChange={e => setPassword(e.target.value)}
                 validations={[required]}
+                value={password}
               />
             </div>
 

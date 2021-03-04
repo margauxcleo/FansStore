@@ -65,7 +65,37 @@ function App(props) {
   //   dispatch(setStarWars());
   // }
 
-
+  // ----------------------------------------------------------------
+  //  AUTH 
+    const [isAuthenticated, setAuthenticated] = useState(false);
+  
+    const setAuth = (boolean) => {
+      setAuthenticated(boolean);
+    };
+  
+    const isAuth = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/is_verify", {
+          method : 'GET',
+          mode : 'cors',
+          headers: {
+            jwt : localStorage.jwt
+          }
+        });
+  
+        const auth = await response.json();
+  
+        auth === true ? setAuthenticated(true) : setAuthenticated(false);
+  
+      } catch (e) {
+        console.error(e.message);
+      }
+    };
+  
+    useEffect(() => {
+      isAuth();
+    })
+  
 
   return (
     <>
