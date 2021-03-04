@@ -1,9 +1,5 @@
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Col from 'react-bootstrap/Col';
 import SignInContent from './SignInContent.js';
 import {useForm} from 'react-hook-form';
-import { useState } from "react";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import './content.css';
@@ -12,11 +8,12 @@ const schema = yup.object().shape({
   email: yup.string().required(<div className="alert alert-danger" role="alert">Entrez votre email svp</div>).email(),
   password: yup.string().required(<div className="alert alert-danger" role="alert">Entrez votre mot de passe svp</div>).matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/,
-      "le mot de passe doit contenir minimum 8 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial"
+      "le mot de passe doit contenir minimum 8 caractères et maximum 15 caractèrres, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial"
     ),
 })
 
 const SignIn = (props) => {
+  
   const {register, handleSubmit, errors} = useForm({
     resolver: yupResolver(schema),
   });
