@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 // import { useSelector, useDispatch} from "react-redux";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import MainNavbar from './components/MainNavbar/MainNavbar';
 import Footer from './components/Footer/Footer';
@@ -75,7 +75,7 @@ function App(props) {
   
     const isAuth = async () => {
       try {
-        const response = await fetch("http://localhost:8000/is_verify", {
+        const response = await fetch("http://localhost:8088/auth/is_verify", {
           method : 'GET',
           mode : 'cors',
           headers: {
@@ -106,9 +106,9 @@ function App(props) {
           <Switch>
             <Route path="/" exact component={Home} />
 
-            <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/> 
+            {/* <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/>  */}
 
-            <Route path={"/produits"} component={MainUniverse}/>
+            <Route path="/produits" exact component={MainUniverse}/>
 
             <Route path="/produits/produit/:id" component={Article} />
 
