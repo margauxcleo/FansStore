@@ -111,10 +111,11 @@ function App(props) {
             {/* <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/>  */}
 
             <Route path="/produits" exact component={MainUniverse}/>
-
             <Route path="/produits/produit/:id" component={Article} />
 
-            <Route path="/compte/connexion" exact component={SignIn} />
+            {/* <Route path="/compte/connexion" exact component={SignIn} /> */}
+            <Route exact path='/compte/connexion'
+              render={(props) => !isAuthenticated ? <SignIn { ...props } setAuth={setAuth} /> : <Redirect to='/' />} />
             <Route path="/compte/deconnexion" component={SignOut} />
             {/* <Route path="/compte/inscription" exact component={SignUp} />  */}
             <Route exact path='/compte/inscription'

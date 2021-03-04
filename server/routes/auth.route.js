@@ -29,7 +29,10 @@ module.exports = app => {
       controller.signup
     );
   
-    router.post("/signin", controller.signin);
+    router.post("/signin", [
+      check('email').isEmail().bail(),
+      check('password').not().isEmpty().bail(),
+    ], controller.signin);
 
     // à chaque render / changement de page, on effectuera cette vérification
     // permet de savoir un token existe ou non
