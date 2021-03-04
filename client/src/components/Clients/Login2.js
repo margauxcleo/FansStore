@@ -73,7 +73,7 @@ const Login = (props) =>  {
                 name="email"
                 onChange={e => setUserEmail(e.target.value)}
                 validations={[required]}
-                value={email}
+                // value={email}
               />
             </div>
 

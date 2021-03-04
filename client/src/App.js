@@ -115,8 +115,10 @@ function App(props) {
             <Route path="/produits/produit/:id" component={Article} />
 
             <Route path="/compte/connexion" exact component={SignIn} />
-            <Route path="/signOut" component={SignOut} />
-            <Route path="/compte/inscription" exact component={SignUp} /> 
+            <Route path="/compte/deconnexion" component={SignOut} />
+            {/* <Route path="/compte/inscription" exact component={SignUp} />  */}
+            <Route exact path='/compte/inscription'
+              render={(props) => !isAuthenticated ? <SignUp { ...props } setAuth={setAuth} /> : <Redirect to='/' />} />
 
             <Route path="/testlogin" render={(props) => !isAuthenticated ? <Login2 />
             : <Redirect to="/" /> } />

@@ -17,6 +17,7 @@ exports.signup = (req, res) => {
   // 1. On stocke le résultat de validator dans la const errors
   const errors = validationResult(req);
   // 2. On récupère les données de la requête
+  
   const body = req.body;
   body.status = false;
 

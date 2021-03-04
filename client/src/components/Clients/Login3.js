@@ -12,8 +12,6 @@ const Login3 = (props) => {
         event.preventDefault();
         const body = { userEmail, password };
         console.log(body);
-        console.log(userEmail);
-        console.log(password);
       try {
         const response = await fetch('http://localhost:8088/auth/signin', {
             method : 'POST',

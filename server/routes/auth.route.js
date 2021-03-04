@@ -23,7 +23,7 @@ module.exports = app => {
         check('email').isEmail().bail(),
         check('birth_date').not().isEmpty().bail(),
         check('password').not().isEmpty().bail(),
-        check('phone').not().isEmpty().bail(),
+        // check('phone').not().isEmpty().bail(),
         verifySignUp.checkDuplicateEmail,
       ],
       controller.signup
