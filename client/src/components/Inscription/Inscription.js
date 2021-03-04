@@ -86,6 +86,7 @@ return (
                         placeholder="Password" 
                         type="password" 
                         pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})"
+                        required
                         />
                             </Col>
                             <Col>

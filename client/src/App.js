@@ -9,8 +9,10 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
-import SignOut from './components/Clients/SignOut';
 
+import SignOut from './components/Clients/SignOut';
+import SignIn from './components/Clients/SignIn';
+import SignUp from './components/Clients/SignUp';
 import LogIn from './components/Clients/LogIn';
 import Login2 from './components/Clients/Login2';
 import ClientInfos from './components/Clients/ClientInfos';
@@ -80,12 +82,13 @@ function App(props) {
 
             <Route path="/produits/produit/:id" component={Article} />
 
-            {/* <Route path="/compte/connexion" exact component={SignIn} /> */}
+            <Route path="/compte/connexion" exact component={SignIn} />
             <Route path="/signOut" component={SignOut} />
-            {/* <Route path="/compte/inscription" component={SignUp} /> */}
+            <Route path="/compte/inscription" exact component={SignUp} /> 
+
             <Route path="/testloginsignin" component={LogIn} />
             <Route path="/testlogin" component={Login2} />
-
+            
             <Route path="/infos" component={ClientInfos} />
 
             <Route path="*">
