@@ -3,16 +3,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
 import { useState } from "react";
+import './Clients.css';
 
 const SignOut = (props) => {
 // const { clientId } = useParams();
-const { setSignInModalShow } = props;
-const { setThemeOnClick } = props;
 const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
-const [checked, setChecked] = useState(false)
-const handleClick = () => setChecked(!checked)
+
 
 return (
     <>
@@ -27,7 +25,7 @@ return (
                     <Button variant="danger" size="lg" block>Oui</Button>
                     </Form.Group>
                     <Form.Group>
-                    <Button variant="success" size="lg" block>Non, rester connecté</Button>   
+                    <Button variant="success btn btn-secondary" size="lg" block>Non, rester connecté</Button>   
                     </Form.Group>
                 </Form>
             </Modal.Body>

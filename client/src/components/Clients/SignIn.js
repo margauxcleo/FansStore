@@ -1,52 +1,61 @@
-import SignInContent from './SignInContent.js';
 import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import './content.css';
+import {Link} from "react-router-dom";
+import './Clients.css'
 
-const schema = yup.object().shape({
-  email: yup.string().required(<div className="alert alert-danger" role="alert">Entrez votre email svp</div>).email(),
-  password: yup.string().required(<div className="alert alert-danger" role="alert">Entrez votre mot de passe svp</div>).matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/,
-      "le mot de passe doit contenir minimum 8 caractères et maximum 15 caractèrres, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial"
-    ),
-})
+const SignUp = () => {
+ const onSubmit = async data => {
+    console.log('onSubmit: ', JSON.stringify(data))
+ };
+ const {register, handleSubmit, errors} = useForm({});
+ 
 
-const SignIn = (props) => {
-  
-  const {register, handleSubmit, errors} = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
 return (
-    <div>
+    <div className="container-fluid mx-auto col-2">
       <h1>Connexion</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {SignInContent.inputs.map((input, key)=>{
-          return(
-            <div key={key}>
-              <p>
-                <label>{input.label}</label>
-              </p>
-              <p>
-                <input name={input.name} className="input" type={input.type} ref={register} />
-              </p>
-              <p className="messages">{errors[input.name]?.message}</p>
+        <div className="row mb-4">
+          <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <label>Email :</label>
+                <br/>
+                <input name="email" type="email" placeholder="adresse email" ref={register({required: true, minLength: 8})}/>
+                {errors.email && errors.email.type === "required" && (
+                    <div className="alert alert-danger" role="alert">Veuillez entrer un email svp</div>
+                )}
+
+                {errors.email && errors.email.type === "minLength" && (
+                    <div className="alert alert-danger" role="alert">l'email doit faire plus de 8 caractères</div>
+                )} 
             </div>
-          )
-        })}
-      <div className="form-group">
-        <button className="btn btn-primary btn-lg" type="submit">Sign in</button>
-      </div>
-      <div className="form-group">
-        <button  type="submit" className="btn btn-light">Créer un compte</button>
-      </div>
+        </div>
+        <div className="row mb-4">
+        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <label>Mot de passe :</label>
+          <br/>
+          <input name="password" type="password" placeholder="mot de passe" ref={register({required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/})}/>
+          {errors.password && errors.password.type === "required" && (
+            <div className="alert alert-danger" role="alert">Veuillez entrer un mot de passe svp</div>
+          )}
+
+          {errors.password && errors.password.type === "minLength" &&  (
+            <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères et maximum 15 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
+          )} 
+          {errors.password && errors.password.type === "pattern" &&  (
+            <div className="alert alert-danger" role="alert">le mot de passe doit contenir minimum 8 caractères et maximum 15 caractères, 1 majuscule, 1 minuscule, 1 nombre et 1 caractère spécial</div>
+          )} 
+            </div>
+        </div>
+        <div className="form-group">
+          <button className="btn btn-primary" type="submit">Connexion</button>
+        </div>
+        <div className="form-group">
+          <Link to="/compte/inscription">
+          <button className="btn btn-secondary" type="submit">Créer un compte</button>
+          </Link>
+        </div>
       </form>
     </div>
 )
 
 }
 
-export default SignIn;
+export default SignUp;
