@@ -3,3 +3,31 @@
     flex-direction: column;
     align-items: center;
 }
+
+.btn-primary { 
+    color: #fff!important;
+    background-color: #F3DB5D!important;
+    border-color: #F3DB5D!important;
+    max-width: fit-content!important;
+}
+
+.btn-secondary { 
+    color: #fff!important;
+    background-color: #8D9492!important;
+    border-color: #8D9492!important;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus{ 
+    color: #fff!important;
+    background-color: #F3DB5D!important;
+    border-color: #F3DB5D!important;
+    box-shadow: 0 0 0 0.2rem rgb(243 219 93 / 50%)!important;
+}
+
+
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus{ 
+    color: #fff!important;
+    background-color: #8D9492!important;
+    border-color: #8D9492!important;
+    box-shadow: 0 0 0 0.2rem rgb(243 219 93 / 50%)!important;
+}
