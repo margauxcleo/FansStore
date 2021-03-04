@@ -37,14 +37,14 @@ const SignUp = (props) => {
  const {register, handleSubmit, errors} = useForm({});
  
 return (
-    <div className="container-fluid mx-auto col-2">
+    <div className="login-form container-fluid mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-4">
       <h1>Connexion</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="row mb-4">
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <label>Email :</label>
                 <br/>
-                <input name="email" type="email" placeholder="adresse email" ref={register({required: true, minLength: 8})}/>
+                <input className="form-control" name="email" type="email" placeholder="adresse email" ref={register({required: true, minLength: 8})}/>
                 {errors.email && errors.email.type === "required" && (
                     <div className="alert alert-danger" role="alert">Veuillez renseigner un email.</div>
                 )}
@@ -58,7 +58,7 @@ return (
         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <label>Mot de passe :</label>
           <br/>
-          <input name="password" type="password" placeholder="mot de passe" ref={register({required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/})}/>
+          <input className="form-control" name="password" type="password" placeholder="mot de passe" ref={register({required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/})}/>
           {errors.password && errors.password.type === "required" && (
             <div className="alert alert-danger" role="alert">Veuillez renseigner un mot de passe.</div>
           )}
