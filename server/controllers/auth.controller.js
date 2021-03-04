@@ -12,8 +12,6 @@ const saltRounds = 15;
 const { BadRequest, NotFound } = require('../utils/errors');
 const { validationResult } = require('express-validator');
 
-const { verifyJWT } = require("../middleware/verifyJwt");
-
 exports.signup = (req, res) => {
 
   // 1. On stocke le résultat de validator dans la const errors
@@ -82,21 +80,26 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
+  console.log(req.body);
   // 1. On récupère les données envoyées dans la requête 
-  const email = req.body.email;
-  const password = req.body.password;
+  // const email = req.body.email;
+  // console.log(email);
+  // const password = req.body.password;
+  const { userEmail, password } = req.body;
+  console.log(userEmail);
+  console.log(password);
 
   // 2. Avec Sequelize, on cherche si l'email envoyé correspond à un utilisateur de notre BDD
   Client.findOne({
     where: {
-      email: email
+      email: userEmail
     }
   })
   // 3. Si l'email de l'utilisateur existe, on retourne le résultat de la req dans user 
     .then(user => {
       // Si l'email n'existe pas, on retourne un message d'erreur 
       if (!user) {
-        return res.status(401).send({ message: "Email non trouvé en base de données." });
+        return res.status(403).send({ message: "Email non trouvé en base de données." });
       } 
       // si le password n'est pas le bon
       // à remettre en place quand on aura crypté les passwords en bdd 
@@ -113,7 +116,7 @@ exports.signin = (req, res) => {
       .then(valid => {
         // Si les mots de passe sont différents, on rtourne un message d'erreur 
         if (!valid) {
-          return res.status(401).json({ error: 'Mot de passe incorrect !' });
+          return res.status(403).json({ error: 'Mot de passe incorrect !' });
         }
         
         // 5. Si les mots de passe sont identiques, on créé le token 
@@ -128,11 +131,11 @@ exports.signin = (req, res) => {
           )
         });
       })
-      .catch(error => res.status(500).json({ error }));
+      .catch(error => res.status(500).send({ message: "problème étape 4 ou 5" }));
 
     })
     .catch(err => {
-      res.status(500).send({ message: err.message });
+      res.status(500).send({ message: "problème étape 3" });
     });
 };
 

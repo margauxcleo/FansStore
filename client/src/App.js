@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
 // import { useSelector, useDispatch} from "react-redux";
 
@@ -10,11 +10,13 @@ import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
 
+
 import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
-import LogIn from './components/Clients/LogIn';
-import Login2 from './components/Clients/Login2';
+
+import Login2 from './components/Clients/Login2'; // version avec AuthService
+import Login3 from './components/Clients/Login3'; // version sans AuthService
 import ClientInfos from './components/Clients/ClientInfos';
 
 import Error from './components/Error/Error';
@@ -116,10 +118,13 @@ function App(props) {
             <Route path="/signOut" component={SignOut} />
             <Route path="/compte/inscription" exact component={SignUp} /> 
 
-            <Route path="/testloginsignin" component={LogIn} />
-            <Route path="/testlogin" component={Login2} />
+            <Route path="/testlogin" render={(props) => !isAuthenticated ? <Login2 />
+            : <Redirect to="/" /> } />
+            <Route exact path='/login3'
+              render={(props) => !isAuthenticated ? <Login3 { ...props } setAuth={setAuth} /> : <Redirect to='/' />} />
             
-            <Route path="/infos" component={ClientInfos} />
+            <Route exact path="/infos" render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth}/>
+            : <Redirect to="/" /> } />
 
             <Route path="*">
               <Error />
