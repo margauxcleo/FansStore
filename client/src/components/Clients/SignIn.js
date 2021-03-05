@@ -7,7 +7,7 @@ const SignUp = (props) => {
   const setAuth = props.setAuth;
 
   const onSubmit = async data => {
-    console.log('onSubmit: ', JSON.stringify(data))
+    console.log('onSubmit: ', JSON.stringify(data));
 
     try {
       const response = await fetch('http://localhost:8088/auth/signin', {
