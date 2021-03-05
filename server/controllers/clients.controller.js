@@ -12,9 +12,9 @@ exports.allAccess = (req, res) => {
     res.status(200).send("Public Content.");
   };
   
-  exports.userBoard = (req, res) => {
-    res.status(200).send("User Content.");
-  };
+exports.userBoard = (req, res) => {
+res.status(200).send("User Content.");
+};
   
 // ----------------------------------------------------------------
 //  fin test ajout JWT 
@@ -163,7 +163,7 @@ exports.findAllClients = (req, res, next) => {
 // Récupérer un client selon son id 
 exports.findClientById = (req, res, next) => {
 
-    let id = req.params.id;
+    const id = req.params.id;
 
     try {
         if (!id) {
@@ -190,3 +190,36 @@ exports.findClientById = (req, res, next) => {
         next(err);
     }
 };
+
+// Récupérer les infos d'un client par rapport à l'id récupéré dans le token
+
+exports.getClientInfos = (req, res, next) => {
+
+    const id = req.user.id;
+
+    try {
+        if (!id) {
+            throw new BadRequest('Missing required fields: id');
+        }
+
+        Client.findByPk(id, {
+            include: [
+                { model: Card, as: "cards" },
+                { model: Address, as: "addresses" }
+            ]
+        })
+        .then(user => {
+            console.log(user);
+            return res.json(user);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving the client."
+            });
+        })
+
+    } catch (err) {
+        next(err);
+    }
+}

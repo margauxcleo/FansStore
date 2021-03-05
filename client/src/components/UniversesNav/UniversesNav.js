@@ -7,6 +7,12 @@ const UniversesNav = (props) => {
 
     const { setThemeOnClick } = props;
 
+    // créer la fonction handle on click 
+    // dans handle on click, 
+    // 1) setThemeOnCLick
+    // 2) history.push
+    // 
+
     return (
         <>
             <div className="universes-links p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded row d-flex justify-content-around">

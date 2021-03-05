@@ -49,7 +49,6 @@ const MainUniverse = (props) => {
             mode: "cors",
         });
         const parseResponse = await response.json();
-        console.log(parseResponse);
         return parseResponse;
     };
 
@@ -60,10 +59,6 @@ const MainUniverse = (props) => {
         setThemeStyle(className);
     }
 
-    // const reset = () => { 
-    //     setArticles(parseResponse);
-    // }
-
     const setCategoryOnClick = (event, condition) => {
         // reset des filtres
         setCatFiltre([]);
@@ -73,14 +68,14 @@ const MainUniverse = (props) => {
         if (condition !== 0) {
             let articlesByCat = articles.filter(article => article.fk_category === condition);
             setCatFiltre(articlesByCat);
-            console.log(articlesByCat);
+            // console.log(articlesByCat);
             if(articlesByCat.length === 0) {
                 setCheckEmpty(true);
             }
         }
         else {
             setCatFiltre(articles);
-            console.log(articles);
+            // console.log(articles);
         }
     }
 
@@ -88,7 +83,7 @@ const MainUniverse = (props) => {
     useEffect(() => {
         fetchArticles(apiPath)
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             setArticles(result);
             setCheckEmpty(false);
             setCatFiltre([]);

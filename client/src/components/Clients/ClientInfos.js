@@ -1,9 +1,37 @@
-const ClientInfos = () => {
-    // accesible seulement si log 
+import { useState, useEffect } from 'react';
+
+import './Clients.css';
+
+const ClientInfos = (props) => {
+
+    const [infos, setInfos] = useState("");
+
+    const getInfos = async () => {
+        try {
+            const response = await fetch("http://localhost:8088/clients/client/infos", {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    "jwt": localStorage.jwt
+                }
+            });
+            const parseRes = await response.json();
+            console.log(parseRes);
+            setInfos(parseRes);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    useEffect(() => {
+        getInfos();
+    }, []);
+
     return (
         <>
             <div>
-                <h3>React ClientInfos Component</h3>
+                <h1>Mes informations</h1>
+                <h2>Bonjour {infos.first_name} !</h2>
             </div>
         </>
     );

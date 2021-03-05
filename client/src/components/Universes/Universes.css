@@ -29,14 +29,34 @@
     font-size: 5rem;
 }
 
+.sda .articles {
+    background-color: #597D56;
+}
+
 .sda h1 {
     font-family: 'lord_of_the_rings','roboto', 'opensans', sans-serif;
     font-size: 3.5rem;
 }
 
+.sw .articles {
+    background-color: #0A0815;
+}
+
+.sw .nav-articles {
+    background-color: #22445D!important;
+}
+
 .sw h1 {
     font-family: 'star_wars', 'roboto', 'opensans', sans-serif;
     font-size: 3.5rem;
+}
+
+.marvel .articles {
+    background-color: #32549D;
+}
+
+.marvel .nav-articles {
+    background-color: #ec1922!important;
 }
 
 .marvel h1 { 

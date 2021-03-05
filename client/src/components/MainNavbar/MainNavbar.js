@@ -1,16 +1,34 @@
 import { NavLink } from 'react-router-dom';
-import { useState } from "react";
-// import { useParams } from "react";
+import { useState, useEffect } from "react";
+
 import './MainNavbar.css';
-import SignOut from '../Clients/SignOut';
 
 
 const MainNavbar = (props) => {
 
-    let clientId = 1;
-    // const { clientId } = useParams();
-    const { setSignInModalShow } = props;
-    const { setThemeOnClick } = props;
+    const { isAuthenticated } = props;
+
+    const [infos, setInfos] = useState("");
+
+    const getInfos = async () => {
+        try {
+            const response = await fetch("http://localhost:8088/clients/client/infos", {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    "jwt": localStorage.jwt
+                }
+            });
+            const parseRes = await response.json();
+            setInfos(parseRes);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    useEffect(() => {
+        getInfos();
+    }, [isAuthenticated]);
     
     return (
         <>
@@ -47,7 +65,7 @@ const MainNavbar = (props) => {
                                                 className="dropdown-item"
                                                 to="/univers/harry-potter"
                                                 exact
-                                                onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter", "hp")}
+                                                // onClick={(event) => setThemeOnClick(event, "produits/univers/harry-potter", "Harry Potter", "hp")}
                                             >
                                                 <span className="nav-title">Harry Potter</span>
                                             </NavLink>
@@ -89,50 +107,56 @@ const MainNavbar = (props) => {
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" activeclassname="is-active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i className="fas fa-user"></i>
-                                        <span className="nav-title">Compte</span>
+                                        <span className="nav-title">
+                                            {isAuthenticated ? infos.first_name : "Compte"}
+                                        </span>
                                     </a>
                                     {<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        {clientId ? (
+                                        {(isAuthenticated === true) ? (
                                             <>
                                                 <li>
                                                     <NavLink
                                                         className="dropdown-item"
-                                                        to="/client-infos"
+                                                        to="/compte/infos"
+                                                        exact
                                                     >
                                                         <i className="fas fa-user-cog"></i>
                                                         <span className="nav-title">Mes informations</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                <NavLink
-                                                    className="dropdown-item"
-                                                    to="/compte/deconnexion"
-                                                    exact
-                                                >
-                                                <SignOut/>
-                                            </NavLink>
-                                        </li>
+                                                    <NavLink
+                                                        className="dropdown-item"
+                                                        to="/compte/deconnexion"
+                                                        exact
+                                                    >
+                                                        <i className="fas fa-user-slash"></i>
+                                                        <span className="nav-title">Déconnexion</span>
+                                                    </NavLink>
+                                                </li>
                                             </>
                                         ) : (
                                                 <>
                                                    <li>
-                                                    <NavLink
-                                                        className="dropdown-item"
-                                                        to="/compte/connexion"
-                                                        exact
-                                                    >
-                                                        <span className="nav-title">Connexion</span>
-                                                    </NavLink>
+                                                        <NavLink
+                                                            className="dropdown-item"
+                                                            to="/compte/connexion"
+                                                            exact
+                                                        >
+                                                            <i className="fas fa-user-check"></i>
+                                                            <span className="nav-title">Connexion</span>
+                                                        </NavLink>
                                                     </li>
                                                     <li>
-                                                    <NavLink
-                                                        className="dropdown-item"
-                                                        to="/compte/inscription"
-                                                        exact
-                                                    >
-                                                        <span className="nav-title">Inscription</span>
-                                                    </NavLink>
-                                                </li>
+                                                        <NavLink
+                                                            className="dropdown-item"
+                                                            to="/compte/inscription"
+                                                            exact
+                                                        >
+                                                            <i className="fas fa-user-plus"></i>
+                                                            <span className="nav-title">Inscription</span>
+                                                        </NavLink>
+                                                    </li>
                                                 </>
                                             )}
                                     </ul> }

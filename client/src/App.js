@@ -1,17 +1,19 @@
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
 // import { useSelector, useDispatch} from "react-redux";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import MainNavbar from './components/MainNavbar/MainNavbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
+
+
+import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
-import LogIn from './components/Clients/LogIn';
 import ClientInfos from './components/Clients/ClientInfos';
 
 import Error from './components/Error/Error';
@@ -34,19 +36,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 // }
 
 function App(props) {
-
-  //modal du login
-  // const [signInModalShow, setSignInModalShow] = useState(false);
-  
-  // pour le login 
-  // const [token, setToken] = useState();
-  // const token = getToken();
-
-  // if(!token) {
-  //   return <LogIn setToken={setToken} />
-  // }
-
-  // const { setThemeOnClick } = props;
 
   // console.log(useSelector((state) => state));
   // // renvoi l'objet avec nos reducers 
@@ -75,19 +64,43 @@ function App(props) {
   //   dispatch(setStarWars());
   // }
 
+  // ----------------------------------------------------------------
+  //  AUTH 
+  const [isAuthenticated, setAuthenticated] = useState(false);
+
+  const setAuth = (boolean) => {
+    setAuthenticated(boolean);
+  };
+
+  const isAuth = async () => {
+    try {
+      const response = await fetch("http://localhost:8088/auth/is_verify", {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          jwt: localStorage.jwt
+        }
+      });
+
+      const auth = await response.json();
+      console.log(auth);
+
+      auth === true ? setAuthenticated(true) : setAuthenticated(false);
+
+    } catch (e) {
+      console.error(e.message);
+    }
+  };
+
+  useEffect(() => {
+    isAuth();
+  }, []);
 
 
   return (
     <>
       <Router>
-        <MainNavbar>
-          
-        </MainNavbar>
-        {/* <SignIn
-            show={signInModalShow}
-            onHide={() => setSignInModalShow(false)}
-          /> */}
-        
+        <MainNavbar isAuthenticated={isAuthenticated} />
 
         <div className="main">
           <Switch>
@@ -95,16 +108,20 @@ function App(props) {
 
             {/* <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/>  */}
 
-            <Route path={"/produits"} exact component={MainUniverse}/>
-
+            <Route path="/produits" exact component={MainUniverse} />
             <Route path="/produits/produit/:id" component={Article} />
 
-            <Route path="/compte/connexion" exact component={SignIn} />
-            
-            <Route path="/compte/inscription" exact component={SignUp} /> 
+            <Route exact path='/compte/connexion'
+              render={(props) => !isAuthenticated ? <SignIn {...props} setAuth={setAuth} /> : <Redirect to='/' />} />
 
+            <Route exact path='/compte/inscription'
+              render={(props) => !isAuthenticated ? <SignUp {...props} setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
 
-            <Route path="/infos" component={ClientInfos} />
+            <Route exact path='/compte/deconnexion' render={(props) => isAuthenticated ? <SignOut {...props} setAuth={setAuth} />
+              : <Redirect to="/" />} />
+
+            <Route exact path='/compte/infos'
+              render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
 
             <Route path="*">
               <Error />
@@ -112,7 +129,7 @@ function App(props) {
 
           </Switch>
         </div>
-        <Footer/>
+        <Footer />
       </Router>
     </>
   );

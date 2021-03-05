@@ -28,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         phone: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            allowNull: true
         },
     },
         {tableName: 'clients', timestamps: false, underscored: false}

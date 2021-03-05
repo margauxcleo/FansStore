@@ -5,7 +5,7 @@ module.exports = app => {
 
     const { check } = require('express-validator');
 
-    const { authJwt } = require("../middleware");
+    const verifyJWT = require("../middleware/verifyJwt");
 
   
     // ----------------------------------------------------------------
@@ -35,6 +35,9 @@ module.exports = app => {
 
     // get un client par rapport à son id
     router.get("/:id", client.findClientById);
+
+    // get un client pour rapport à l'id stocké dans le token
+    router.get('/client/infos', verifyJWT, client.getClientInfos);
     
     // créer un client
     router.post("/signup", [

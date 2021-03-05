@@ -29,5 +29,29 @@
     color: #fff!important;
     background-color: #8D9492!important;
     border-color: #8D9492!important;
-    box-shadow: 0 0 0 0.2rem rgb(243 219 93 / 50%)!important;
+    box-shadow: 0 0 0 0.2rem rgb(141 148 146 / 50%)!important;
 }
+
+.login-form {
+    padding: 15px;
+    border-radius: 0.25rem;
+    border: 1px solid #8D9492;
+}
+
+.login-form .form-control {
+    border: 2px solid #8D9492!important;
+    background-color: #DFE1E1!important;
+}
+
+.login-form .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgb(141 148 146 / 25%);
+}
+
+.login-form h1 {
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 15px 10px -15px #8D9492;
+}
+
+
+
