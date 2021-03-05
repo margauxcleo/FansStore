@@ -4,7 +4,7 @@ import './Home.css';
 
 const Home = () => {
     return (
-       <div className="hom mx-auto col-xl-12 col-lg-12 col-md-11 col-sm-12">
+       <div className="home mx-auto col-xl-12 col-lg-12 col-md-11 col-sm-12">
            <div className="row d-flex justify-content-around mt-3">
                 <div className="home-image-univers col-xl-8 col-lg-8 col-md-8 col-sm-12 p-5 mb-5 d-flex justify-content-center align-items-center">
                     <NavLink className="nav-link" to="/univers" exact>
