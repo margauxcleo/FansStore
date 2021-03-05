@@ -17,7 +17,7 @@ module.exports = (sequelize, Sequelize) => {
         total_price: {
             type: Sequelize.DECIMAL,
             allowNull: false
-        }
+        },
     },
         {tableName: 'orders', timestamps: false, underscored: false}
     );

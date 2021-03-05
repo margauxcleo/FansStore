@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const OrdersDetails = sequelize.define("order_details", {
+    const OrderDetails = sequelize.define("order_details", {
         orderDetailsId: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
@@ -18,6 +18,6 @@ module.exports = (sequelize, Sequelize) => {
         {tableName: 'orders_details', timestamps: false, underscored: false}
     );
 
-    return OrdersDetails;
+    return OrderDetails;
 
 };
