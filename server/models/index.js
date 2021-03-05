@@ -78,13 +78,13 @@ db.orders.hasMany(db.order_details, { foreignKey: "fk_orderId", as: "order_detai
 
 
 // // Un article est lié à une ou plusieurs sous-commande
-// db.article.belongsTo(db.order_details, {
-//   foreignKey: "fk_orderDetailsId"
-// });
+ db.article.hasMany(db.order_details, {
+  foreignKey: "fk_orderDetailsId"
+ });
 
 // AR !
 // Une sous-commande peut avoir plusieurs articles
-// db.order_details.hasMany(db.article, { foreignKey: "fk_articleId", as: "articles" });
+ db.order_details.hasMany(db.article, { foreignKey: "fk_articleId", as: "articles" });
 
 module.exports = db;
 
