@@ -1,10 +1,35 @@
 module.exports = app => {
     const client = require("../controllers/clients.controller");
   
-    var router = require("express").Router();
+    let router = require("express").Router();
 
     const { check } = require('express-validator');
+
+    const { authJwt } = require("../middleware");
+
   
+    // ----------------------------------------------------------------
+    //  test ajout JWT 
+    router.use(function(req, res, next) {
+        res.header(
+          "Access-Control-Allow-Headers",
+          "x-access-token, Origin, Content-Type, Accept"
+        );
+        next();
+      });
+    
+      router.get("/test/all", client.allAccess);
+    
+      router.get(
+        "/test/user",
+        client.userBoard
+      );
+    
+  
+    // ----------------------------------------------------------------
+    //  fin test ajout JWT 
+
+
     // Vérification - get tous les clients 
     router.get("/", client.findAllClients);
 
@@ -12,7 +37,7 @@ module.exports = app => {
     router.get("/:id", client.findClientById);
     
     // créer un client
-    router.post("/addClient", [
+    router.post("/signup", [
         check('first_name').not().isEmpty().bail(),
         check('last_name').not().isEmpty().bail(),
         check('email').isEmail().bail(),
