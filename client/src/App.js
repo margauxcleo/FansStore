@@ -9,7 +9,6 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
-import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
 import LogIn from './components/Clients/LogIn';
@@ -101,7 +100,7 @@ function App(props) {
             <Route path="/produits/produit/:id" component={Article} />
 
             <Route path="/compte/connexion" exact component={SignIn} />
-            <Route path="/signOut" component={SignOut} />
+            
             <Route path="/compte/inscription" exact component={SignUp} /> 
 
 

@@ -7,7 +7,7 @@ import SignOut from '../Clients/SignOut';
 
 const MainNavbar = (props) => {
 
-    let clientId = "";
+    let clientId = 1;
     // const { clientId } = useParams();
     const { setSignInModalShow } = props;
     const { setThemeOnClick } = props;

@@ -1,10 +1,24 @@
-const db = require("../models"); // models path depend on your structure
+const db = require("../models");
 const Client = db.client;
 const Address = db.address;
 const Card = db.card;
 
 const { BadRequest, NotFound } = require('../utils/errors');
 const { validationResult } = require('express-validator')
+
+// ----------------------------------------------------------------
+//  test ajout JWT 
+exports.allAccess = (req, res) => {
+    res.status(200).send("Public Content.");
+  };
+  
+  exports.userBoard = (req, res) => {
+    res.status(200).send("User Content.");
+  };
+  
+// ----------------------------------------------------------------
+//  fin test ajout JWT 
+
 
 // Créer un client 
 exports.createClient = (req, res, next) => {
