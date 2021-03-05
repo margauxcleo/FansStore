@@ -7,10 +7,12 @@ import SignOut from '../Clients/SignOut';
 
 const MainNavbar = (props) => {
 
-    let clientId = "";
+    const clientId = "";
     // const { clientId } = useParams();
-    const { setSignInModalShow } = props;
-    const { setThemeOnClick } = props;
+    // const { setSignInModalShow } = props;
+    // const { setThemeOnClick } = props;
+
+    const { isAuthenticated } = props;
     
     return (
         <>
@@ -92,26 +94,25 @@ const MainNavbar = (props) => {
                                         <span className="nav-title">Compte</span>
                                     </a>
                                     {<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        {clientId ? (
+                                        {(isAuthenticated == true) ? (
                                             <>
                                                 <li>
                                                     <NavLink
                                                         className="dropdown-item"
-                                                        to="/client-infos"
+                                                        to="/compte/infos"
                                                     >
                                                         <i className="fas fa-user-cog"></i>
                                                         <span className="nav-title">Mes informations</span>
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                <NavLink
-                                                    className="dropdown-item"
-                                                    to="/compte/deconnexion"
-                                                    exact
-                                                >
-                                                <SignOut/>
-                                            </NavLink>
-                                        </li>
+                                                    <a
+                                                        className="dropdown-item"
+                                                    >
+                                                        <i className="fas fa-user-slash"></i>
+                                                            <SignOut/>
+                                                    </a>
+                                                </li>
                                             </>
                                         ) : (
                                                 <>
@@ -119,7 +120,7 @@ const MainNavbar = (props) => {
                                                     <NavLink
                                                         className="dropdown-item"
                                                         to="/compte/connexion"
-                                                        exact
+                                                        // exact
                                                     >
                                                         <span className="nav-title">Connexion</span>
                                                     </NavLink>
@@ -128,7 +129,7 @@ const MainNavbar = (props) => {
                                                     <NavLink
                                                         className="dropdown-item"
                                                         to="/compte/inscription"
-                                                        exact
+                                                        // exact
                                                     >
                                                         <span className="nav-title">Inscription</span>
                                                     </NavLink>

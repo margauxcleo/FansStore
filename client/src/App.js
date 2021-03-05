@@ -14,9 +14,6 @@ import Article from './components/Article/Article';
 import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
-
-import Login2 from './components/Clients/Login2'; // version avec AuthService
-import Login3 from './components/Clients/Login3'; // version sans AuthService
 import ClientInfos from './components/Clients/ClientInfos';
 
 import Error from './components/Error/Error';
@@ -86,6 +83,7 @@ function App(props) {
         });
   
         const auth = await response.json();
+        console.log(auth);
   
         auth === true ? setAuthenticated(true) : setAuthenticated(false);
   
@@ -102,7 +100,7 @@ function App(props) {
   return (
     <>
       <Router>
-        <MainNavbar/>
+        <MainNavbar isAuthenticated={isAuthenticated}/>
         
         <div className="main">
           <Switch>
@@ -113,21 +111,17 @@ function App(props) {
             <Route path="/produits" exact component={MainUniverse}/>
             <Route path="/produits/produit/:id" component={Article} />
 
-            {/* <Route path="/compte/connexion" exact component={SignIn} /> */}
-            <Route exact path='/compte/connexion'
+            <Route path='/compte/connexion'
               render={(props) => !isAuthenticated ? <SignIn { ...props } setAuth={setAuth} /> : <Redirect to='/' />} />
-            <Route path="/compte/deconnexion" component={SignOut} />
-            {/* <Route path="/compte/inscription" exact component={SignUp} />  */}
-            <Route exact path='/compte/inscription'
-              render={(props) => !isAuthenticated ? <SignUp { ...props } setAuth={setAuth} /> : <Redirect to='/' />} />
 
-            <Route path="/testlogin" render={(props) => !isAuthenticated ? <Login2 />
+            <Route render={(props) => isAuthenticated ? <SignOut {...props} setAuth={setAuth}/>
             : <Redirect to="/" /> } />
-            <Route exact path='/login3'
-              render={(props) => !isAuthenticated ? <Login3 { ...props } setAuth={setAuth} /> : <Redirect to='/' />} />
-            
-            <Route exact path="/infos" render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth}/>
-            : <Redirect to="/" /> } />
+
+            <Route path='/compte/inscription'
+              render={(props) => !isAuthenticated ? <SignUp { ...props } setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
+
+            <Route path="/compte/infos" render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth}/>
+            : <Redirect to="/compte/connexion" /> } />           
 
             <Route path="*">
               <Error />

@@ -57,14 +57,10 @@ exports.signup = (req, res) => {
           console.log(client);
           // 7. On crée le token du client, pour que dès qu'il soit créé, 
           // son token est généré, ce qui permettra de mettre en place le localStorage sans qu'il ait besoin de se connecter manuellement 
-          res.status(200).json({
-            clientId: client.clientId,
-            token: jwt.sign(
-              { clientId: client.clientId },
-              config.secret,
-              { expiresIn: '24h' }
-            )
-          });
+          return res.status(200).json({ jwt: jwt.sign(
+            {user: {id: user.clientId}}, 
+            config.secret, 
+            { expiresIn: '24h'}) });
         })
         // En cas d"erreur lors de la création du client en BDD, on renvoie un msg 
         .catch(err => {
@@ -134,18 +130,21 @@ exports.signin = (req, res, next) => {
             // 7. Si les mots de passe sont identiques, on créé le token 
             // ici, on appelle config.secret, qui est notre clé de sécurité 
             // on précise également une période d'expiration au token 
-            res.status(200).json({
-              clientId: user.clientId,
-              token: jwt.sign(
-                { clientId: user.clientId },
-                config.secret,
-                { expiresIn: '24h' }
-              )
-            });
+            console.log(user.clientId);
+            // const jwt = jwt.sign({user: {id: user.clientId}}, config.secret, { expiresIn: '24h'});
+            // return res.status(200).json({ jwt });
+            return res.status(200).json({ jwt: jwt.sign(
+              {user: {id: user.clientId}}, 
+              config.secret, 
+              { expiresIn: '24h'}) });
           })
-          .catch(error => res.status(500).send({ message: "problème lors de la création du token" }));
+          .catch((error) => {
+            console.log(error.message);
+            res.status(500).send({ message: "problème lors de la création du token" });
+          });
       })
-      .catch(err => {
+      .catch((err) => {
+        console.log(err.message);
         res.status(500).send({ message: "problème avec le contenu de la requête" });
       });
   } catch (err) {

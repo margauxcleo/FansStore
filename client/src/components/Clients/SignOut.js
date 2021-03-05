@@ -6,11 +6,19 @@ import { useState } from "react";
 import './Clients.css';
 
 const SignOut = (props) => {
-// const { clientId } = useParams();
+
 const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 
+
+const { setAuth } = props;
+
+const onLogout = async (event) => {
+    event.preventDefault();
+    localStorage.removeItem("jwt");
+    setAuth(false);
+}
 
 return (
     <>
@@ -22,10 +30,10 @@ return (
             <Modal.Body>
                 <Form>
                     <Form.Group>
-                    <Button variant="danger" size="lg" block>Oui</Button>
+                    <Button variant="danger" size="lg" block onClick={(e) => onLogout(e)}>Oui</Button>
                     </Form.Group>
                     <Form.Group>
-                    <Button variant="success btn btn-secondary" size="lg" block>Non, rester connecté</Button>   
+                    <Button variant="success btn btn-secondary" size="lg" block onClick={handleClose}>Non, rester connecté</Button>   
                     </Form.Group>
                 </Form>
             </Modal.Body>
