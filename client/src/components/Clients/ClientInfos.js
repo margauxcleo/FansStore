@@ -6,10 +6,9 @@ const ClientInfos = (props) => {
 
     const [infos, setInfos] = useState("");
 
-
     const getInfos = async () => {
         try {
-            const response = await fetch("http://localhost:8088/clients/infos", {
+            const response = await fetch("http://localhost:8088/clients/client/infos", {
                 method: 'GET',
                 mode: 'cors',
                 headers: {

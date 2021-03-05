@@ -37,7 +37,7 @@ module.exports = app => {
     router.get("/:id", client.findClientById);
 
     // get un client pour rapport à l'id stocké dans le token
-    router.get('/infos', verifyJWT, client.getClientInfos);
+    router.get('/client/infos', verifyJWT, client.getClientInfos);
     
     // créer un client
     router.post("/signup", [

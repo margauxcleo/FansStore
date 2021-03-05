@@ -66,62 +66,62 @@ function App(props) {
 
   // ----------------------------------------------------------------
   //  AUTH 
-    const [isAuthenticated, setAuthenticated] = useState(false);
-  
-    const setAuth = (boolean) => {
-      setAuthenticated(boolean);
-    };
-  
-    const isAuth = async () => {
-      try {
-        const response = await fetch("http://localhost:8088/auth/is_verify", {
-          method : 'GET',
-          mode : 'cors',
-          headers: {
-            jwt : localStorage.jwt
-          }
-        });
-  
-        const auth = await response.json();
-        console.log(auth);
-  
-        auth === true ? setAuthenticated(true) : setAuthenticated(false);
-  
-      } catch (e) {
-        console.error(e.message);
-      }
-    };
-  
-    useEffect(() => {
-      isAuth();
-    })
-  
+  const [isAuthenticated, setAuthenticated] = useState(false);
+
+  const setAuth = (boolean) => {
+    setAuthenticated(boolean);
+  };
+
+  const isAuth = async () => {
+    try {
+      const response = await fetch("http://localhost:8088/auth/is_verify", {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          jwt: localStorage.jwt
+        }
+      });
+
+      const auth = await response.json();
+      console.log(auth);
+
+      auth === true ? setAuthenticated(true) : setAuthenticated(false);
+
+    } catch (e) {
+      console.error(e.message);
+    }
+  };
+
+  useEffect(() => {
+    isAuth();
+  }, []);
+
 
   return (
     <>
       <Router>
-        <MainNavbar isAuthenticated={isAuthenticated}/>
-        
+        <MainNavbar isAuthenticated={isAuthenticated} />
+
         <div className="main">
           <Switch>
             <Route path="/" exact component={Home} />
 
             {/* <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/>  */}
 
-            <Route path="/produits" exact component={MainUniverse}/>
+            <Route path="/produits" exact component={MainUniverse} />
             <Route path="/produits/produit/:id" component={Article} />
 
-            <Route path='/compte/connexion'
-              render={(props) => !isAuthenticated ? <SignIn { ...props } setAuth={setAuth} /> : <Redirect to='/' />} />
+            <Route exact path='/compte/connexion'
+              render={(props) => !isAuthenticated ? <SignIn {...props} setAuth={setAuth} /> : <Redirect to='/' />} />
 
-            <Route render={(props) => isAuthenticated ? <SignOut {...props} setAuth={setAuth}/>
-            : <Redirect to="/" /> } />
+            <Route exact path='/compte/inscription'
+              render={(props) => !isAuthenticated ? <SignUp {...props} setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
 
-            <Route path='/compte/inscription'
-              render={(props) => !isAuthenticated ? <SignUp { ...props } setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
+            <Route exact path='/compte/deconnexion' render={(props) => isAuthenticated ? <SignOut {...props} setAuth={setAuth} />
+              : <Redirect to="/" />} />
 
-            <Route path="/compte/infos" render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth}/>
-            : <Redirect to="/compte/connexion" /> } />           
+            <Route exact path='/compte/infos'
+              render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
 
             <Route path="*">
               <Error />
@@ -129,7 +129,7 @@ function App(props) {
 
           </Switch>
         </div>
-        <Footer/>
+        <Footer />
       </Router>
     </>
   );
