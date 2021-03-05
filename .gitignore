@@ -1,4 +1,6 @@
 # cache
+client/node_modules/.cache/.eslintcache
+server/node_modules/.cache/.eslintcache
 .eslintcache
 .cache
 
