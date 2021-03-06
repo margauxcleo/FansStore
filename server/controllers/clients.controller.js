@@ -2,23 +2,10 @@ const db = require("../models");
 const Client = db.client;
 const Address = db.address;
 const Card = db.card;
+const Order = db.orders;
 
 const { BadRequest, NotFound } = require('../utils/errors');
 const { validationResult } = require('express-validator')
-
-// ----------------------------------------------------------------
-//  test ajout JWT 
-exports.allAccess = (req, res) => {
-    res.status(200).send("Public Content.");
-  };
-  
-exports.userBoard = (req, res) => {
-res.status(200).send("User Content.");
-};
-  
-// ----------------------------------------------------------------
-//  fin test ajout JWT 
-
 
 // Créer un client 
 exports.createClient = (req, res, next) => {
@@ -142,7 +129,8 @@ exports.findAllClients = (req, res, next) => {
         Client.findAll({
             include: [
                 { model: Card, as: "cards" },
-                { model: Address, as: "addresses" }
+                { model: Address, as: "addresses" },
+                { model: Order, as: "orders" }
             ]   
         })
         .then(clients => {

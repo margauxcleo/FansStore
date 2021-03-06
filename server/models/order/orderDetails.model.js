@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
     },
-        {tableName: 'orders_details', timestamps: false, underscored: false}
+        {tableName: 'order_details', timestamps: false, underscored: false}
     );
 
     return OrderDetails;
