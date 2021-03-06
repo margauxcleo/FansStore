@@ -40,14 +40,14 @@ const SignUp = (props) => {
  password.current = watch("password", "");
 
 return (
-    <div className="container-fluid mx-auto col-5">
+    <div className="container-fluid mx-auto logup-form col-xl-6 col-lg-8 col-md-8 col-sm-11 mb-4">
       <h1>Création d'un nouveau compte</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="row mb-4">
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <label>Prénom : </label>
                 <br />
-                <input name="first_name" type="text" placeholder="prénom" ref={register({required: true, minLength: 3})} />
+                <input  className="form-input" name="first_name" type="text" placeholder="prénom" ref={register({required: true, minLength: 3})} />
                 {errors.first_name && errors.first_name.type === "required" && (
                     <div className="alert alert-danger" role="alert">Veuillez renseigner votre prénom.</div>
                 )}
@@ -59,7 +59,7 @@ return (
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <label>Nom :</label>
                 <br/>
-                <input name="last_name" type="text" placeholder="nom" ref={register({required: true, minLength: 3})}/>
+                <input  className="form-input" name="last_name" type="text" placeholder="nom" ref={register({required: true, minLength: 3})}/>
                 {errors.last_name && errors.last_name.type === "required" && (
                     <div className="alert alert-danger" role="alert">Veuillez renseigner votre nom.</div>
                 )}
@@ -73,7 +73,7 @@ return (
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <label>Email :</label>
                 <br/>
-                <input name="email" type="email" placeholder="adresse email" ref={register({required: true, minLength: 8})}/>
+                <input  className="form-input" name="email" type="email" placeholder="adresse email" ref={register({required: true, minLength: 8})}/>
                 {errors.email && errors.email.type === "required" && (
                     <div className="alert alert-danger" role="alert">Veuillez renseigner un email.</div>
                 )}
@@ -85,7 +85,7 @@ return (
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <label>Date de naissance :</label>
                 <br/>
-                <input name="birth_date" type="date" placeholder="date" ref={register({required: true})}/>
+                <input  className="form-input" name="birth_date" type="date" placeholder="date" ref={register({required: true})}/>
                 {errors.birth_date && errors.birth_date.type === "required" && (
                     <div className="alert alert-danger" role="alert">Veuillez renseigner votre date de naissance.</div>
                 )}
@@ -95,7 +95,7 @@ return (
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <label>Mot de passe :</label>
                 <br/>
-                <input name="password" type="password" placeholder="mot de passe" ref={register({required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/})}/>
+                <input  className="form-input" name="password" type="password" placeholder="mot de passe" ref={register({required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/})}/>
                 {errors.password && errors.password.type === "required" && (
                     <div className="alert alert-danger" role="alert">Veuillez renseigner un mot de passe.</div>
                 )}
@@ -112,7 +112,7 @@ return (
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <label>Vérification mot de passe :</label>
                 <br/>
-                <input name="passwordcheck" type="password" placeholder="Vérification mot de passe" ref={register({required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/, validate: value => value === password.current || "les mots de passe ne correspondent pas"})}/>
+                <input  className="form-input" name="passwordcheck" type="password" placeholder="Vérification mot de passe" ref={register({required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/, validate: value => value === password.current || "les mots de passe ne correspondent pas"})}/>
                 {errors.passwordcheck && errors.passwordcheck.type === "required" && (
                     <div className="alert alert-danger" role="alert">Veuillez renseigner un mot de passe.</div>
                 )}
@@ -133,13 +133,13 @@ return (
             </div>
         </div>
        <div className="row mb-4">
-        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-            <label>Je certifie avoir pris connaissance des règles d'utilisation.</label>
-            <br/>
+        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 d-flex flex-row justify-content-start align-items-baseline">
             <input type="checkbox" name="check" aria-label="Checkbox for following text input" ref={register({required: true})}/>
             {errors.check && errors.check.type === "required" && (
                 <div className="alert alert-danger" role="alert">Veuillez prendre connaissance des règles d'utilisation svp</div>
             )}
+            <br/>
+            <label className="check-label">Je certifie avoir pris connaissance des règles d'utilisation.</label>
         </div>
        </div>
        <div className="form-group">

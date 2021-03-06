@@ -2,6 +2,7 @@ const db = require("../models"); // models path depend on your structure
 const Article = db.article;
 const Category = db.product_category;
 const Universe = db.universe;
+const OrderDetail = db.order_details;
 
 exports.create = (req, res) => {
     // Validate request
@@ -43,7 +44,8 @@ exports.findAllArticles = (req, res) => {
     Article.findAll({ 
         include: [
             {model: Universe}, 
-            {model: Category}
+            {model: Category},
+            { model: OrderDetail, as: "order_detail" }
         ]})
         .then(data => {
             res.send(data);
@@ -64,7 +66,7 @@ exports.findArticleById = (req, res) => {
     Article.findByPk(id, {
         include: [
             {model: Universe}, 
-            {model: Category}
+            {model: Category},
         ]}) 
         .then(article => {
             // res.send(article);
@@ -87,7 +89,7 @@ exports.findAllArticlesHarryPotter = (req, res) => {
         },
         include: [
             {model: Universe}, 
-            {model: Category}
+            {model: Category},
         ]})
         .then(data => {
             res.send(data);    
@@ -108,7 +110,7 @@ exports.findAllArticlesStarWars = (req, res) => {
         },
         include: [
             {model: Universe}, 
-            {model: Category}
+            {model: Category},
         ]})
         .then(data => {
             res.send(data);    
@@ -129,7 +131,7 @@ exports.findAllArticlesMarvel = (req, res) => {
         },
         include: [
             {model: Universe}, 
-            {model: Category}
+            {model: Category},
         ]})
         .then(data => {
             res.send(data);    

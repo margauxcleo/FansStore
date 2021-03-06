@@ -7,33 +7,10 @@ module.exports = app => {
 
     const verifyJWT = require("../middleware/verifyJwt");
 
-  
-    // ----------------------------------------------------------------
-    //  test ajout JWT 
-    router.use(function(req, res, next) {
-        res.header(
-          "Access-Control-Allow-Headers",
-          "x-access-token, Origin, Content-Type, Accept"
-        );
-        next();
-      });
-    
-      router.get("/test/all", client.allAccess);
-    
-      router.get(
-        "/test/user",
-        client.userBoard
-      );
-    
-  
-    // ----------------------------------------------------------------
-    //  fin test ajout JWT 
-
-
     // Vérification - get tous les clients 
     router.get("/", client.findAllClients);
 
-    // get un client par rapport à son id
+    // get un client par rapport à un id passé en paramètre 
     router.get("/:id", client.findClientById);
 
     // get un client pour rapport à l'id stocké dans le token

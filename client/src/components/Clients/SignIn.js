@@ -44,7 +44,7 @@ return (
           <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <label>Email :</label>
                 <br/>
-                <input className="form-control" name="email" type="email" placeholder="adresse email" ref={register({required: true, minLength: 8})}/>
+                <input className="form-input" name="email" type="email" placeholder="adresse email" ref={register({required: true, minLength: 8})}/>
                 {errors.email && errors.email.type === "required" && (
                     <div className="alert alert-danger" role="alert">Veuillez renseigner un email.</div>
                 )}
@@ -58,7 +58,7 @@ return (
         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <label>Mot de passe :</label>
           <br/>
-          <input className="form-control" name="password" type="password" placeholder="mot de passe" ref={register({required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/})}/>
+          <input className="form-input" name="password" type="password" placeholder="mot de passe" ref={register({required: true, pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/})}/>
           {errors.password && errors.password.type === "required" && (
             <div className="alert alert-danger" role="alert">Veuillez renseigner un mot de passe.</div>
           )}

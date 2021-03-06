@@ -14,15 +14,11 @@ exports.create = (req, res) => {
 
     // Create a Tutorial
     const OrderDetails = {
-        articleId: req.body.articleId,
-        name: req.body.name,
-        brand: req.body.brand,
+        orderDetailsId: req.body.articleId,
+        fk_ordersId: req.body.orders,
+        fk_articleId: req.body.article,
+        quantity: req.body.quantity,
         price: req.body.price,
-        image: req.body.image,
-        description: req.body.description,
-        available_quantity: req.body.available_quantity,
-        fk_category: req.body.category,
-        fk_universe: req.body.universe,
     };
 
     // Créer un article (pour le test mais pas nécessaire pour nous)
