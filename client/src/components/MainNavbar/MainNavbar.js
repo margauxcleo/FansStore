@@ -6,7 +6,7 @@ import './MainNavbar.css';
 
 const MainNavbar = (props) => {
 
-    const { isAuthenticated } = props;
+    const { isAuthenticated, handleGetCart } = props;
 
     const [infos, setInfos] = useState("");
 
@@ -167,6 +167,9 @@ const MainNavbar = (props) => {
                                         <span className="
                                     nav-title">Panier</span>
                                     </NavLink>
+                                </li>
+                                <li>
+                                    <a onClick={(event) => handleGetCart(event)}>test action panier</a>
                                 </li>
                             </ul>
                         </div>
