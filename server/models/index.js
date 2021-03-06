@@ -84,7 +84,7 @@ db.orders.hasMany(db.order_details, { foreignKey: "fk_orderId", as: "order_detai
 
 // AR !
 // Une sous-commande peut avoir plusieurs articles
- db.order_details.hasMany(db.article, { foreignKey: "fk_articleId", as: "articles" });
+db.order_details.hasMany(db.article, { foreignKey: "fk_articleId", as: "articles" });
 
 module.exports = db;
 
