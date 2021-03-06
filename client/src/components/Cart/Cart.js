@@ -5,7 +5,7 @@ import './Cart.css';
 
 const Cart = (props) => {
 
-    const { handleAddToCart, handleDeleteFromCart, handleGetCart } = props;
+    const { handleAddToCart, handleDeleteFromCart, handleGetCart} = props;
 
     // console.log(cart.json());
     // const panier = cart.json();
@@ -26,7 +26,7 @@ const Cart = (props) => {
             <div>test</div>
             <p></p>
 
-            {/* <div className="jumbotron jumbotron-universes p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded">
+            <div className="jumbotron jumbotron-universes p-3 p-md-5 mx-auto col-xl-11 col-lg-11 rounded">
                 <div className="px-0 mx-auto jumb-div-title" >
                     <h1 className="display-4 mx-auto">Panier</h1>
                 </div>
@@ -37,13 +37,13 @@ const Cart = (props) => {
                         <div>
                             {(cart.map((cartItem) => {
                                 return (
-                                <div key={cartItem.articleId}>
+                                <div key={cartItem.id}>
                                     <div>
                                         <div>image produit</div>
-                                        <div>Nom produit</div>
+                                        <div>{cartItem.name}</div>
                                     </div>
                                     <div>
-                                        <p>quantité x prix</p>
+                                        <p>{cartItem.quantity} x prix</p>
                                         <button onClick={(e) => handleDeleteFromCart(e, cartItem.articleId)}>+</button>
                                         <button>-</button>
                                         <button>Supprimer</button>
@@ -62,7 +62,7 @@ const Cart = (props) => {
                         </div>
                     </section>
                 )}
-            </div> */}
+            </div>
         </>
     );
 }
