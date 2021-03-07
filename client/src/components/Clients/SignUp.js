@@ -2,7 +2,7 @@ import {useForm} from 'react-hook-form';
 import { useRef } from "react";
 import {Link} from "react-router-dom";
 
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 
 import './Clients.css';
 
@@ -29,7 +29,7 @@ const SignUp = (props) => {
         if (parseRes.jwt) {
           localStorage.setItem('jwt', parseRes.jwt);
           setAuth(true);
-          toast.success("Bienvenue !");
+        //   toast.success("Bienvenue !");
           console.log('Welcome!');
         } else {
           setAuth(false);
