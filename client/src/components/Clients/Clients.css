@@ -87,5 +87,34 @@
     padding-left: 10px;
 }
 
+/* page ClientInfos */
+.div-infos {
+    border-radius: 0.25rem;
+    border: 2px solid #8D9492;
+    padding: 15px;
+}
+
+.client h3 {
+    padding-left: 15px;
+}
+
+.client h3 span {
+    padding-left: 5px;
+}
+
+.client div-infos p.row{
+    flex-wrap: nowrap;
+}
+
+.client .label {
+    font-weight: bold;
+    /* text-decoration: underline; */
+}
+
+/* page ClientsInfos - orders */
+.client .order p {
+    text-align: center;
+}
+
 
 
