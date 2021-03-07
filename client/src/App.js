@@ -114,14 +114,15 @@ function App(props) {
             />
             <Route path="/panier" 
               exact 
-              render={(props) => <Cart {...props} 
+              render={(props) => isAuthenticated ? <Cart {...props} 
                 cart={cart}
                 handleAddToCart={handleAddToCart} 
                 handleDeleteFromCart={handleDeleteFromCart}
                 handleGetCart={handleGetCart}
                 handleIncrement={handleIncrement}
                 handleDecrement={handleDecrement}
-                />} 
+                />
+              : <Redirect to="/compte/connexion" />} 
             />
 
             <Route exact path='/compte/connexion'
