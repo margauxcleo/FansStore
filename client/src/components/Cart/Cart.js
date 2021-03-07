@@ -1,5 +1,6 @@
 // Composant permettant d'afficher le titre de la page 
 import { useState, useEffect } from 'react';
+import {Link} from "react-router-dom";
 
 import './Cart.css';
 
@@ -73,7 +74,11 @@ const Cart = (props) => {
                                 </h5>
                             </div>
                             <br/>
-                            <button className="btn btn-primary">Procéder au paiement</button>
+                            <button className="btn btn-primary">
+                            <Link to="paiement" style={{ textDecoration: 'none', color: 'white'}}>
+                                Procéder au paiement
+                            </Link>
+                            </button>
                         </div>
                     </section>
                 )}
