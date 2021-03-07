@@ -24,7 +24,7 @@
     background-color: #630B1C;
 }
 
-.hp h1{
+.hp h1 {
     font-family: 'harry_potter','roboto', 'opensans', sans-serif;
     font-size: 5rem;
 }
@@ -65,4 +65,17 @@
     font-size: 5rem;
 }
 
-
+@media (max-width: 576px) {
+    .hp h1 {
+        font-size: 5rem;
+    }
+    .marvel h1  {
+        font-size: 4rem;
+    }
+    .sda h1  {
+        font-size: 2.5rem;
+    }
+    .sw h1 {
+        font-size: 3rem;
+    }
+}

@@ -54,12 +54,12 @@ const Cart = (props) => {
                                         <h5 className="price mb-4">{cartItem.quantity} x {cartItem.price * cartItem.quantity} € TTC</h5>
                                         <div className="d-flex flex-row justify-content-between align-items-center">
                                             <button className="btn btn-secondary" onClick={(e) => handleDeleteFromCart(e, cartItem.articleId)}>
-                                                <i class="fas fa-plus"></i>
+                                                <i className="fas fa-plus"></i>
                                             </button>
                                             <button className="btn btn-secondary">
-                                                <i class="fas fa-minus"></i>
+                                                <i className="fas fa-minus"></i>
                                             </button>
-                                            <button className="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                            <button className="btn btn-danger"><i className="fas fa-trash-alt"></i></button>
                                         </div>
                                     </div>
                                 </div>)}
@@ -74,7 +74,6 @@ const Cart = (props) => {
                             </div>
                             <br/>
                             <button className="btn btn-primary">Procéder au paiement</button>
-                            
                         </div>
                     </section>
                 )}
