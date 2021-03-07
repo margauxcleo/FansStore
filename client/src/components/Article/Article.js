@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-
+import {Link} from "react-router-dom";
 import ReactFancyBox from 'react-fancybox';
+import Paiement from '../Clients/Paiement.js';
 import 'react-fancybox/lib/fancybox.css';
 
 
@@ -53,7 +54,9 @@ const Article = (props) => {
                         <h3 className="name">{article.name}</h3>
                         <p className="brand">{article.brand}</p>
                         <p className="price">{article.price} €</p>
+                        <Link to="/paiement">
                         <button className="btn btn-primary">Ajouter au panier</button>
+                        </Link>
                     </div>
                 </div>
                 <br/>

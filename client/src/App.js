@@ -9,13 +9,11 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
-
-
 import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
 import ClientInfos from './components/Clients/ClientInfos';
-
+import Paiement from './components/Clients/Paiement.js';
 import Error from './components/Error/Error';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -122,6 +120,8 @@ function App(props) {
 
             <Route exact path='/compte/infos'
               render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
+
+            <Route path="/paiement" exact component={Paiement} />
 
             <Route path="*">
               <Error />
