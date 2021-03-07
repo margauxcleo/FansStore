@@ -58,6 +58,20 @@ module.exports = app => {
     //     ]),
     //     someRouteHandler,
     // );
+
+    // Mettre à jour les infos d'un client 
+    router.put("/updateClient", [
+        check('first_name').not().isEmpty().bail(),
+        check('last_name').not().isEmpty().bail(),
+        check('email').isEmail().bail(),
+        check('birth_date').not().isEmpty().bail(),
+        check('phone').not().isEmpty().bail(),
+        verifyJWT
+    ], 
+    client.updateClientInfos);
+
+    // test: update client via id en param pr test format update
+    router.put("update/:id", client.updateClient);
     
     app.use('/clients', router);
 };
