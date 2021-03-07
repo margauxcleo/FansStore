@@ -111,6 +111,11 @@
     /* text-decoration: underline; */
 }
 
+.client .label i {
+    padding-right: 5px;
+    font-weight: normal!important;
+}
+
 /* page ClientsInfos - orders */
 .client .order p {
     text-align: center;

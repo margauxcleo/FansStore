@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 
 import './Clients.css';
 
@@ -9,13 +9,14 @@ const SignOut = (props) => {
     const onLogout = async (event) => {
         event.preventDefault();
         localStorage.removeItem("jwt");
+        localStorage.removeItem('Cart');
         setAuth(false);
         props.history.push('/');
     }
 
     const handleRedirect = (event) => {
         event.preventDefault();
-        toast.dark("A bientôt !");
+        // toast.dark("A bientôt !");
         // props.history.push('/');
     }
 

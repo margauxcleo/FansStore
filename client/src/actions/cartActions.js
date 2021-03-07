@@ -31,9 +31,10 @@ export const getCart = () => {
 };
 
 // supprimer un item du panier
-export const removeFromCart = (id) => {
+export const removeFromCart = (cartItem) => {
     return {
     type: REMOVE_CART_ITEM,
-    payload: id
+    // payload: id
+    payload: cartItem,
   };
 };

@@ -55,10 +55,11 @@ const MainNavbar = (props) => {
                                         <span className="nav-title">Produits</span>
                                     </NavLink>
                                 </li>
-                                <li className="nav-item dropdown">
+                                {/* commenté en attendant de résoudre le pb */}
+                                {/* <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" activeclassname="is-active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Univers
-                                </a>
+                                    </a>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li>
                                             <NavLink
@@ -101,7 +102,7 @@ const MainNavbar = (props) => {
                                             </NavLink>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> */}
                             </ul>
                             <ul className="navbar-nav ms-auto">
                                 <li className="nav-item dropdown">

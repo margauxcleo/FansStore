@@ -6,7 +6,7 @@ import './Cart.css';
 
 const Cart = (props) => {
 
-    const { handleAddToCart, handleDeleteFromCart, handleGetCart} = props;
+    const { handleAddToCart, handleDeleteFromCart, handleGetCart, handleIncrement, handleDecrement} = props;
 
     // console.log(cart.json());
     // const panier = cart.json();
@@ -39,9 +39,9 @@ const Cart = (props) => {
                 ) : (
                     <section className="row col-xl-12 col-lg-12 col-md-12 col-sm-12 d-flex flex-row justify-content-between align-items-start">
                         <div className="cart-div col-xl-7 col-lg-7 col-md-8 col-sm-12 mb-2">
-                            {(cart.map((cartItem) => {
+                            {(cart.map((cartItem, key) => {
                                 return (
-                                <div key={cartItem.id} className="row d-flex flex-row justify-content-between align-items-start ">
+                                <div key={key} className="row d-flex flex-row justify-content-between align-items-start mb-2">
                                     <div className="item-info col-xl-7 col-lg-7 col-md-7 col-sm-12 d-flex justify-content-start align-items-start mb-4">
                                         <div>
                                             <img className="miniature" src={cartItem.image}/>
@@ -52,15 +52,18 @@ const Cart = (props) => {
                                         </div>
                                     </div>
                                     <div className="item-info offset-xl-1 col-xl-4 offset-lg-1 col-lg-4 offset-md-1 col-md-4 col-sm-12 d-flex flex-column justify-content-center align-items-center mb-2">
-                                        <h5 className="price mb-4">{cartItem.quantity} x {cartItem.price * cartItem.quantity} € TTC</h5>
+                                        <h5 className="price mb-4">{cartItem.quantity} x {Math.round((cartItem.price * cartItem.quantity)*100)/100} € TTC</h5>
                                         <div className="d-flex flex-row justify-content-between align-items-center">
-                                            <button className="btn btn-secondary" onClick={(e) => handleDeleteFromCart(e, cartItem.articleId)}>
+                                            <button className="btn btn-secondary" onClick={(e) => handleIncrement(e, key)}> 
+                                            {/* ou remplacer key par cartItem.articleId */}
                                                 <i className="fas fa-plus"></i>
                                             </button>
-                                            <button className="btn btn-secondary">
+                                            <button className="btn btn-secondary" onClick={(e) => handleDecrement(e, key)}>
                                                 <i className="fas fa-minus"></i>
                                             </button>
-                                            <button className="btn btn-danger"><i className="fas fa-trash-alt"></i></button>
+                                            <button className="btn btn-danger" onClick={(e) => handleDeleteFromCart(e, key)}>
+                                                <i className="fas fa-trash-alt">
+                                            </i></button>
                                         </div>
                                     </div>
                                 </div>)}
@@ -70,7 +73,7 @@ const Cart = (props) => {
                             <div >
                                 <h5>Somme totale: 
                                     <br/>
-                                    <span className="price"> { totalPrice } € TTC</span>
+                                    <span className="price"> { Math.round(totalPrice * 100)/100 } € TTC</span>
                                 </h5>
                             </div>
                             <br/>

@@ -57,8 +57,8 @@ exports.createAddress = (req, res, next) => {
             return res.status(422).json({ errors: errors.array() })
         }
 
-         // Créer une adresse 
-         const address = {
+        // Créer une adresse 
+        const address = {
             addressId: body.addressId,
             address_name: body.address_name,
             street: body.street,
@@ -94,7 +94,7 @@ exports.createCard = (req, res, next) => {
     try {
         if (!errors.isEmpty()) {
             return res.status(422).json({ errors: errors.array() })
-        }  
+        }
 
         // Créer un carte 
         const card = {
@@ -131,17 +131,17 @@ exports.findAllClients = (req, res, next) => {
                 { model: Card, as: "cards" },
                 { model: Address, as: "addresses" },
                 { model: Order, as: "orders" }
-            ]   
+            ]
         })
-        .then(clients => {
-            res.send(clients);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving all clients."
-            });
-        })
+            .then(clients => {
+                res.send(clients);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while retrieving all clients."
+                });
+            })
 
     } catch (err) {
         next(err);
@@ -164,15 +164,15 @@ exports.findClientById = (req, res, next) => {
                 { model: Address, as: "addresses" }
             ]
         })
-        .then(client => {
-            res.send(client);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving the client."
-            });
-        })
+            .then(client => {
+                res.send(client);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while retrieving the client."
+                });
+            })
 
     } catch (err) {
         next(err);
@@ -180,7 +180,6 @@ exports.findClientById = (req, res, next) => {
 };
 
 // Récupérer les infos d'un client par rapport à l'id récupéré dans le token
-
 exports.getClientInfos = (req, res, next) => {
 
     const id = req.user.id;
@@ -196,16 +195,156 @@ exports.getClientInfos = (req, res, next) => {
                 { model: Address, as: "addresses" }
             ]
         })
-        .then(user => {
-            console.log(user);
-            return res.json(user);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving the client."
-            });
-        })
+            .then(user => {
+                console.log(user);
+                return res.json(user);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while retrieving the client."
+                });
+            })
+
+    } catch (err) {
+        next(err);
+    }
+}
+
+// Update d'un employé via le token stocké en localstorage
+exports.updateClientInfos = (req, res, next) => {
+
+    // 1. On stocke le résultat de validator dans la const errors
+    const errors = validationResult(req)
+    // 2. On récupère l'id qui est dans le token (qui aura été décrypté via le middleware verifyJWT)
+    const id = req.user.id;
+    const body = req.body;
+    body.status = false;
+
+    try {
+        // on vérifie si on récupère bien l'id
+        if (!id) {
+            throw new BadRequest('Missing required fields: id');
+        }
+
+        // on vérifie si il n'y a pas d'erreurs dans la req
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() })
+        }
+
+        // On créé le modèle du client, et on précise ce à quoi chaque champs va correspondre
+        const client = {
+            clientId: body.clientId,
+            first_name: body.first_name,
+            last_name: body.last_name,
+            email: body.email,
+            birth_date: body.birth_date,
+            // password: hash, // ajout bcrypt
+            phone: body.phone,
+            cards: [
+                {
+                    cardId: body.cardId,
+                    card_name: body.card_name,
+                    card_number: body.card_number,
+                    card_exp_date: body.card_exp_date,
+                    card_cvv: body.card_cvv,
+                    fk_clientId: id
+                }
+            ],
+            addresses: [
+                {
+                    addressId: body.addressId,
+                    address_name: body.address_name,
+                    street: body.street,
+                    zipcode: body.zipcode,
+                    city: body.city,
+                    fk_clientId: id
+                }
+            ]
+        };
+
+        Client.update(client)
+            .then(user => {
+                console.log(user);
+                return res.json(user);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while updating the client."
+                });
+            })
+
+    } catch (err) {
+        next(err);
+    }
+}
+
+// TEST - update client sans token
+// Update d'un employé via le token stocké en localstorage
+exports.updateClient = (req, res, next) => {
+
+    // 1. On stocke le résultat de validator dans la const errors
+    const errors = validationResult(req);
+    // 2. On récupère l'id qui est passé en paramètre
+    const id = req.params.id;
+    const body = req.body;
+    body.status = false;
+
+    try {
+        // on vérifie si on récupère bien l'id
+        if (!id) {
+            throw new BadRequest('Missing required fields: id');
+        }
+
+        // on vérifie si il n'y a pas d'erreurs dans la req
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() })
+        }
+
+        // On créé le modèle du client, et on précise ce à quoi chaque champs va correspondre
+        const client = {
+            clientId: body.clientId,
+            first_name: body.first_name,
+            last_name: body.last_name,
+            email: body.email,
+            birth_date: body.birth_date,
+            // password: hash, // ajout bcrypt
+            phone: body.phone,
+            cards: [
+                {
+                    cardId: body.cardId,
+                    card_name: body.card_name,
+                    card_number: body.card_number,
+                    card_exp_date: body.card_exp_date,
+                    card_cvv: body.card_cvv,
+                    fk_clientId: id
+                }
+            ],
+            addresses: [
+                {
+                    addressId: body.addressId,
+                    address_name: body.address_name,
+                    street: body.street,
+                    zipcode: body.zipcode,
+                    city: body.city,
+                    fk_clientId: id
+                }
+            ]
+        };
+
+        Client.update(client,
+            { where: {clientId: id}})
+            .then(user => {
+                console.log(user);
+                return res.json(user);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while updating the client."
+                });
+            })
 
     } catch (err) {
         next(err);
