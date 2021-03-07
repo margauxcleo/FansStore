@@ -6,7 +6,7 @@ import './MainNavbar.css';
 
 const MainNavbar = (props) => {
 
-    const { isAuthenticated } = props;
+    const { isAuthenticated, handleGetCart } = props;
 
     const [infos, setInfos] = useState("");
 
@@ -35,7 +35,7 @@ const MainNavbar = (props) => {
             <header>
                 <nav className="navbar navbar-expand-lg fixed-top navbar-light navbar-main bg-main">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="#">FansStore</a>
+                        <a className="navbar-brand" href="/">FansStore</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">

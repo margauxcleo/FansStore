@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
-// import { useSelector, useDispatch} from "react-redux";
-
+import { useSelector, useDispatch} from "react-redux";
 import { useState, useEffect } from 'react';
 
 import MainNavbar from './components/MainNavbar/MainNavbar';
@@ -9,6 +8,9 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
+
+import Cart from './components/Cart/Cart';
+
 import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
@@ -18,49 +20,37 @@ import Error from './components/Error/Error';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
 // on fait du destructuring pour importer nos actions 
 // import { setHarryPotter, setMarvel, setSda, setStarWars, setCollections } from "./actions";
-
-// function setToken(userToken) {
-//   // pour conserver tout le user récupérer => on doit transformer l'objet json en string, peut poser pb ici
-//   localStorage.setItem('token', JSON.stringify(userToken));
-// }
-
-// function getToken() {
-//   const tokenString = localStorage.getItem('token');
-//   const userToken = JSON.parse(tokenString);
-//   return userToken?.token
-// }
+import { addToCart, getCart, removeFromCart } from './actions/cartActions';
 
 function App(props) {
 
-  // console.log(useSelector((state) => state));
+  // Mise en place de Redux pour la gestion du panier (cart)
   // // renvoi l'objet avec nos reducers 
-  // // const title = useSelector((state) => state.pageTitleReducer);
+  const cart = useSelector((state) => state.cartReducer);
+  // console.log(useSelector((state) => state));
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  //soit on crée la fonction à part et on l'appelle après dans le return
-  // const setCollectionsTitle = () => {
-  //   dispatch(setCollections());
-  // }
-  // const setHarryPotterTitle = (event) => {
-  //   event.preventDefault();
-  //   dispatch(setHarryPotter());
-  // }
-  // const setMarvelTitle = (event) => {
-  //   event.preventDefault();
-  //   dispatch(setMarvel());
-  // }
-  // const setSdaTitle = (event) => {
-  //   event.preventDefault();
-  //   dispatch(setSda());
-  // }
-  // const setStarWarsTitle = (event) => {
-  //   event.preventDefault();
-  //   dispatch(setStarWars());
-  // }
+  // Ajouter un article au panier
+  const handleAddToCart = (event, article) => {
+    event.preventDefault();
+    dispatch(addToCart(article));
+  }
+
+  // Supprimer un article du Panier
+  const handleDeleteFromCart = (event, id) => {
+    event.preventDefault();
+    dispatch(removeFromCart(id));
+  }
+
+  // Récupérer le panier stocké en localStorage
+  const handleGetCart = () => {
+    // event.preventDefault();
+    dispatch(getCart());
+  }
+
 
   // ----------------------------------------------------------------
   //  AUTH 
@@ -98,7 +88,7 @@ function App(props) {
   return (
     <>
       <Router>
-        <MainNavbar isAuthenticated={isAuthenticated} />
+        <MainNavbar isAuthenticated={isAuthenticated} handleGetCart={handleGetCart}/>
 
         <div className="main">
           <Switch>
@@ -107,7 +97,18 @@ function App(props) {
             {/* <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/>  */}
 
             <Route path="/produits" exact component={MainUniverse} />
-            <Route path="/produits/produit/:id" component={Article} />
+            <Route path="/produits/produit/:id" 
+              exact 
+              render={(props) => <Article {...props} handleAddToCart={handleAddToCart}/>} 
+            />
+            <Route path="/panier" 
+              exact 
+              render={(props) => <Cart {...props} 
+                cart={cart}
+                handleAddToCart={handleAddToCart} 
+                handleDeleteFromCart={handleDeleteFromCart}
+                handleGetCart={handleGetCart}/>} 
+            />
 
             <Route exact path='/compte/connexion'
               render={(props) => !isAuthenticated ? <SignIn {...props} setAuth={setAuth} /> : <Redirect to='/' />} />
