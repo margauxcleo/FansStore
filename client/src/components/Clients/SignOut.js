@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { withRouter } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 import './Clients.css';
 
@@ -16,15 +15,20 @@ const SignOut = (props) => {
 
     const handleRedirect = (event) => {
         event.preventDefault();
-        props.history.push('/');
+        toast.dark("A bientôt !");
+        // props.history.push('/');
     }
 
     return (
         <>
-        <div>
-            <h2>Déconnexion ?</h2>
-            <button onClick={(e) => onLogout(e)}>Oui </button>
-            <button onClick={handleRedirect}>Non </button>
+        <div className="logout-form container-fluid mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-11 mb-4">
+            <h1>Se déconnecter ?</h1>
+            <br/>
+            <div className="d-flex justify-content-around align-items-center">
+                <button className="btn btn-primary" onClick={(e) => onLogout(e)}>Oui </button>
+                <button className="btn btn-secondary" onClick={handleRedirect}>Non </button>
+            </div>
+            
         </div>
         </>
     )

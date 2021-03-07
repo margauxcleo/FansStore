@@ -27,8 +27,6 @@ import { addToCart, getCart, removeFromCart } from './actions/cartActions';
 function App(props) {
 
   // Mise en place de Redux pour la gestion du panier (cart)
-
-  
   // // renvoi l'objet avec nos reducers 
   const cart = useSelector((state) => state.cartReducer);
   // console.log(useSelector((state) => state));
