@@ -22,7 +22,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 // on fait du destructuring pour importer nos actions 
 // import { setHarryPotter, setMarvel, setSda, setStarWars, setCollections } from "./actions";
-import { addToCart, getCart, removeFromCart } from './actions/cartActions';
+import { addToCart, getCart, removeFromCart, increment, decrement } from './actions/cartActions';
 
 function App(props) {
 
@@ -37,20 +37,31 @@ function App(props) {
   const handleAddToCart = (event, article) => {
     event.preventDefault();
     dispatch(addToCart(article));
-  }
+  };
 
   // Supprimer un article du Panier
-  const handleDeleteFromCart = (event, id) => {
+  const handleDeleteFromCart = (event, article) => {
     event.preventDefault();
-    dispatch(removeFromCart(id));
-  }
+    dispatch(removeFromCart(article));
+  };
 
   // Récupérer le panier stocké en localStorage
   const handleGetCart = () => {
     // event.preventDefault();
     dispatch(getCart());
-  }
+  };
 
+  // Incrémenter de 1 
+  const handleIncrement = (event, article) => {
+    event.preventDefault();
+    dispatch(increment(article))
+  };
+
+  // Décrémenter de 1 
+  const handleDecrement = (event, article) => {
+    event.preventDefault();
+    dispatch(decrement(article))
+  };
 
   // ----------------------------------------------------------------
   //  AUTH 
@@ -107,7 +118,10 @@ function App(props) {
                 cart={cart}
                 handleAddToCart={handleAddToCart} 
                 handleDeleteFromCart={handleDeleteFromCart}
-                handleGetCart={handleGetCart}/>} 
+                handleGetCart={handleGetCart}
+                handleIncrement={handleIncrement}
+                handleDecrement={handleDecrement}
+                />} 
             />
 
             <Route exact path='/compte/connexion'

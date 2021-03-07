@@ -49,15 +49,14 @@ const cartReducer = (state = initialState, action) => {
 
                     localStorage.setItem(
                         "Cart",
-                        JSON.stringify([...state.cart, _cart ])
+                        JSON.stringify([...state.cart, _cart])
                     );
-                    
                 }
             }
 
             localStorage.setItem(
                 "Cart",
-                JSON.stringify([...state.cart, ])
+                JSON.stringify([...state.cart])
             );
 
             return {
@@ -66,29 +65,31 @@ const cartReducer = (state = initialState, action) => {
                 cart: JSON.parse(localStorage.getItem("Cart"))
             }
 
-        // sinon 
-        // // on récupère le contenu qu'il y dans le panier 
-        // let cartState = JSON.parse(localStorage.getItem("Cart"));
-        // // si on ne trouve pas Cart dans le localStorage, alors on retourne un array vide
-        // cartState = cartState ? cartState : [];
-        // return {
-        //     ...state,
-        //     cart: JSON.parse(localStorage.getItem("Cart"))
-        // };
         case INCREASE_QUANTITY:
-            state.itemCartNb++
+            
+            state.itemCartNb++;
             state.cart[action.payload].quantity++;
+
+            localStorage.setItem(
+                "Cart",
+                JSON.stringify([...state.cart])
+            );
 
             return {
                 ...state,
-                // cart: JSON.parse(localStorage.getItem("Cart"))
+                cart: JSON.parse(localStorage.getItem("Cart"))
             }
 
         case DECREASE_QUANTITY:
-            let quantity = state.cart[action.payload].quantity;
-            if (quantity > 1) {
+            let toDecreaseQuantity = state.cart[action.payload].quantity;
+            if (toDecreaseQuantity > 1) {
                 state.itemCartNb--;
                 state.cart[action.payload].quantity--;
+
+                localStorage.setItem(
+                    "Cart",
+                    JSON.stringify([...state.cart])
+                );
             }
 
             return {
@@ -103,34 +104,23 @@ const cartReducer = (state = initialState, action) => {
             };
 
         case REMOVE_CART_ITEM:
+
             let quantity_ = state.cart[action.payload].quantity;
-            let cartState = JSON.parse(localStorage.getItem("Cart"));
-            cartState = cartState ? cartState : [];
 
             localStorage.setItem(
                 "Cart",
                 JSON.stringify([
-                    ...cartState.filter(cartItem => cartItem.articleId !== action.payload)
+                    ...state.cart.filter(cartItem => cartItem.id != state.cart[action.payload].id)
                 ])
             );
 
             return {
                 ...state,
-                itemCartNb: state.numberCart - quantity_,
+                itemCartNb: state.itemCartNb - quantity_,
                 cart: JSON.parse(localStorage.getItem("Cart"))
-            };
 
-        // case DELETE_CART:
+            }
 
-        //     let quantity_ = state.cart[action.payload].quantity;
-        //     return {
-        //         ...state,
-        //         itemCartNb: state.numberCart - quantity_,
-        //         cart: state.cart.filter(item => {
-        //             return item.id != state.cart[action.payload].articleId
-        //         })
-
-        //     }
         default:
             return state;
 
