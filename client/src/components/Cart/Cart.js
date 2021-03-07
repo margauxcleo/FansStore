@@ -27,7 +27,7 @@ const Cart = (props) => {
 
     return (
         <>
-            <div className="jumbotron jumbotron-universes p-3 p-md-5 mx-auto col-xl-11 col-lg-11 col-sm-12 rounded">
+            <div className="jumbotron jumbotron-universes p-3 p-md-5 mx-auto col-xl-11 col-lg-11 col-md-11 col-sm-12 rounded  d-flex align-items-center">
                 <div className="px-0 mx-auto jumb-div-title" >
                     <h1 className="display-4 mx-auto">Panier</h1>
                 </div>
