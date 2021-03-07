@@ -9,6 +9,7 @@ const SignOut = (props) => {
     const onLogout = async (event) => {
         event.preventDefault();
         localStorage.removeItem("jwt");
+        localStorage.removeItem('Cart');
         setAuth(false);
         props.history.push('/');
     }
