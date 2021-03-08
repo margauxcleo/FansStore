@@ -6,9 +6,16 @@ import './Paiement.css';
 const Paiement = (props) => {
 
     const [infos, setInfos] = useState("");
+
+    // AR => pas bon de faire comme ça 
     const [mainTitle, setMainTitle] = useState("Paiement");
     const [themeStyle, setThemeStyle ] = useState("mainTheme");
+    // fin AR
 
+    const { handleGetCart } = props;
+    const { cart } = props.cart;
+
+    // Récupération des informations clients présentes en base de données
     const getInfos = async () => {
         try {
             const response = await fetch("http://localhost:8088/clients/client/infos", {
@@ -26,13 +33,6 @@ const Paiement = (props) => {
         }
     };
 
-    const { handleDeleteFromCart, handleGetCart, handleIncrement, handleDecrement} = props;
-
-    // console.log(cart.json());
-    // const panier = cart.json();
-
-    const { cart } = props.cart;
-
     // calcul du prix total (reduce?)
     let totalPrice = cart.reduce( (total, article) => {
         // console.log(`Prix  => ${article.price} Quantité => ${article.quantity}`);
@@ -40,6 +40,112 @@ const Paiement = (props) => {
         // console.log('-----------');
         return total + (article.price * article.quantity);
     },0);
+
+
+    // DIFFERENTS FORM = DIFFERENTS FETCH 
+    // update des infos du client
+    const updateClientInfos = async data => {
+        console.log('onSubmit: ', JSON.stringify(data));
+        
+        try {
+            const response = await fetch('http://localhost:8088/clients/updateClient', {
+                method : 'PUT',
+                mode : 'cors',
+                headers : {
+                'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify(data)
+            });
+      
+            const parseRes = await response.json();
+      
+            if (parseRes) {
+              console.log('Infos à jour!');
+            } else {
+              console.log(parseRes);
+            }
+          } catch (e) {
+            console.error(e.message);
+          }
+    };
+
+    // création d'une adresse
+    const handleAddAddress = async data => {
+        console.log('onSubmit: ', JSON.stringify(data));
+        
+        try {
+            const response = await fetch('http://localhost:8088/clients/client/addAddress', {
+                method : 'POST',
+                mode : 'cors',
+                headers : {
+                'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify(data)
+            });
+      
+            const parseRes = await response.json();
+      
+            if (parseRes) {
+              console.log('Nouvelle adresse créée avec succès !');
+            } else {
+              console.log(parseRes);
+            }
+          } catch (e) {
+            console.error(e.message);
+          }
+    };
+
+    // création d'une carte de paiement 
+    const handleAddCard = async data => {
+        console.log('onSubmit: ', JSON.stringify(data));
+        
+        try {
+            const response = await fetch('http://localhost:8088/clients/client/addCard', {
+                method : 'POST',
+                mode : 'cors',
+                headers : {
+                'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify(data)
+            });
+      
+            const parseRes = await response.json();
+      
+            if (parseRes) {
+              console.log('Nouvelle carte de paiement créée avec succès !');
+            } else {
+              console.log(parseRes);
+            }
+          } catch (e) {
+            console.error(e.message);
+          }
+    };
+
+    // création d'une commande 
+    const handleNewOrder = async data => {
+        console.log('onSubmit: ', JSON.stringify(data));
+        
+        try {
+            const response = await fetch('http://localhost:8088/orders//newOrder', {
+                method : 'POST',
+                mode : 'cors',
+                headers : {
+                'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify(data)
+            });
+      
+            const parseRes = await response.json();
+      
+            if (parseRes) {
+              console.log('Commande créée avec succès !');
+            } else {
+              console.log(parseRes);
+            }
+          } catch (e) {
+            console.error(e.message);
+          }
+    };
 
     // on met à jour le panier à chaque fois qu'on render cette page 
     useEffect(() => {
