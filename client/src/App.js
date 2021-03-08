@@ -110,8 +110,12 @@ function App(props) {
             <Route path="/produits" exact component={MainUniverse} />
             <Route path="/produits/produit/:id" 
               exact 
-              render={(props) => <Article {...props} handleAddToCart={handleAddToCart}/>} 
+              render={(props) => <Article {...props} 
+              handleAddToCart={handleAddToCart}
+              cart={cart}
+              />} 
             />
+
             <Route path="/panier" 
               exact 
               render={(props) => isAuthenticated ? <Cart {...props} 

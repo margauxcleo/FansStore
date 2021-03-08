@@ -10,7 +10,14 @@ import './Article.css';
 
 const Article = (props) => {
 
-    const { handleAddToCart } = props;
+    const { handleAddToCart, handleGetCart } = props;
+
+    // on retrouve l'objet contenant l'article concerné avec un filtrer sur cart
+    // if (!article) {
+    //     const articleInCart = cart.filter(cartItem => cartItem.id = article.articleId);
+    //     console.log(articleInCart);
+    // }
+    
 
     const path = "../../";
 
@@ -57,11 +64,18 @@ const Article = (props) => {
                         <p className="brand">{article.brand}</p>
                         <p className="price">{article.price} €</p>
                         <button 
+                            id="cart-btn"
                             className="btn btn-primary"
                             onClick={(event) => handleAddToCart(event, article)}
                         >   
                             Ajouter au panier
                         </button>
+                        <br/>
+                        <div id="error-message">
+                            <div className="alert alert-danger" role="alert">
+                                Plus de quantité disponible en stock !
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br />
