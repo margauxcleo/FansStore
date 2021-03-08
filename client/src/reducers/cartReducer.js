@@ -70,13 +70,26 @@ const cartReducer = (state = initialState, action) => {
             // if (action.payload.quantity <= action.payload.available_quantity) {
                 
             // }
+            // if (action.payload.quantity < action.payload.available_quantity) {
+            //     state.itemCartNb++;
+            //     state.cart[action.payload].quantity++;
+
+            //     localStorage.setItem(
+            //         "Cart",
+            //         JSON.stringify([...state.cart])
+            //     );
+    
+            // } 
+
             state.itemCartNb++;
-            state.cart[action.payload].quantity++;
+                state.cart[action.payload].quantity++;
 
             localStorage.setItem(
                 "Cart",
                 JSON.stringify([...state.cart])
             );
+            
+            
 
             return {
                 ...state,
@@ -85,7 +98,7 @@ const cartReducer = (state = initialState, action) => {
 
         case DECREASE_QUANTITY:
             let toDecreaseQuantity = state.cart[action.payload].quantity;
-            if (toDecreaseQuantity >= 1) {
+            if (toDecreaseQuantity > 1) {
                 state.itemCartNb--;
                 state.cart[action.payload].quantity--;
 
