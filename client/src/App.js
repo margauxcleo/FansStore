@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
-import { useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from 'react';
+
+import $ from 'jquery';
 
 import MainNavbar from './components/MainNavbar/MainNavbar';
 import Footer from './components/Footer/Footer';
@@ -102,10 +104,10 @@ function App(props) {
   return (
     <>
       <Router>
-        <MainNavbar 
-        isAuthenticated={isAuthenticated} 
-        handleGetCart={handleGetCart}
-        cart={cart}
+        <MainNavbar
+          isAuthenticated={isAuthenticated}
+          handleGetCart={handleGetCart}
+          cart={cart}
         />
 
         <div className="main">
@@ -115,25 +117,25 @@ function App(props) {
             {/* <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/>  */}
 
             <Route path="/produits" exact component={MainUniverse} />
-            <Route path="/produits/produit/:id" 
-              exact 
-              render={(props) => <Article {...props} 
-              handleAddToCart={handleAddToCart}
-              cart={cart}
-              />} 
+            <Route path="/produits/produit/:id"
+              exact
+              render={(props) => <Article {...props}
+                handleAddToCart={handleAddToCart}
+                cart={cart}
+              />}
             />
 
-            <Route path="/panier" 
-              exact 
-              render={(props) => isAuthenticated ? <Cart {...props} 
+            <Route path="/panier"
+              exact
+              render={(props) => isAuthenticated ? <Cart {...props}
                 cart={cart}
-                handleAddToCart={handleAddToCart} 
+                handleAddToCart={handleAddToCart}
                 handleDeleteFromCart={handleDeleteFromCart}
                 handleGetCart={handleGetCart}
                 handleIncrement={handleIncrement}
                 handleDecrement={handleDecrement}
-                />
-              : <Redirect to="/compte/connexion" />} 
+              />
+                : <Redirect to="/compte/connexion" />}
             />
 
             <Route exact path='/compte/connexion'
@@ -148,14 +150,14 @@ function App(props) {
             <Route exact path='/compte/infos'
               render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
 
-            <Route 
-              path="/paiement" 
-              exact 
-              render={(props) => isAuthenticated ? <PurchasePage {...props} 
+            <Route
+              path="/paiement"
+              exact
+              render={(props) => isAuthenticated ? <PurchasePage {...props}
                 cart={cart}
                 handleGetCart={handleGetCart}
-                />
-              : <Redirect to="/compte/connexion" />} 
+              />
+                : <Redirect to="/compte/connexion" />}
             />
 
             <Route path="/cgu" exact component={TermsOfUse} />

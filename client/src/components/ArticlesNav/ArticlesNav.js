@@ -1,4 +1,3 @@
-import { NavLink, Link } from 'react-router-dom';
 import $ from 'jquery';
 
 import './ArticlesNav.css'; 
