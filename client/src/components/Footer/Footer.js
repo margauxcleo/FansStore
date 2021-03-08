@@ -1,7 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
-
+import {Link} from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
@@ -47,8 +47,9 @@ const Footer = () => {
                             <ListGroup.Item className="footer-item">
                                     <a className="btn btn-footer" href="" type="button">
                                         <i className="fas fa-landmark"></i>
+                                        <Link to="/mentions" style={{textDecoration: 'none', color:'white'}}>
                                         <span className="footer_title">Mentions légales</span>
-                        
+                                        </Link>
                     </a>
                                 </ListGroup.Item>
                                 <ListGroup.Item className="footer-item">
