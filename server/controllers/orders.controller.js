@@ -56,6 +56,11 @@ exports.findAllOrders = (req, res) => {
 // TESTS MV ----------------------------------------------
 // création d'une commande suite à la validation
 exports.newOrder = (req, res) => {
+    // plusieurs choses à mettre en place 
+    // On récupère le panier stocké en localStorage qui équivaut aux sous-totaux 
+    // On doit créer une commande 
+    // Se servir de son id et faire un map sur chaque item du panier, pour créer les order details
+    // On doit également adapter la valeur restant en stocke, par rapport à l'id de l'article
 
     // 1. On stocke le résultat de validator dans la const errors
     const errors = validationResult(req);
@@ -82,35 +87,55 @@ exports.newOrder = (req, res) => {
         const totalPrice = "";
         // far une boucle for each ? 
 
-
-        // Créa modèle order
+        // 1) On doit créer une commande 
+        // on définit son modèle
         const order = {
-            orderId: req.body.orderId, // primary key en auto implement
-            fk_clientId: req.body.fk_clientId, // récupéré depuis le jwt 
-            shipping: req.body.shipping, // récupéré du formulaire (même si valeur auto)
+            orderId: body.orderId, // primary key en auto implement
+            fk_clientId: id, // récupéré depuis le jwt 
+            shipping: body.shipping, // récupéré du formulaire (même si valeur auto)
             date: date.now(), // création de la date à l'instant du clic 
-            total_price: req.body.total_price, // fonction calcul de tous les sous-totaux
-            order_details: [
-                {
-                    orderId: req.body.orderId,
-                    fk_orderId: req.body.orderId, // généré en auto
-                    fk_articleId: req.body.fk_articleId,
-                    quantity: req.body.quantity, // récupéré du localStorage et envoyé avec le form ?
-                    price: req.body.price // récupéré du localStorage et envoyé avec le form ?
-                }
-            ]
+            total_price: "", // fonction calcul de tous les sous-totaux
         };
 
+        // on la créée
         Order.create(order)
-            .then(order => {
-                res.send(order);
-            })
-            .catch(err => {
-                res.status(500).send({
-                    message:
-                        err.message || "Some error occurred while creating the new order."
-                });
+        .then(order => {
+            console.log(order);
+            // On crée sa collection, en récupérant l'id stocké dans order suite à sa création
+            const orderCollection = Order.findOne({orderId: order.orderId});
+
+            // On crée le modèle d'une sous commande 
+            const orderDetail = {
+                orderDetailsId: body.orderId, // auto incrément donc crée en auto 
+                fk_orderId: order.orderId, // ici c'est celui de la commande en cours 
+                fk_articleId: body.fk_articleId, // se trouvera dans le panier 
+                quantity: body.quantity, //  se trouvera dans le panier 
+                price: body.price //  se trouvera dans le panier 
+            };
+
+
+            // On doit faire un for sur cart pour créer un model par article 
+
+
+            // Si on récupère bien la commande 
+            if (orderCollection) {
+                const newOrderDetail = OrderDetail.create(orderDetail);
+                res.status(201).send(newAddress)
+            }
+            else {
+                re.status(404).send("Order Not Found")
+            }
+
+            // On doit faire un for sur cart pour créer un model par article 
+
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while creating the new order."
             });
+        });
+            // On crée sa "collection"
         
         // ou sinon, on fait un findAll sur les ordersDetails et on fait le sum de leur price 
         // const totalPrice2 = Order.findAll()
