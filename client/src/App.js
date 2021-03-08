@@ -137,7 +137,14 @@ function App(props) {
             <Route exact path='/compte/infos'
               render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
 
-            <Route path="/paiement" exact component={Paiement} />
+            <Route path="/paiement" 
+              exact 
+              render={(props) => isAuthenticated ? <Paiement {...props} 
+                cart={cart}
+                handleGetCart={handleGetCart}
+                />
+              : <Redirect to="/compte/connexion" />} 
+            />
 
             <Route path="*">
               <Error />
