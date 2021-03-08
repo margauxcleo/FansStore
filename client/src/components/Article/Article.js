@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import {Link} from "react-router-dom";
 import ReactFancyBox from 'react-fancybox';
-import Paiement from '../Clients/Paiement.js';
+import Paiement from '../Order/Paiement.js';
 import 'react-fancybox/lib/fancybox.css';
 
 

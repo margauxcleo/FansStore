@@ -8,20 +8,16 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
-
 import Cart from './components/Cart/Cart';
-
 import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
 import ClientInfos from './components/Clients/ClientInfos';
 import PurchasePage from './components/Order/PurchasePage/PurchasePage';
-import Paiement from './components/Clients/Paiement.js';
-import Order from './components/Order/Order';
-
+import OrderConfirmation from './components/Order/OrderConfirmation/OrderConfirmation';
 import TermsOfUse from './components/Legals/TermsOfUse/TermsOfUse';
 import Cookies from './components/Legals/CookiesPage/CookiesPage';
-
+import MentionsLegales from './components/Legals/MentionsLegales/MentionsLegales';
 import Error from './components/Error/Error';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -29,6 +25,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // on fait du destructuring pour importer nos actions 
 // import { setHarryPotter, setMarvel, setSda, setStarWars, setCollections } from "./actions";
 import { addToCart, getCart, removeFromCart, increment, decrement } from './actions/cartActions';
+
 
 function App(props) {
 
@@ -163,7 +160,7 @@ function App(props) {
 
             <Route path="/cgu" exact component={TermsOfUse} />
             <Route path="/cookies" exact component={Cookies} />
-
+            <Route path="/mentions-legales" exact component={MentionsLegales} />
             <Route path="*">
               <Error />
             </Route>
