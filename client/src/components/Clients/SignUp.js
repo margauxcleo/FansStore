@@ -38,7 +38,8 @@ const SignUp = (props) => {
       } catch (e) {
         console.error(e.message);
       }
- };
+};
+
  const {register, handleSubmit, errors, watch} = useForm({});
  const password = useRef({});
  password.current = watch("password", "");
