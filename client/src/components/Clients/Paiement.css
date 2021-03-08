@@ -10,6 +10,10 @@
     padding: 15px;
 }
 
+.paiement-div .price {
+    color: #000;
+}
+
 .paiement-div .btn-primary { 
     color: #fff;
     background-color: #F3DB5D;

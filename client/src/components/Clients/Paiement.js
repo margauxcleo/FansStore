@@ -26,10 +26,6 @@ const Paiement = (props) => {
         }
     };
 
-    useEffect(() => {
-        getInfos();
-    }, []);
-
     const { handleDeleteFromCart, handleGetCart, handleIncrement, handleDecrement} = props;
 
     // console.log(cart.json());
@@ -39,16 +35,18 @@ const Paiement = (props) => {
 
     // calcul du prix total (reduce?)
     let totalPrice = cart.reduce( (total, article) => {
-        console.log(`Prix  => ${article.price} Quantité => ${article.quantity}`);
-        console.log(`Total => ${total}`);
-        console.log('-----------');
+        // console.log(`Prix  => ${article.price} Quantité => ${article.quantity}`);
+        // console.log(`Total => ${total}`);
+        // console.log('-----------');
         return total + (article.price * article.quantity);
     },0);
 
     // on met à jour le panier à chaque fois qu'on render cette page 
     useEffect(() => {
+        getInfos();
         handleGetCart();
-      }, []);
+    }, []);
+
 
     return (
         <>
@@ -114,14 +112,24 @@ const Paiement = (props) => {
                 </div>
                 <div className="paiement-div jumbotron jumbotron-paiement p-3 p-md-5 mx-auto col-xl-5 col-lg-5 rounded">
                     <h2 className="text-center text-dark mb-3">Récapitulatif commande</h2>
-                    {(cart.map((cartItem, key) => {
-                                return (
-                                <div key={key} className="row d-flex flex-row justify-content-between align-items-start mb-2">
-                                    <ul class="list-group">
-                                        <li class="list-group-item text-dark">{cartItem.quantity} - {cartItem.name}  : {cartItem.price} € </li>
-                                    </ul>
-                                </div>)}
-                    ))}
+                    <>
+                        {(cart.map((cartItem, key) => {
+                                    return (
+                                    <div key={key} className="row d-flex flex-row justify-content-between align-items-start mb-2">
+                                        <ul className="list-group">
+                                            <li className="list-group-item text-dark">{cartItem.quantity} - {cartItem.name}  : {cartItem.price} € </li>
+                                        </ul>
+                                    </div>)}
+                        ))}
+                    </>
+                    <h5 className="price">Somme totale: 
+                        <span> { Math.round(totalPrice * 100)/100 } € TTC</span>
+                    </h5>
+
+                    {/* if (!infos.addresses || infos.addresses.length === 0 || infos.cards.length === 0) ? 
+                    button disabled  true*/}
+                    {/* : bouton not disabled => il peut passer commande 
+                    => on lance le fetch post pour la création d'une commande */}
                 </div>
             </div>
         </div>
