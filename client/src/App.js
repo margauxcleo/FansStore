@@ -8,14 +8,15 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
-
 import Cart from './components/Cart/Cart';
-import MentionsLegales from './components/MentionsLegales/MentionsLegales';
 import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
 import ClientInfos from './components/Clients/ClientInfos';
-import Paiement from './components/Order/Paiement.js';
+import PurchasePage from './components/Order/PurchasePage/PurchasePage';
+import TermsOfUse from './components/Legals/TermsOfUse/TermsOfUse';
+import Cookies from './components/Legals/CookiesPage/CookiesPage';
+import MentionsLegales from './components/Legals/MentionsLegales/MentionsLegales';
 import Error from './components/Error/Error';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -23,7 +24,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // on fait du destructuring pour importer nos actions 
 // import { setHarryPotter, setMarvel, setSda, setStarWars, setCollections } from "./actions";
 import { addToCart, getCart, removeFromCart, increment, decrement } from './actions/cartActions';
-import Mention from "./components/MentionsLegales/MentionsLegales";
+
 
 function App(props) {
 
@@ -106,15 +107,17 @@ function App(props) {
           <Switch>
             <Route path="/" exact component={Home} />
 
-            <Route path="/mention" exact component={Mention} />
-
             {/* <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/>  */}
 
             <Route path="/produits" exact component={MainUniverse} />
             <Route path="/produits/produit/:id" 
               exact 
-              render={(props) => <Article {...props} handleAddToCart={handleAddToCart}/>} 
+              render={(props) => <Article {...props} 
+              handleAddToCart={handleAddToCart}
+              cart={cart}
+              />} 
             />
+
             <Route path="/panier" 
               exact 
               render={(props) => isAuthenticated ? <Cart {...props} 
@@ -142,13 +145,16 @@ function App(props) {
 
             <Route path="/paiement" 
               exact 
-              render={(props) => isAuthenticated ? <Paiement {...props} 
+              render={(props) => isAuthenticated ? <PurchasePage {...props} 
                 cart={cart}
                 handleGetCart={handleGetCart}
                 />
               : <Redirect to="/compte/connexion" />} 
             />
 
+            <Route path="/mentions-legales" exact component={TermsOfUse} />
+            <Route path="/mentions-legales" exact component={Cookies} />
+            <Route path="/mentions" exact component={MentionsLegales} />
             <Route path="*">
               <Error />
             </Route>
