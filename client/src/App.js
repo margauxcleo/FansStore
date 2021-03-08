@@ -156,8 +156,8 @@ function App(props) {
               : <Redirect to="/compte/connexion" />} 
             />
 
-            <Route path="/mentions-legales" exact component={TermsOfUse} />
-            <Route path="/mentions-legales" exact component={Cookies} />
+            <Route path="/cgu" exact component={TermsOfUse} />
+            <Route path="/cookies" exact component={Cookies} />
 
             <Route path="*">
               <Error />

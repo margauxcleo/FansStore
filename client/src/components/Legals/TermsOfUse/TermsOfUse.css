@@ -1,0 +1,17 @@
+.site_name {
+    color: #F3DB5D;
+    font-weight: bold;
+}
+
+.termsofuse {
+    color: #777E7C;
+}
+
+.termsofuse h3 {
+    text-transform: uppercase;
+    text-align: justify;
+}
+
+h1 {
+    font-style: italic;
+}

@@ -1,6 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Link } from "react-router-dom";
 
 import './Footer.css';
 
@@ -38,23 +39,23 @@ const Footer = () => {
                     <Col xs={12} sm={5} md={5} lg={4} xl={3} className="div-footer">
                         <ListGroup variant="flush" className="btn-group-vertical">
                             <ListGroup.Item className="footer-item">
-                                <a className="btn btn-footer" href="" type="button">
+                                <Link className="btn btn-footer" to="/cgu" type="button">
                                     <i className="fas fa-thumbtack"></i>
-                                    <span className="footer_title">Page de confidentialité</span>
+                                    <span className="footer_title">Conditions d'utilisation</span>
                                     
-                                </a>
+                                </Link>
                             </ListGroup.Item>
                             <ListGroup.Item className="footer-item">
-                                    <a className="btn btn-footer" href="" type="button">
+                                    <Link className="btn btn-footer" to="/mentions-legales" type="button">
                                         <i className="fas fa-landmark"></i>
                                         <span className="footer_title">Mentions légales</span>
                         
-                    </a>
+                                    </Link>
                                 </ListGroup.Item>
                                 <ListGroup.Item className="footer-item">
-                                    <a className="btn btn-footer" href="" type="button">
+                                    <Link className="btn btn-footer" to="/cookies" type="button">
                                         <i className="fas fa-eye"></i> <span className="footer_title">Cookies</span>
-                    </a>
+                                    </Link>
                                 </ListGroup.Item>
                         </ListGroup>
                     </Col>
