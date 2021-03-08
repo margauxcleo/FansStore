@@ -42,7 +42,7 @@ const Article = (props) => {
             mode: "cors",
         });
         const parseResponse = await response.json();
-        console.log(parseResponse);
+        // console.log(parseResponse);
         setArticle(parseResponse);
     };
 

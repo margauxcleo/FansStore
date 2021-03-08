@@ -12,3 +12,9 @@
     background-color: transparent;
     color: #FFF;
 }
+
+.nav-articles .nav-link:hover {
+    cursor: pointer;
+    /* border-color: #F3DB5D!important;
+    box-shadow: 0 0 0 0.2rem rgb(243 219 93 / 50%)!important; */
+}

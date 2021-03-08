@@ -28,6 +28,13 @@
     background-color: #FFF;
     color: #4F5453;
     margin-bottom: 15px;
+    transition: transform 330ms ease-in-out;
+}
+
+.articles .card:hover {
+    /* transform: scale(1.1); */
+    border-color: #F3DB5D!important;
+    box-shadow: 0 0 0 0.2rem rgb(243 219 93 / 50%)!important;
 }
 
 .articles .card .name {
@@ -35,7 +42,7 @@
     height: 70px;
     padding: 15px;
     border-radius: 0.25rem;
-    background-color: #F3DB5D;
+    background-color: #8D9492;
     /* background: linear-gradient(207deg, rgba(243,219,93,0.9023984593837535) 0%, rgba(243,219,93,0.76234243697479) 100%); */
     margin: 0;
     color: #FFF;
