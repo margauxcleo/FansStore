@@ -67,12 +67,11 @@ const cartReducer = (state = initialState, action) => {
 
         case INCREASE_QUANTITY:
             
-            // AR !!! 
-            while (action.payload.quantity <= action.payload.available_quantity) {
-                state.itemCartNb++;
-                state.cart[action.payload].quantity++;
-            }
-            
+            // if (action.payload.quantity <= action.payload.available_quantity) {
+                
+            // }
+            state.itemCartNb++;
+            state.cart[action.payload].quantity++;
 
             localStorage.setItem(
                 "Cart",
@@ -86,7 +85,7 @@ const cartReducer = (state = initialState, action) => {
 
         case DECREASE_QUANTITY:
             let toDecreaseQuantity = state.cart[action.payload].quantity;
-            if (toDecreaseQuantity > 1) {
+            if (toDecreaseQuantity >= 1) {
                 state.itemCartNb--;
                 state.cart[action.payload].quantity--;
 

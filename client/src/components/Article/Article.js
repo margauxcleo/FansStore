@@ -56,13 +56,12 @@ const Article = (props) => {
                         <h3 className="name">{article.name}</h3>
                         <p className="brand">{article.brand}</p>
                         <p className="price">{article.price} €</p>
-                        <Link to="/paiement">
-                        <button className="btn btn-primary">Ajouter au panier</button>
-                        </Link>
                         <button 
                             className="btn btn-primary"
                             onClick={(event) => handleAddToCart(event, article)}
-                        >Ajouter au panier</button>
+                        >   
+                            Ajouter au panier
+                        </button>
                     </div>
                 </div>
                 <br />
