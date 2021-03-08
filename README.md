@@ -1,4 +1,4 @@
-# FansStore v.1.1.2
+# FansStore v.1.1.6
 
 # Stack : REACT / REDUX / NODE / EXPRESS / SQL
   
@@ -20,7 +20,7 @@
 # [5] En tant que client, je veux pouvoir me connecter à mon compte.  
 # [6] En tant que client, je veux pouvoir me déconnecter.  
 # [7] En tant que client, je veux pouvoir ajouter un article dans mon panier.  
-# [8] En tant que client, je veux pouvoir valider mes achats  
+# [8] En tant que client, je veux pouvoir valider mes achats  - fonctionnalité en cours 
 # [9] En tant qu'admin, je veux que l'utilisateur voit l'image de l'article en full écran lorsqu'il clique dessus.  
 # [10] En tant que client, je veux pouvoir voir mes informations personnelles.  
 # [11] En tant que client, je veux pouvoir accéder à la page de confidentialité du site.  
