@@ -4,6 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import {Link} from 'react-router-dom';
 import './Footer.css';
 
+
 const Footer = () => {
 
     return (
@@ -47,7 +48,7 @@ const Footer = () => {
                             <ListGroup.Item className="footer-item">
                                     <a className="btn btn-footer" href="" type="button">
                                         <i className="fas fa-landmark"></i>
-                                        <Link to="/mentions" style={{textDecoration: 'none', color:'white'}}>
+                                        <Link to="/mentions-legales" style={{textDecoration: 'none', color:'white'}}>
                                         <span className="footer_title">Mentions légales</span>
                                         </Link>
                     </a>

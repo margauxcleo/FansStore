@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PageTitle from '../../PageTitle/PageTitle';
 // import Cart from '../../Cart/Cart';
 import './PurchasePage.css';
+import {Link} from "react-router-dom";
 
 const Paiement = (props) => {
 
@@ -244,13 +245,20 @@ const Paiement = (props) => {
 
                         (
                             <>
-                                <button className="btn btn-primary" disabled>Valider la commande</button>
+                                <button className="btn btn-primary" disabled>
+                                    Valider la commande
+                                </button>
                             </>
                         ) :
 
                         (
                             <>
-                                <button className="btn btn-primary">Valider la commande</button>
+
+                                <button className="btn btn-primary">
+                                    <Link to="order-confirmation" style={{textDecoration: 'none', color: 'white'}}>
+                                    Valider la commande
+                                    </Link>
+                                </button>
                             </>
                         )
                     }

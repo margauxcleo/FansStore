@@ -14,9 +14,9 @@ import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
 import ClientInfos from './components/Clients/ClientInfos';
 import PurchasePage from './components/Order/PurchasePage/PurchasePage';
+import OrderConfirmation from './components/Order/OrderConfirmation/OrderConfirmation';
 import TermsOfUse from './components/Legals/TermsOfUse/TermsOfUse';
 import Cookies from './components/Legals/CookiesPage/CookiesPage';
-import MentionsLegales from './components/Legals/MentionsLegales/MentionsLegales';
 import Error from './components/Error/Error';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -152,9 +152,17 @@ function App(props) {
               : <Redirect to="/compte/connexion" />} 
             />
 
+            <Route path="/order-confirmation" 
+              exact 
+              render={(props) => isAuthenticated ? <OrderConfirmation {...props} 
+                cart={cart}
+                handleGetCart={handleGetCart}
+                />
+              : <Redirect to="/compte/connexion" />} 
+            />
+
             <Route path="/mentions-legales" exact component={TermsOfUse} />
             <Route path="/mentions-legales" exact component={Cookies} />
-            <Route path="/mentions" exact component={MentionsLegales} />
             <Route path="*">
               <Error />
             </Route>
