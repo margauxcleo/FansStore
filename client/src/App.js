@@ -10,12 +10,12 @@ import MainUniverse from './components/Universes/MainUniverse';
 import Article from './components/Article/Article';
 
 import Cart from './components/Cart/Cart';
-
+import MentionsLegales from './components/MentionsLegales/MentionsLegales';
 import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
 import ClientInfos from './components/Clients/ClientInfos';
-import Paiement from './components/Clients/Paiement.js';
+import Paiement from './components/Order/Paiement.js';
 import Error from './components/Error/Error';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -23,6 +23,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // on fait du destructuring pour importer nos actions 
 // import { setHarryPotter, setMarvel, setSda, setStarWars, setCollections } from "./actions";
 import { addToCart, getCart, removeFromCart, increment, decrement } from './actions/cartActions';
+import Mention from "./components/MentionsLegales/MentionsLegales";
 
 function App(props) {
 
@@ -104,6 +105,8 @@ function App(props) {
         <div className="main">
           <Switch>
             <Route path="/" exact component={Home} />
+
+            <Route path="/mention" exact component={Mention} />
 
             {/* <Route path={["/produits", "/univers/harry-potter", "/univers/marvel", "/univers/star-wars", "/univers/seigneur-des-anneaux"]} component={MainUniverse}/>  */}
 
