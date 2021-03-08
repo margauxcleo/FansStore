@@ -285,11 +285,11 @@ exports.updateClientInfos = (req, res, next) => {
 exports.updateClient = (req, res, next) => {
 
     // 1. On stocke le résultat de validator dans la const errors
-    const errors = validationResult(req);
+    // const errors = validationResult(req);
     // 2. On récupère l'id qui est passé en paramètre
     const id = req.params.id;
     const body = req.body;
-    body.status = false;
+    // body.status = false;
 
     try {
         // on vérifie si on récupère bien l'id
@@ -297,19 +297,14 @@ exports.updateClient = (req, res, next) => {
             throw new BadRequest('Missing required fields: id');
         }
 
-        // on vérifie si il n'y a pas d'erreurs dans la req
-        if (!errors.isEmpty()) {
-            return res.status(422).json({ errors: errors.array() })
-        }
+        // // on vérifie si il n'y a pas d'erreurs dans la req
+        // if (!errors.isEmpty()) {
+        //     return res.status(422).json({ errors: errors.array() })
+        // }
 
         // On créé le modèle du client, et on précise ce à quoi chaque champs va correspondre
+        // On ne précise que les champs qui doivent être modifiés
         const client = {
-            clientId: body.clientId,
-            first_name: body.first_name,
-            last_name: body.last_name,
-            email: body.email,
-            birth_date: body.birth_date,
-            // password: hash, // ajout bcrypt
             phone: body.phone,
             cards: [
                 {
@@ -348,5 +343,59 @@ exports.updateClient = (req, res, next) => {
 
     } catch (err) {
         next(err);
+    }
+}
+
+// Création de l'adresse d'un client 
+exports.addAddressToClient = (req, res, next ) => {
+
+    // 1. On stocke le résultat de validator dans la const errors
+     const errors = validationResult(req);
+
+     // 2. On récupère les données de la requête
+    const body = req.body;
+    body.status = false;
+
+    //3. On récupère l'id stocké dans le token (suite au middleware verifyJWT)
+    const id = req.user.id;
+
+    try {
+        // on vérifie si il n'y a pas d'erreurs dans la req
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() })
+        }
+
+        // On envoie un msg d'erreur si on n'a pas d'id 
+        if (!id) {
+            throw new BadRequest('Missing required fields: id');
+        }
+
+        // Trouve le client concerné 
+        const clientCollection = Client.findOne({
+            clientId: id
+        });
+
+        // on créé le model d'une adresse 
+        const address = {
+            addressId: body.addressId,
+            address_name: body.address_name,
+            street: body.street,
+            zipcode: body.zipcode,
+            city: body.city,
+            fk_clientId: id // l'id récupéré dans le token 
+        };
+
+        // Si on trouve le client, on créé l'adresse 
+        if (clientCollection) {
+            const newAddress = Address.create(address);
+            res.status(201).send(newAddress)
+        }
+        else {
+            re.status(404).send("User Not Found")
+        }
+    }
+    catch (e) {
+        console.log(e);
+        res.status(400).send(e);
     }
 }
