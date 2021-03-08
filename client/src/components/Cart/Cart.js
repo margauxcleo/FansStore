@@ -78,7 +78,7 @@ const Cart = (props) => {
                             </div>
                             <br/>
                             <button className="btn btn-primary">
-                            <Link to="paiement" style={{ textDecoration: 'none', color: 'white'}}>
+                            <Link to="/paiement" style={{ textDecoration: 'none', color: 'white'}}>
                                 Procéder au paiement
                             </Link>
                             </button>
