@@ -19,6 +19,9 @@ import PurchasePage from './components/Order/PurchasePage/PurchasePage';
 import Paiement from './components/Clients/Paiement.js';
 import Order from './components/Order/Order';
 
+import TermsOfUse from './components/Legals/TermsOfUse/TermsOfUse';
+import Cookies from './components/Legals/CookiesPage/CookiesPage';
+
 import Error from './components/Error/Error';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -152,6 +155,9 @@ function App(props) {
                 />
               : <Redirect to="/compte/connexion" />} 
             />
+
+            <Route path="/mentions-legales" exact component={TermsOfUse} />
+            <Route path="/mentions-legales" exact component={Cookies} />
 
             <Route path="*">
               <Error />
