@@ -1,0 +1,113 @@
+.jumbotron-paiement {
+    background-color: #fff!important;
+    color: #fff;
+    height: 390px;
+}
+
+.paiement-div {
+    border-radius: 0.25rem;
+    border: 2px solid #8D9492;
+    padding: 15px;
+}
+
+.paiement-div .price {
+    color: #000;
+}
+
+.paiement-div .btn-primary { 
+    color: #fff;
+    background-color: #F3DB5D;
+    border-color: #F3DB5D;
+    max-width: fit-content;
+}
+
+.paiement-div .btn-primary:hover, .cart-div .btn-primary:active, .cart-div .btn-primary:focus{ 
+    color: #fff!important;
+    background-color: #F3DB5D!important;
+    border-color: #F3DB5D!important;
+    box-shadow: 0 0 0 0.2rem rgb(243 219 93 / 50%)!important;
+}
+
+
+
+
+@media (max-width: 576px) {
+    .first-name {
+       margin-bottom: 15px;
+   } 
+
+   .last-name {
+       margin-bottom: 15px;
+   }
+
+   .phone {
+       margin-bottom: 15px;
+    } 
+
+   .email {
+       margin-bottom: 25px;
+   } 
+
+   .adresse-postale {
+       margin-bottom: 25px;
+   } 
+
+   .nom-carte {
+       margin-bottom: 15px;
+   }
+
+   .adresse-postale {
+    margin-bottom: 15px;
+    }
+
+   .jumbotron-paiement {
+       background-color: #fff!important;
+       color: #fff;
+       height: 650px;
+   }
+
+}
+@media (min-width: 577px) {
+    .jumbotron-paiement {
+        background-color: #fff!important;
+        color: #fff;
+        height: 650px;
+    }
+
+    .first-name {
+        margin-bottom: 15px;
+    } 
+ 
+    .last-name {
+        margin-bottom: 15px;
+    } 
+
+    .phone {
+        margin-bottom: 15px;
+    } 
+
+    .email {
+        margin-bottom: 15px;
+    } 
+    .nom-carte {
+        margin-bottom: 25px;
+    }
+
+    .adresse-postale {
+        margin-bottom: 15px;
+    }
+
+    
+}
+
+@media (min-width: 992px) {
+    .jumbotron-paiement {
+        background-color: #fff!important;
+        color: #fff;
+        height: 390px;
+    }
+}
+
+
+
+

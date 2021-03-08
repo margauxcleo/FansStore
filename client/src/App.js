@@ -15,7 +15,10 @@ import SignOut from './components/Clients/SignOut';
 import SignIn from './components/Clients/SignIn';
 import SignUp from './components/Clients/SignUp';
 import ClientInfos from './components/Clients/ClientInfos';
+import PurchasePage from './components/Order/PurchasePage/PurchasePage';
 import Paiement from './components/Clients/Paiement.js';
+import Order from './components/Order/Order';
+
 import Error from './components/Error/Error';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -143,7 +146,7 @@ function App(props) {
 
             <Route path="/paiement" 
               exact 
-              render={(props) => isAuthenticated ? <Paiement {...props} 
+              render={(props) => isAuthenticated ? <PurchasePage {...props} 
                 cart={cart}
                 handleGetCart={handleGetCart}
                 />
