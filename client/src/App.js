@@ -152,17 +152,9 @@ function App(props) {
               : <Redirect to="/compte/connexion" />} 
             />
 
-            <Route path="/order-confirmation" 
-              exact 
-              render={(props) => isAuthenticated ? <OrderConfirmation {...props} 
-                cart={cart}
-                handleGetCart={handleGetCart}
-                />
-              : <Redirect to="/compte/connexion" />} 
-            />
+            <Route path="/cgu" exact component={TermsOfUse} />
+            <Route path="/cookies" exact component={Cookies} />
 
-            <Route path="/mentions-legales" exact component={TermsOfUse} />
-            <Route path="/mentions-legales" exact component={Cookies} />
             <Route path="*">
               <Error />
             </Route>
