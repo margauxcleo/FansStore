@@ -29,12 +29,21 @@ module.exports = app => {
     router.post('/client/addAddress', [
         check('address_name').not().isEmpty().bail(),
         check('street').not().isEmpty().bail(),
-        check('zipcode').isEmail().bail(),
+        check('zipcode').isEmpty().bail(),
         check('city').not().isEmpty().bail(),
         verifyJWT
     ], client.addAddressToClient);
 
-    
+    // Créer une carte de paiement pour un client => id récupéré dans le token 
+    // et non en params
+    router.post('/client/addCard', [
+        check('card_name').not().isEmpty().bail(),
+        check('card_number').not().isEmpty().bail(),
+        check('card_exp_date').isEmpty().bail(),
+        check('card_cvv').not().isEmpty().bail(),
+        verifyJWT
+    ], client.addCardToClient);
+
 
 
 
