@@ -6,7 +6,7 @@ const TermsOfUse = (props) => {
 
     return (
         <>
-            <div className="jumbotron jumbotron-universes p-3 p-md-5 mx-auto col-xl-11 col-lg-11 col-md-11 col-sm-12 rounded d-flex align-items-center">
+            <div className="termsofuse-title jumbotron jumbotron-universes p-3 p-md-5 mx-auto col-xl-11 col-lg-11 col-md-11 col-sm-12 rounded d-flex align-items-center">
                 <div className="px-0 mx-auto jumb-div-title" >
                     <h1 className="display-4 mx-auto">Conditions Générales d'Utilisations du site</h1>
                 </div>
@@ -37,12 +37,14 @@ const TermsOfUse = (props) => {
                 <p>
                     L’Utilisateur du site <span className="site_name">
                         fansstore.com</span> a accès aux services suivants :
-                    <ul>
-                            <li>Lecture des articles</li>
-                            <li>Ajout d'articles dans le panier</li>
-                            <li>Création d'un compte utilisateur sécurisé</li>
-                            <li>Passage de commande</li>
-                        </ul>
+                </p>
+                <ul>
+                        <li>Lecture des articles</li>
+                        <li>Ajout d'articles dans le panier</li>
+                        <li>Création d'un compte utilisateur sécurisé</li>
+                        <li>Passage de commande</li>
+                    </ul>
+                <p>
                 <br />
 				Tout Utilisateur ayant accès a internet peut accéder gratuitement et depuis n’importe où au site. Les frais supportés par l’Utilisateur pour y accéder (connexion internet, matériel informatique, etc.) ne sont pas à la charge de l’Éditeur.
 				<br />
