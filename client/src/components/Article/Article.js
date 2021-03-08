@@ -59,10 +59,8 @@ const Article = (props) => {
                         <button 
                             className="btn btn-primary"
                             onClick={(event) => handleAddToCart(event, article)}
-                        >
-                            <Link to="/panier"  style={{ textDecoration: 'none', color: 'white'}}>
-                                Ajouter au panier
-                            </Link>
+                        >   
+                            Ajouter au panier
                         </button>
                     </div>
                 </div>
