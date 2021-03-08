@@ -15,9 +15,9 @@ const Cart = (props) => {
 
     // calcul du prix total (reduce?)
     let totalPrice = cart.reduce( (total, article) => {
-        console.log(`Prix  => ${article.price} Quantité => ${article.quantity}`);
-        console.log(`Total => ${total}`);
-        console.log('-----------');
+        // console.log(`Prix  => ${article.price} Quantité => ${article.quantity}`);
+        // console.log(`Total => ${total}`);
+        // console.log('-----------');
         return total + (article.price * article.quantity);
     },0);
 
