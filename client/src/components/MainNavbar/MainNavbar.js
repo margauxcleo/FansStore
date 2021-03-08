@@ -3,12 +3,11 @@ import { useState, useEffect } from "react";
 
 import './MainNavbar.css';
 
-
 const MainNavbar = (props) => {
 
     const { isAuthenticated, handleGetCart } = props;
 
-    // const { cart, loading } = props.cart;
+    const { cart } = props.cart;
 
     const [infos, setInfos] = useState("");
 
@@ -29,17 +28,17 @@ const MainNavbar = (props) => {
     };
 
     // Calcul du nb total d'articles dans le panier 
-    // let articlesNb = "";
-    // if (!cart || cart.length != 0) {
-    //     articlesNb = cart.reduce( (total, article) => {
-    //         return total + article.quantity;
-    //     },0);
-    // }
+    let articlesNb = "";
+    if (cart.length != 0) {
+        articlesNb = cart.reduce( (total, article) => {
+            return total + article.quantity;
+        },0);
+    }
     
-
     useEffect(() => {
         getInfos();
-    }, [isAuthenticated]);
+        handleGetCart();
+    }, []);
     
     return (
         <>
@@ -176,16 +175,10 @@ const MainNavbar = (props) => {
                                 <li className="nav-item">
                                     <NavLink className="nav-link" activeClassName="is-active" to="/panier" exact>
                                         <i className="fas fa-shopping-basket"></i>
-                                        <span className="
-                                    nav-title">Panier</span>
-                                        {/* { (!cart || cart.length === 0) ? (
-                                            <>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <span className="badge bg-light text-dark">{ !articlesNb ? articlesNb : 0 }</span>
-                                            </>
-                                        )} */}
+                                        <span className="nav-title">Panier</span> 
+                                        <span className="badge bg-light text-dark">
+                                            { articlesNb ? articlesNb : 0 }
+                                        </span>
                                     </NavLink>
                                 </li>
                             </ul>

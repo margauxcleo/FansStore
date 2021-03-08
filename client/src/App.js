@@ -105,7 +105,11 @@ function App(props) {
   return (
     <>
       <Router>
-        <MainNavbar isAuthenticated={isAuthenticated} handleGetCart={handleGetCart}/>
+        <MainNavbar 
+        isAuthenticated={isAuthenticated} 
+        handleGetCart={handleGetCart}
+        cart={cart}
+        />
 
         <div className="main">
           <Switch>
@@ -147,7 +151,8 @@ function App(props) {
             <Route exact path='/compte/infos'
               render={(props) => isAuthenticated ? <ClientInfos {...props} setAuth={setAuth} /> : <Redirect to='/compte/connexion' />} />
 
-            <Route path="/paiement" 
+            <Route 
+              path="/paiement" 
               exact 
               render={(props) => isAuthenticated ? <PurchasePage {...props} 
                 cart={cart}
