@@ -7,7 +7,7 @@ const Home = () => {
        <div className="home mx-auto col-xl-12 col-lg-12 col-md-11 col-sm-12">
            <div className="row d-flex justify-content-around mt-3">
                 <div className="home-image-univers col-xl-8 col-lg-8 col-md-8 col-sm-12 p-5 mb-5 d-flex justify-content-center align-items-center">
-                    <NavLink className="nav-link" to="/univers" exact>
+                    <NavLink className="nav-link" to="/produits" exact>
                         <span className="home-nav-title">Univers</span>
                     </NavLink>
                 </div>
