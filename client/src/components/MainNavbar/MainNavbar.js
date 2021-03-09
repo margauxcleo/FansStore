@@ -7,7 +7,7 @@ const MainNavbar = (props) => {
 
     const { isAuthenticated, handleGetCart } = props;
 
-    const { cart } = props.cart;
+    // const { cart } = props.cart;
 
     const [infos, setInfos] = useState("");
 
@@ -28,17 +28,21 @@ const MainNavbar = (props) => {
     };
 
     // Calcul du nb total d'articles dans le panier 
+    const cart = JSON.parse(localStorage.getItem("Cart"));
+    // console.log(cart);
     let articlesNb = "";
-    if (cart.length != 0) {
-        articlesNb = cart.reduce( (total, article) => {
-            return total + article.quantity;
-        },0);
+    if (cart) {
+        if (cart.length != 0) {
+            articlesNb = cart.reduce( (total, article) => {
+                return total + article.quantity;
+            },0);
+        }
     }
     
     useEffect(() => {
         getInfos();
-        handleGetCart();
     }, [isAuthenticated]);
+
     
     return (
         <>
@@ -177,7 +181,7 @@ const MainNavbar = (props) => {
                                         <i className="fas fa-shopping-basket"></i>
                                         <span className="nav-title">Panier</span> 
                                         <span className="badge bg-light text-dark">
-                                            { articlesNb ? articlesNb : 0 }
+                                            { cart ?  (articlesNb ? articlesNb : 0) : 0 }
                                         </span>
                                     </NavLink>
                                 </li>
