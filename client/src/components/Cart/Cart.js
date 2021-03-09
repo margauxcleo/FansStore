@@ -41,7 +41,7 @@ const Cart = (props) => {
                         <ul className="cart-div list-group list-group-flush col-xl-7 col-lg-7 col-md-8 col-sm-12 mb-2">
                             {(cart.map((cartItem, key) => {
                                 return (
-                                <li key={key} className="list-group-item row d-flex flex-row justify-content-between align-items-start mb-2">
+                                <li key={key} className="list-group-item col-xl-12 col-lg-12 col-md-12 col-sm-12 row d-flex flex-row justify-content-between align-items-start">
                                     <div className="item-info col-xl-7 col-lg-7 col-md-7 col-sm-12 d-flex justify-content-start align-items-start mb-4">
                                         <div>
                                             <img className="miniature" src={cartItem.image}/>
@@ -74,7 +74,7 @@ const Cart = (props) => {
                                 </li>)}
                             ))}
                         </ul>
-                        <div className="cart-div d-flex flex-column justify-content-around align-items-center offset-xl-1 col-xl-4 offset-lg-1 col-lg-4 offset-md-1 col-md-3 col-sm-12">
+                        <div className="total cart-div d-flex flex-column justify-content-around align-items-center offset-xl-1 col-xl-4 offset-lg-1 col-lg-4 offset-md-1 col-md-3 col-sm-12">
                             <div >
                                 <h5>Somme totale: 
                                     <br/>

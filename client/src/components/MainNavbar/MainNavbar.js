@@ -38,7 +38,7 @@ const MainNavbar = (props) => {
     useEffect(() => {
         getInfos();
         handleGetCart();
-    }, []);
+    }, [isAuthenticated]);
     
     return (
         <>
